@@ -1,0 +1,11 @@
+{
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "torch": "2.5.1+cu124",
+  "cuda_runtime": "12.4",
+  "torch_geometric": "2.6.1",
+  "scanpy": "1.10.2",
+  "gpu": "NVIDIA H20-3e",
+  "cuda_visible_devices": "GPU-310a7da0-67a7-0b6f-594b-1ac0b2c2f5ea",
+  "source_commit": "f374e43e197b295016d80395d7a54ddb81cc6769",
+  "source_path": "/home/yxcheng/project/GO_enrichment/third_party/GEARS"
+}

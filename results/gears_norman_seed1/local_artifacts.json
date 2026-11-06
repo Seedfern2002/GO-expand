@@ -1,0 +1,52 @@
+[
+  {
+    "path": "outputs/gears/norman_baseline_seed1_retry1/checkpoint/model.pt",
+    "bytes": 7538282,
+    "sha256": "cc4959f22610b42b2840e69d8190b43635dececb974d30a5801e9fe6201a7f48"
+  },
+  {
+    "path": "outputs/gears/norman_baseline_seed1_retry1/checkpoint/config.pkl",
+    "bytes": 1348778,
+    "sha256": "64e0dc7492fe2303fc23e48e37dedd5dfc5106f0e96c60a45d0dd87854a45b3f"
+  },
+  {
+    "path": "outputs/gears/norman_baseline_seed1_retry1/original_graphs.pt",
+    "bytes": 1484432,
+    "sha256": "b030cee05ee172349248ebc22c582fc3be80dfe6c4c736188ec8c81d9db40cf5"
+  },
+  {
+    "path": "outputs/gears/norman_baseline_seed1_retry1/test_perturbation_means.npz",
+    "bytes": 3102757,
+    "sha256": "1828d0acec2c453c29f0a45e0bf1fa2c64ac2eaceaca0a84b0f897d43f5bd4ef"
+  },
+  {
+    "path": "outputs/gears/norman_baseline_seed1_retry1/data/go_essential_norman.csv",
+    "bytes": 19700177,
+    "sha256": "c36f38ecff3eae5a3fe3e1d94ac4d977bfd937cca123e35dd6d2762282e8d4cd"
+  },
+  {
+    "path": "outputs/gears/norman_augmented_seed1/checkpoint/model.pt",
+    "bytes": 7538282,
+    "sha256": "e2713a980b4c03e7d220c762fb7feeaf945a2ef027ff9f485302bdcc246bf344"
+  },
+  {
+    "path": "outputs/gears/norman_augmented_seed1/checkpoint/config.pkl",
+    "bytes": 1255338,
+    "sha256": "39bd50ad8331081494d3a5f61fe94a09b9eb393a3f468d62713ef59116f0018b"
+  },
+  {
+    "path": "outputs/gears/norman_augmented_seed1/original_graphs.pt",
+    "bytes": 1390992,
+    "sha256": "9bc9e899dd15eccde4f19c044bf0dcb94242af393f2557c85d32cafc6b7b862f"
+  },
+  {
+    "path": "outputs/gears/norman_augmented_seed1/test_perturbation_means.npz",
+    "bytes": 3041565,
+    "sha256": "d47855717ceadc3bbe80da194aa9cc512ca6a075fa5ea8ca33909e14c2868e41"
+  },
+  {
+    "path": "outputs/gears/norman_augmented_seed1/data/go_essential_norman.csv",
+    "bytes": 10232081,
+    "sha256": "f6dd704b2e65c2c3a099617c0886461d719fbe4c61f45b613f6b13a939f0d954"
+  }
+]

@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "enum": [
+        "2.0"
+      ]
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "batches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "plan_item_id": {
+            "type": "string"
+          },
+          "source_name": {
+            "type": "string"
+          },
+          "source_version": {
+            "type": "string"
+          },
+          "source_uri": {
+            "type": "string"
+          },
+          "records_path": {
+            "type": "string",
+            "description": "Workspace-relative or absolute path to the normalized batch, outside the LLM response."
+          },
+          "records_sha256": {
+            "type": "string"
+          },
+          "provenance_path": {
+            "type": "string"
+          },
+          "validation_report_path": {
+            "type": "string"
+          },
+          "coverage_report_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "plan_item_id",
+          "source_name",
+          "source_version",
+          "source_uri",
+          "records_path",
+          "records_sha256",
+          "provenance_path",
+          "validation_report_path",
+          "coverage_report_path"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "coverage": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "plan_item_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "covered",
+              "partial",
+              "no_evidence",
+              "pending"
+            ]
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "plan_item_id",
+          "status",
+          "notes"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "open_questions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "task_id",
+    "batches",
+    "coverage",
+    "open_questions"
+  ],
+  "additionalProperties": false
+}

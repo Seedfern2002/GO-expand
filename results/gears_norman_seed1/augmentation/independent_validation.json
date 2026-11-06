@@ -1,0 +1,121 @@
+{
+  "batches": {
+    "humap": {
+      "coverage": {
+        "GO_overlap_report": "/home/yxcheng/project/GO_enrichment/outputs/agents/norman_task_background_002/overlay_v1/humap_go_overlap.json",
+        "genes_annotated": 2133,
+        "genes_in_complexes_with_quarantined_members": 253,
+        "genes_mapping_unresolved": 5,
+        "genes_screened": 3127,
+        "genes_without_accepted_evidence": 994,
+        "perturbation_targets": {
+          "genes_annotated": 79,
+          "genes_screened": 102,
+          "genes_without_accepted_evidence": 23,
+          "projection_eligible_genes": 69,
+          "universe_size": 102
+        },
+        "projection_eligible_genes": 1854,
+        "projection_eligible_records": 5072,
+        "projection_excluded_records": 6134,
+        "quarantine_count": 454,
+        "record_count": 11206,
+        "singleton_in_universe_records": 4698,
+        "source_row_reconciliation": {
+          "accepted_source_member_rows": 11206,
+          "excluded_outside_universe_member_rows": 63871,
+          "imported_complex_rows": 15326,
+          "imported_member_rows": 75531,
+          "quarantined_member_rows": 454
+        },
+        "universe_size": 3127,
+        "unresolved_policy": "All unresolved source records quarantined. No mapped evidence is not a claim of biological absence."
+      },
+      "quarantine_reason_counts": {
+        "accession_symbol_conflict": 49,
+        "ambiguous_accession": 200,
+        "unmapped_accession": 205
+      },
+      "sampled_record_ids": [
+        "humap:86878b6372ccb0f40db1e82b",
+        "humap:a0b67f2bdf7432a36a9c5063",
+        "humap:9fb566b5c98855ce578409e3",
+        "humap:bb308be7fede4d5b9082ebff",
+        "humap:4c39323554e6001d96f27131",
+        "humap:3e64e568970f622eff84b0d5",
+        "humap:e2bdffb4a26700991649498f",
+        "humap:6d9358686c56452780131c01",
+        "humap:328d8173d39d2ade60f8c4b2",
+        "humap:08a1e031a5243b6348224184"
+      ],
+      "source_references_checked": 11206,
+      "strata_sampled": 10,
+      "strata_total": 12,
+      "validated_rows": 11206
+    },
+    "reactome": {
+      "coverage": {
+        "GO_overlap_report": "/home/yxcheng/project/GO_enrichment/outputs/agents/norman_task_background_002/overlay_v1/reactome_go_overlap.json",
+        "genes_annotated": 1981,
+        "genes_in_complexes_with_quarantined_members": 0,
+        "genes_mapping_unresolved": 5,
+        "genes_screened": 3127,
+        "genes_without_accepted_evidence": 1146,
+        "perturbation_targets": {
+          "genes_annotated": 66,
+          "genes_screened": 102,
+          "genes_without_accepted_evidence": 36,
+          "projection_eligible_genes": 66,
+          "universe_size": 102
+        },
+        "projection_eligible_genes": 1981,
+        "projection_eligible_records": 8652,
+        "projection_excluded_records": 0,
+        "quarantine_count": 2121,
+        "record_count": 8652,
+        "singleton_in_universe_records": 0,
+        "source_row_reconciliation": {
+          "accepted_source_rows": 9449,
+          "evidence_IEA": 1660,
+          "evidence_TAS": 7789,
+          "excluded_nonhuman_rows": 270792,
+          "excluded_outside_universe_rows": 43609,
+          "human_rows": 55179,
+          "imported_rows": 325971,
+          "quarantined_rows": 2121
+        },
+        "universe_size": 3127,
+        "unresolved_policy": "All unresolved source records quarantined. No mapped evidence is not a claim of biological absence."
+      },
+      "quarantine_reason_counts": {
+        "ambiguous_accession": 480,
+        "unmapped_accession": 1641
+      },
+      "sampled_record_ids": [
+        "reactome:e1adbbeb4ad505456234ad15",
+        "reactome:906393c940da515448e4e4c3",
+        "reactome:623e10003d330c3e3c8123dd",
+        "reactome:5eaf569f28182766b0764af1",
+        "reactome:482717a3b547a7cfb8e41fa7",
+        "reactome:ed1606a0cbac8b7cab8be8ba",
+        "reactome:875a195ce91b134d945681ed",
+        "reactome:34e4889d0e3c7dc0bc87dcc7",
+        "reactome:0d077226e2e134cf1475fef6",
+        "reactome:7953e6a41209e3f25cf314b6"
+      ],
+      "source_references_checked": 9449,
+      "strata_sampled": 6,
+      "strata_total": 6,
+      "validated_rows": 8652
+    }
+  },
+  "freeze_files_verified": 35,
+  "individual_literature_verification": false,
+  "new_source_data_downloaded_bytes": 0,
+  "passed": true,
+  "reviewer_new_distinct_sources": 0,
+  "reviewer_web_open_attempts": 2,
+  "targets": 102,
+  "total_existing_audit_records_reused": 20,
+  "universe_size": 3127
+}

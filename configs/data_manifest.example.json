@@ -1,0 +1,47 @@
+{
+  "status": "template_not_a_downloaded_release",
+  "ontology": {
+    "edition": "go-basic",
+    "release": null,
+    "header_data_version": null,
+    "source_url": null,
+    "local_path": null,
+    "sha256": null
+  },
+  "annotations": {
+    "provider": null,
+    "format": "GAF 2.2",
+    "release": null,
+    "header_go_version": null,
+    "source_url": null,
+    "local_path": null,
+    "sha256": null,
+    "taxon": "taxon:9606",
+    "identifier_namespace": null,
+    "identifier_mapping_source_and_version": null
+  },
+  "processing": {
+    "positive_propagation_relations": ["is_a", "part_of"],
+    "evidence_codes": null,
+    "negated_annotation_policy": "retain_separately",
+    "root_policy": "exclude_from_similarity",
+    "obsolete_policy": "review_replaced_by_and_consider",
+    "annotation_extension_policy": "retain_for_context_review",
+    "product_form_mapping_policy": null
+  },
+  "augmentation": {
+    "task_description": null,
+    "knowledge_categories": [],
+    "biological_context": null,
+    "external_evidence_sources": [],
+    "evidence_cutoff_date": null,
+    "agent_model_and_version": null,
+    "inclusion_criteria": ["evidence_support", "semantic_consistency", "task_knowledge_relevance"],
+    "overlay_path": null,
+    "overlay_sha256": null,
+    "frozen_at": null
+  },
+  "evaluation": {
+    "split_manifest": null
+  }
+}

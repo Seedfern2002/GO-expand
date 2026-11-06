@@ -1,0 +1,30 @@
+{
+  "scope": "Exact approved primary attributes used in the top-k comparison: all Reactome memberships and hu.MAP classes 1\u20133.",
+  "definition": "One distinct namespaced pathway/complex ID is one attribute; its count is the number of graph genes carrying that attribute.",
+  "families": [
+    {
+      "family": "Reactome",
+      "distinct_attributes": 1698,
+      "gene_attribute_memberships": 8652,
+      "genes_annotated": 1981,
+      "single_gene_attributes": 436,
+      "attributes_shared_by_multiple_genes": 1262,
+      "maximum_genes_per_attribute": 199
+    },
+    {
+      "family": "hu.MAP",
+      "distinct_attributes": 3594,
+      "gene_attribute_memberships": 5072,
+      "genes_annotated": 1854,
+      "single_gene_attributes": 2616,
+      "attributes_shared_by_multiple_genes": 978,
+      "maximum_genes_per_attribute": 11
+    }
+  ],
+  "total": {
+    "distinct_attributes": 5292,
+    "gene_attribute_memberships": 13724,
+    "genes_annotated": 2581
+  },
+  "source_comparison": "/home/yxcheng/project/GO_enrichment/outputs/analysis/norman_topk_neighbors_001/summary.json"
+}

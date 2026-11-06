@@ -1,0 +1,168 @@
+{
+  "created_at_utc": "2026-11-06T01:49:00.532949+00:00",
+  "k": 20,
+  "jaccard_threshold_exclusive": 0.1,
+  "projection": "Equal-weight union of original GO terms and namespaced approved primary external membership attributes; no ontology propagation or additional filtering.",
+  "selection": "GEARS pandas groupby(target).nlargest(k+1, importance), keep first on ties; source order lexicographic. Self edges excluded from neighborhood-change statistics.",
+  "primary_definition": "Changed means at least one nonself incoming neighbor was added or removed; order-only and weight-only changes are reported separately.",
+  "genes_with_added_attributes": 2581,
+  "added_memberships": 13724,
+  "original_candidate_edges": 673899,
+  "augmented_candidate_edges": 346335,
+  "original_selected_edges": 60993,
+  "augmented_selected_edges": 56321,
+  "original_self_edges": 3118,
+  "augmented_self_edges": 3127,
+  "baseline_reference_edges_verified": 60993,
+  "all_original_candidate_pairs_verified": true,
+  "gears_behavior": {
+    "all_genes": {
+      "genes": 3127,
+      "neighbor_sets_changed": 3053,
+      "neighbor_sets_changed_percent": 97.6335,
+      "neighbor_sets_unchanged": 74,
+      "order_only_changed": 27,
+      "unchanged_sets_with_changed_weights": 48,
+      "mean_added_neighbors": 4.1004157339302845,
+      "mean_removed_neighbors": 5.597377678285897
+    },
+    "perturbation_targets": {
+      "genes": 102,
+      "neighbor_sets_changed": 99,
+      "neighbor_sets_changed_percent": 97.0588,
+      "neighbor_sets_unchanged": 3,
+      "order_only_changed": 1,
+      "unchanged_sets_with_changed_weights": 3,
+      "mean_added_neighbors": 3.1862745098039214,
+      "mean_removed_neighbors": 4.578431372549019
+    },
+    "genes_with_added_attributes": {
+      "genes": 2581,
+      "neighbor_sets_changed": 2517,
+      "neighbor_sets_changed_percent": 97.5203,
+      "neighbor_sets_unchanged": 64,
+      "order_only_changed": 26,
+      "unchanged_sets_with_changed_weights": 46,
+      "mean_added_neighbors": 3.950406819062379,
+      "mean_removed_neighbors": 5.678419217357614
+    },
+    "genes_without_added_attributes": {
+      "genes": 546,
+      "neighbor_sets_changed": 536,
+      "neighbor_sets_changed_percent": 98.1685,
+      "neighbor_sets_unchanged": 10,
+      "order_only_changed": 1,
+      "unchanged_sets_with_changed_weights": 2,
+      "mean_added_neighbors": 4.809523809523809,
+      "mean_removed_neighbors": 5.214285714285714
+    },
+    "added_neighbor_histogram": {
+      "0": 461,
+      "1": 225,
+      "2": 255,
+      "3": 372,
+      "4": 429,
+      "5": 435,
+      "6": 336,
+      "7": 234,
+      "8": 181,
+      "9": 103,
+      "10": 51,
+      "11": 20,
+      "12": 12,
+      "13": 10,
+      "15": 2,
+      "17": 1
+    },
+    "before_nonself_edges": 57875,
+    "after_nonself_edges": 53194,
+    "added_nonself_edges": 12822,
+    "removed_nonself_edges": 17503
+  },
+  "strict_top20_nonself_sensitivity": {
+    "all_genes": {
+      "genes": 3127,
+      "neighbor_sets_changed": 3053,
+      "neighbor_sets_changed_percent": 97.6335,
+      "neighbor_sets_unchanged": 74,
+      "order_only_changed": 27,
+      "unchanged_sets_with_changed_weights": 48,
+      "mean_added_neighbors": 4.1004157339302845,
+      "mean_removed_neighbors": 5.594499520307004
+    },
+    "perturbation_targets": {
+      "genes": 102,
+      "neighbor_sets_changed": 99,
+      "neighbor_sets_changed_percent": 97.0588,
+      "neighbor_sets_unchanged": 3,
+      "order_only_changed": 1,
+      "unchanged_sets_with_changed_weights": 3,
+      "mean_added_neighbors": 3.1862745098039214,
+      "mean_removed_neighbors": 4.578431372549019
+    },
+    "genes_with_added_attributes": {
+      "genes": 2581,
+      "neighbor_sets_changed": 2517,
+      "neighbor_sets_changed_percent": 97.5203,
+      "neighbor_sets_unchanged": 64,
+      "order_only_changed": 26,
+      "unchanged_sets_with_changed_weights": 46,
+      "mean_added_neighbors": 3.950406819062379,
+      "mean_removed_neighbors": 5.676869430453313
+    },
+    "genes_without_added_attributes": {
+      "genes": 546,
+      "neighbor_sets_changed": 536,
+      "neighbor_sets_changed_percent": 98.1685,
+      "neighbor_sets_unchanged": 10,
+      "order_only_changed": 1,
+      "unchanged_sets_with_changed_weights": 2,
+      "mean_added_neighbors": 4.809523809523809,
+      "mean_removed_neighbors": 5.205128205128205
+    },
+    "added_neighbor_histogram": {
+      "0": 461,
+      "1": 225,
+      "2": 255,
+      "3": 372,
+      "4": 429,
+      "5": 435,
+      "6": 336,
+      "7": 234,
+      "8": 181,
+      "9": 103,
+      "10": 51,
+      "11": 20,
+      "12": 12,
+      "13": 10,
+      "15": 2,
+      "17": 1
+    },
+    "before_nonself_edges": 57866,
+    "after_nonself_edges": 53194,
+    "added_nonself_edges": 12822,
+    "removed_nonself_edges": 17494
+  },
+  "inputs": {
+    "annotation_path": "/home/yxcheng/project/GO_enrichment/data/raw/gears/gene2go_all.pkl",
+    "annotation_sha256": "f145c5e84a53048d87942a417d870a4f2d8db50200b96e492b358c13aba8c771",
+    "baseline_graph_path": "/home/yxcheng/project/GO_enrichment/outputs/gears/norman_baseline_seed1_retry1/original_graphs.pt",
+    "baseline_graph_sha256": "b030cee05ee172349248ebc22c582fc3be80dfe6c4c736188ec8c81d9db40cf5",
+    "baseline_cache_sha256": "c36f38ecff3eae5a3fe3e1d94ac4d977bfd937cca123e35dd6d2762282e8d4cd",
+    "approved_sources": [
+      {
+        "path": "/home/yxcheng/project/GO_enrichment/outputs/agents/norman_task_background_002/overlay_v1/reactome_records.jsonl",
+        "sha256": "612a85c8838f6f637058277d556cee44664241d3f635714ae3a8a3650022a1d0",
+        "projection_eligible_records": 8652
+      },
+      {
+        "path": "/home/yxcheng/project/GO_enrichment/outputs/agents/norman_task_background_002/overlay_v1/humap_records.jsonl",
+        "sha256": "ed742c6276692540b79058ebe221dd30e0de938daf8632f857d53606f4670583",
+        "projection_eligible_records": 5072
+      }
+    ],
+    "script_sha256": "6d3781f918141a7693a48fa2ee3c08f7b7cc8b2df74e732f491364922faf2cee",
+    "config_sha256": "0c780fcb1d56342cb8e2c0991fbe57fd0bb0d6dd391a30de09164122d642ae69"
+  },
+  "wall_seconds": 9.06495386781171
+}

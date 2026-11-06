@@ -1,0 +1,81 @@
+{
+  "created_at_utc": "2026-11-06T02:58:38.561865+00:00",
+  "reference_run": "outputs/gears/norman_baseline_seed1_retry1",
+  "reference_config_path": "outputs/gears/norman_augmented_seed1/reference_config.json",
+  "expected_graphs_path": "outputs/gears/norman_augmented_seed1/expected_graphs.pt",
+  "projection": "Equal-weight union of original GO terms and namespaced approved primary external membership attributes; no ontology propagation or additional filtering.",
+  "k": 20,
+  "added_memberships": 13724,
+  "genes_with_added_attributes": 2581,
+  "go_edges": 56321,
+  "files": [
+    {
+      "path": "outputs/gears/norman_augmented_seed1/reference_config.json",
+      "sha256": "ee1abb72d080248ed6d6f1a01efc1462d56aebb566783527fb73be4f1c2635e2"
+    },
+    {
+      "path": "outputs/gears/norman_baseline_seed1_retry1/original_graphs.pt",
+      "sha256": "b030cee05ee172349248ebc22c582fc3be80dfe6c4c736188ec8c81d9db40cf5"
+    },
+    {
+      "path": "outputs/gears/norman_baseline_seed1_retry1/split.json",
+      "sha256": "0afa164f9a806b879e4340569301a31934bc1ecf6e58ff5db5aa3d5c7d145526"
+    },
+    {
+      "path": "outputs/gears/norman_baseline_seed1_retry1/subgroups.json",
+      "sha256": "6298ff25dbe1e74222e3c8ae6f13bfc47da515fb0f8d737f0c89c23d8542b023"
+    },
+    {
+      "path": "outputs/analysis/norman_topk_neighbors_001/summary.json",
+      "sha256": "09360b40824b5f5b8078f6e4230a017febdfba745dbb9f42682fd2b7fb29dd41"
+    },
+    {
+      "path": "outputs/analysis/norman_topk_neighbors_001/augmented_go_candidates.csv",
+      "sha256": "f6dd704b2e65c2c3a099617c0886461d719fbe4c61f45b613f6b13a939f0d954"
+    },
+    {
+      "path": "outputs/analysis/norman_topk_neighbors_001/augmented_selected_edges.csv",
+      "sha256": "3612353d21d71c50cffdfc21fd26b7a1623c3fee710da64aa1b6dac1457c22e0"
+    },
+    {
+      "path": "outputs/gears/norman_augmented_seed1/data/go_essential_norman.csv",
+      "sha256": "f6dd704b2e65c2c3a099617c0886461d719fbe4c61f45b613f6b13a939f0d954"
+    },
+    {
+      "path": "outputs/gears/norman_augmented_seed1/expected_graphs.pt",
+      "sha256": "f36149ff58d2da5a965eb16caca660fd4ce9c0fd78cd2266fd0a33de06e7e652"
+    },
+    {
+      "path": "scripts/run_gears_baseline.py",
+      "sha256": "b4611737ba4a6d5cded2a577b3091fb8f233e49188b07fc02b4d037f82d1ec20"
+    },
+    {
+      "path": "scripts/prepare_gears_augmented.py",
+      "sha256": "22343c9387fcee3a654bdaa838522dc947b83847ec15084071182d5d347ecdff"
+    },
+    {
+      "path": "outputs/agents/norman_task_background_002/overlay_v1/reactome_records.jsonl",
+      "sha256": "612a85c8838f6f637058277d556cee44664241d3f635714ae3a8a3650022a1d0"
+    },
+    {
+      "path": "outputs/agents/norman_task_background_002/overlay_v1/humap_records.jsonl",
+      "sha256": "ed742c6276692540b79058ebe221dd30e0de938daf8632f857d53606f4670583"
+    },
+    {
+      "path": "data/raw/gears/gene2go_all.pkl",
+      "sha256": "f145c5e84a53048d87942a417d870a4f2d8db50200b96e492b358c13aba8c771"
+    },
+    {
+      "path": "data/raw/gears/norman.zip",
+      "sha256": "c1938353f6f41829c9137f073ecb843ce4d4114528b001b48312b019f739d877"
+    },
+    {
+      "path": "data/raw/gears/norman/perturb_processed.h5ad",
+      "sha256": "23ffb0fac6a847ff927cf7509d80d85052bfefbfb97610786a2dafaaefa0b6a0"
+    },
+    {
+      "path": "data/raw/gears/norman/simulation_1_0.75_0.4_20_co_expression_network.csv",
+      "sha256": "3e228930072a20faa13d76e87bcb87995acf81b34a1cc029ef086395e93feafa"
+    }
+  ]
+}

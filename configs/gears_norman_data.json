@@ -1,0 +1,17 @@
+{
+  "retrieved_on": "2026-11-05",
+  "files": [
+    {
+      "path": "data/raw/gears/gene2go_all.pkl",
+      "source_url": "https://dataverse.harvard.edu/api/access/datafile/6153417",
+      "size_bytes": 9462558,
+      "sha256": "f145c5e84a53048d87942a417d870a4f2d8db50200b96e492b358c13aba8c771"
+    },
+    {
+      "path": "data/raw/gears/norman.zip",
+      "source_url": "https://dataverse.harvard.edu/api/access/datafile/6154020",
+      "size_bytes": 168758985,
+      "sha256": "c1938353f6f41829c9137f073ecb843ce4d4114528b001b48312b019f739d877"
+    }
+  ]
+}

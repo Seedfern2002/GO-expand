@@ -1,0 +1,10 @@
+{
+  "stage": "cpu_preparation_complete",
+  "graphs_prepared": true,
+  "go_candidate_edges": 346335,
+  "go_selected_edges": 56321,
+  "coexpression_edges": 6364,
+  "perturbation_graph_genes": 3127,
+  "reference_run": "outputs/gears/norman_baseline_seed1_retry1",
+  "augmentation_manifest_sha256": "df9144350fa137a9d2b9ae6da77ac5671bb1ff630452ec582dac73e49c1cb1e2"
+}

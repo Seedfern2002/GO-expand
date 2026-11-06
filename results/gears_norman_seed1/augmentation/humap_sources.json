@@ -1,0 +1,37 @@
+{
+  "source_name": "hu.MAP",
+  "source_version": "3.0 / file 20240922",
+  "transformation_version": "task_membership_v1",
+  "mapping_policy": "HGNC approved symbols precede unambiguous previous/alias symbols; UniProt accessions primary, isoform suffix retained with explicit canonical accession gene aggregation; ambiguous accessions and symbol conflicts quarantined.",
+  "projection_recipe": {
+    "ancestor_expansion": false,
+    "confidence_classes": [
+      1,
+      2,
+      3
+    ],
+    "original_GO_modified": false,
+    "physical_clique": false,
+    "relation": "direct_membership_only",
+    "version": "task_membership_v1"
+  },
+  "source_evidence_notes": "Integrated predicted complexes; source complex size and all proteins preserved, confidence ordinal not probability; source names used as consistency set, never positional mapping.",
+  "snapshots": {
+    "hgnc_complete_set.txt": {
+      "name": "hgnc_complete_set.txt",
+      "url": "https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt",
+      "resolved_url": "https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt",
+      "sha256": "d93ce6b22d01dc1e1ded28857246951d605ead47ed17ef973ad1142b1d13bed0",
+      "bytes": 16986126,
+      "retrieved_at_utc": "2026-11-05T09:19:19.511295+00:00"
+    },
+    "humap3_20240922.csv": {
+      "name": "humap3_20240922.csv",
+      "url": "https://humap3.proteincomplexes.org/static/downloads/humap3/hu.MAP3.0_complexes_wConfidenceScores_total15326_wGenenames_20240922.csv",
+      "resolved_url": "https://humap3.proteincomplexes.org/static/downloads/humap3/hu.MAP3.0_complexes_wConfidenceScores_total15326_wGenenames_20240922.csv",
+      "sha256": "22a545ce45ced9a57a15f3bff75beaf53cf7e254d8d68635668e2c968bf46739",
+      "bytes": 1271417,
+      "retrieved_at_utc": "2026-11-05T09:19:10.418031+00:00"
+    }
+  }
+}

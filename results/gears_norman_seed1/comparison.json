@@ -1,0 +1,61 @@
+{
+  "updated_at_utc": "2026-11-06T03:18:01.570744+00:00",
+  "state": "complete",
+  "baseline_run": "/home/yxcheng/project/GO_enrichment/outputs/gears/norman_baseline_seed1_retry1",
+  "augmented_run": "/home/yxcheng/project/GO_enrichment/outputs/gears/norman_augmented_seed1",
+  "metrics": [
+    {
+      "metric": "mse",
+      "lower_is_better": true,
+      "baseline": 0.006072790827602148,
+      "augmented": 0.004340506624430418,
+      "delta_augmented_minus_baseline": -0.00173228420317173,
+      "relative_error_reduction_percent": 28.525339540728517
+    },
+    {
+      "metric": "mse_de",
+      "lower_is_better": true,
+      "baseline": 0.19603684544563293,
+      "augmented": 0.17505639791488647,
+      "delta_augmented_minus_baseline": -0.02098044753074646,
+      "relative_error_reduction_percent": 10.702298072106544
+    },
+    {
+      "metric": "pearson",
+      "lower_is_better": false,
+      "baseline": 0.9827977701021174,
+      "augmented": 0.9876347185868372,
+      "delta_augmented_minus_baseline": 0.004836948484719716,
+      "relative_error_reduction_percent": null
+    },
+    {
+      "metric": "pearson_de",
+      "lower_is_better": false,
+      "baseline": 0.8654874525714765,
+      "augmented": 0.8749708985294121,
+      "delta_augmented_minus_baseline": 0.009483445957935599,
+      "relative_error_reduction_percent": null
+    }
+  ],
+  "augmentation_verification": {
+    "manifest_sha256": "df9144350fa137a9d2b9ae6da77ac5671bb1ff630452ec582dac73e49c1cb1e2",
+    "split_matches_baseline": true,
+    "subgroups_match_baseline": true,
+    "go_graph_matches_topk_experiment": true,
+    "coexpression_graph_matches_baseline": true,
+    "training_settings_match_baseline": true,
+    "gene_order_matches_baseline": true
+  },
+  "queue_stage": "complete",
+  "training_stage": "complete",
+  "metric_files": [
+    {
+      "path": "/home/yxcheng/project/GO_enrichment/outputs/gears/norman_baseline_seed1_retry1/metrics.json",
+      "sha256": "f2e25a28ba7985f391628a3efa46971197ffea26082abba2d484afc3b22fe846"
+    },
+    {
+      "path": "/home/yxcheng/project/GO_enrichment/outputs/gears/norman_augmented_seed1/metrics.json",
+      "sha256": "8e34b467c9d1ac30ca7ce6e64fffd96783a58302cc91cfa15e6761d9af998c55"
+    }
+  ]
+}

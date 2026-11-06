@@ -1,0 +1,60 @@
+{
+  "status": "downloaded_and_checked",
+  "ontology": {
+    "edition": "go-basic",
+    "release": "2026-07-26",
+    "header_data_version": "releases/2026-07-26",
+    "source_url": "https://current.geneontology.org/ontology/go-basic.obo",
+    "local_path": "data/raw/go/2026-07-26/go-basic.obo",
+    "sha256": "b08d45b268b8c24ccb2513dbbbc7d4df9f6521c099b413f79eb31e06e0fa3bcc",
+    "size_bytes": 32227785
+  },
+  "annotations": {
+    "provider": "UniProt",
+    "format": "GAF 2.2",
+    "release": "2026-07-26",
+    "header_go_version": "http://purl.obolibrary.org/obo/go/releases/2026-07-26/extensions/go-plus.ofn",
+    "source_url": "https://current.geneontology.org/annotations/gaf/HUMAN-uniprot.gaf.gz",
+    "local_path": "data/raw/go/2026-07-26/HUMAN-uniprot.gaf.gz",
+    "sha256": "a0afba19dfb1f8fa996bc1bdcd61fd0c9bd4cf0d2bf2509d09ac86993c0e70a2",
+    "taxon": "taxon:9606",
+    "identifier_namespace": "UniProtKB",
+    "identifier_mapping_source_and_version": null,
+    "size_bytes": 12109254,
+    "header_date_generated": "2026-07-28 19:42"
+  },
+  "processing": {
+    "positive_propagation_relations": [
+      "is_a",
+      "part_of"
+    ],
+    "evidence_codes": null,
+    "negated_annotation_policy": "retain_separately",
+    "root_policy": "exclude_from_similarity",
+    "obsolete_policy": "review_replaced_by_and_consider",
+    "annotation_extension_policy": "retain_for_context_review",
+    "product_form_mapping_policy": null
+  },
+  "augmentation": {
+    "task_description": null,
+    "knowledge_categories": [],
+    "biological_context": null,
+    "external_evidence_sources": [],
+    "evidence_cutoff_date": null,
+    "agent_model_and_version": null,
+    "inclusion_criteria": [
+      "evidence_support",
+      "semantic_consistency",
+      "task_knowledge_relevance"
+    ],
+    "overlay_path": null,
+    "overlay_sha256": null,
+    "frozen_at": null
+  },
+  "evaluation": {
+    "split_manifest": null
+  },
+  "retrieved_on": "2026-11-05",
+  "provenance_note": "Downloaded from official current URLs; local snapshot is pinned by file header release and SHA256. Date-specific release URLs returned HTTP 404 at retrieval.",
+  "inspection_summary_path": "outputs/go/2026-07-26/summary.json"
+}

@@ -1,0 +1,262 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "enum": [
+        "1.0"
+      ]
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "candidate_id": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "accept",
+              "request_evidence",
+              "defer",
+              "reject"
+            ]
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence_checked": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "Original source URIs and locators actually checked."
+            }
+          },
+          "requested_follow_up": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "normalized_record": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/record"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "candidate_id",
+          "verdict",
+          "reasons",
+          "evidence_checked",
+          "requested_follow_up",
+          "normalized_record"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "checks_performed": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "description": "Programmatic checks actually performed and their results."
+      }
+    },
+    "human_questions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "task_id",
+    "decisions",
+    "checks_performed",
+    "human_questions"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "record": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "plan_item_id": {
+          "type": "string"
+        },
+        "knowledge_layer": {
+          "type": "string",
+          "enum": [
+            "ontology",
+            "annotation",
+            "external_attribute"
+          ]
+        },
+        "subject": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "label": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "label"
+          ],
+          "additionalProperties": false
+        },
+        "relation": {
+          "type": "string",
+          "description": "Preserve relationship type and direction using an explicit relation name."
+        },
+        "object": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "label": {
+              "type": "string"
+            },
+            "definition": {
+              "type": "string"
+            },
+            "term_status": {
+              "type": "string",
+              "enum": [
+                "existing",
+                "candidate_module",
+                "candidate_term"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "label",
+            "definition",
+            "term_status"
+          ],
+          "additionalProperties": false
+        },
+        "polarity": {
+          "type": "string",
+          "enum": [
+            "positive",
+            "negative"
+          ]
+        },
+        "context": {
+          "type": "object",
+          "properties": {
+            "taxon_id": {
+              "type": "string"
+            },
+            "cell_type": {
+              "type": "string"
+            },
+            "tissue": {
+              "type": "string"
+            },
+            "condition": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "taxon_id",
+            "cell_type",
+            "tissue",
+            "condition"
+          ],
+          "additionalProperties": false
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "source_name": {
+                "type": "string"
+              },
+              "source_uri": {
+                "type": "string",
+                "description": "URI of the original paper or database record."
+              },
+              "version_or_access_date": {
+                "type": "string"
+              },
+              "locator": {
+                "type": "string",
+                "description": "Record ID, field, section, figure/table, or original analysis artifact locator."
+              },
+              "support_summary": {
+                "type": "string"
+              },
+              "derivation": {
+                "type": "string",
+                "enum": [
+                  "curated_record",
+                  "literature_extraction",
+                  "data_analysis"
+                ]
+              },
+              "analysis_method": {
+                "type": "string",
+                "description": "For data analysis, give the method, parameters, and result location; otherwise use an empty string."
+              }
+            },
+            "required": [
+              "source_name",
+              "source_uri",
+              "version_or_access_date",
+              "locator",
+              "support_summary",
+              "derivation",
+              "analysis_method"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "plan_item_id",
+        "knowledge_layer",
+        "subject",
+        "relation",
+        "object",
+        "polarity",
+        "context",
+        "evidence",
+        "limitations"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

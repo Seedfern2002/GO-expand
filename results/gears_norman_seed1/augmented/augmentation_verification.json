@@ -1,0 +1,9 @@
+{
+  "manifest_sha256": "df9144350fa137a9d2b9ae6da77ac5671bb1ff630452ec582dac73e49c1cb1e2",
+  "split_matches_baseline": true,
+  "subgroups_match_baseline": true,
+  "go_graph_matches_topk_experiment": true,
+  "coexpression_graph_matches_baseline": true,
+  "training_settings_match_baseline": true,
+  "gene_order_matches_baseline": true
+}

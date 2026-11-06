@@ -1,0 +1,95 @@
+{
+  "schema_version": "2.0",
+  "task_id": "gears_norman_task",
+  "task_description": "Construct a task-wide functional knowledge overlay for gene-perturbation expression prediction, covering the full fixed GEARS gene universe and used jointly for all Norman perturbations.",
+  "organism": {
+    "name": "Homo sapiens",
+    "taxon_id": "NCBITaxon:9606"
+  },
+  "biological_context": {
+    "cell_type": "K562",
+    "dataset": "Norman",
+    "perturbation": "CRISPRa"
+  },
+  "scope": {
+    "unit": "task",
+    "knowledge_universe": "Reusable human gene knowledge from selected source snapshots, with explicit cell-context qualifiers.",
+    "gene_universe_path": "data/processed/gears/norman_metadata.json",
+    "gene_field": "graph_genes",
+    "perturbation_field": "perturbation_targets",
+    "expected_graph_genes": 3127,
+    "expected_perturbation_targets": 102,
+    "screening_policy": "Screen all graph genes. Report perturbation-target coverage separately. Apply each approved source/transformation policy across the universe; do not restrict the run to one perturbation or one functional module."
+  },
+  "existing_knowledge": [
+    "GEARS constructs its perturbation graph from gene-GO set Jaccard similarity and also uses a separate coexpression graph.",
+    "Keep the graph gene universe fixed; treat pathway/complex memberships, contextual attributes, and signed regulation as distinct knowledge types.",
+    "Measure overlap with existing GO and retain additional evidence/context explicitly."
+  ],
+  "reference_files": [
+    "docs/agent_context.md"
+  ],
+  "candidate_categories": [
+    "pathway",
+    "protein_complex",
+    "regulatory_program"
+  ],
+  "source_candidates": [
+    {
+      "name": "Reactome",
+      "url": "https://reactome.org/download/current/",
+      "preferred_access": "Bulk human pathway memberships and hierarchy; pin a release and checksum."
+    },
+    {
+      "name": "hu.MAP",
+      "url": "https://humap3.proteincomplexes.org/download",
+      "preferred_access": "Bulk complex memberships with source confidence classes."
+    },
+    {
+      "name": "ENCODE",
+      "url": "https://www.encodeproject.org/help/batch-download/",
+      "preferred_access": "K562 metadata queries and approved processed regulatory resources; preserve assay and mapping semantics."
+    },
+    {
+      "name": "PubMed",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/",
+      "preferred_access": "Targeted evidence bundles for exception groups and missing biological context."
+    }
+  ],
+  "communication": {
+    "language": "en",
+    "style": "Concise manifests and evidence summaries; keep large tables outside conversation context."
+  },
+  "retrieval_budget": {
+    "max_search_queries": 20,
+    "max_sources_opened": 15,
+    "max_candidate_records": 20,
+    "record_budget_scope": "The record limit applies to LLM-produced literature candidates/audit samples, not programmatically imported database rows.",
+    "max_download_bytes": 2147483648,
+    "max_concurrent_source_requests": 3
+  },
+  "review_policy": {
+    "unit": "source_and_transformation_policy",
+    "validate_all_rows": true,
+    "audit_sampling": "Stratify by source, mapping status, confidence, and knowledge category; combine seeded random samples with flagged cases.",
+    "sample_seed": 17,
+    "max_sample_records_per_batch": 20,
+    "max_exception_groups": 20,
+    "unresolved_policy": "Quarantine unresolved records and report their counts."
+  },
+  "selection_basis": [
+    "task_description",
+    "biological_context",
+    "complete_gene_universe",
+    "existing_knowledge",
+    "external_evidence"
+  ],
+  "execution": {
+    "backend": "codex",
+    "workflow": "task_batch",
+    "human_in_the_loop": "optional_plan_revision",
+    "model": "gpt-6.1-sol",
+    "reasoning_effort": "medium",
+    "sandbox": "workspace-write"
+  }
+}

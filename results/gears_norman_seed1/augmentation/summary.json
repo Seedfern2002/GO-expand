@@ -1,0 +1,173 @@
+{
+  "generated_at_utc": "2026-11-05T09:27:49.905724+00:00",
+  "run_directory": "/home/yxcheng/project/GO_enrichment/outputs/agents/norman_task_background_002",
+  "stages": {
+    "planner": {
+      "status": "completed",
+      "usage": {
+        "input_tokens": 83191,
+        "cached_input_tokens": 59136,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3344,
+        "reasoning_output_tokens": 41
+      },
+      "search_queries": 0,
+      "seconds": 90.92
+    },
+    "retriever": {
+      "status": "completed",
+      "usage": {
+        "input_tokens": 974237,
+        "cached_input_tokens": 904320,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 17850,
+        "reasoning_output_tokens": 3013
+      },
+      "search_queries": 0,
+      "seconds": 400.7
+    },
+    "reviewer": {
+      "status": "completed",
+      "usage": {
+        "input_tokens": 659537,
+        "cached_input_tokens": 593280,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 9423,
+        "reasoning_output_tokens": 832
+      },
+      "search_queries": 0,
+      "seconds": 182.39
+    }
+  },
+  "batch_count": 2,
+  "decision_counts": {
+    "accept": 2
+  },
+  "approved_batches": [
+    {
+      "batch_id": "reactome_membership_v1",
+      "verdict": "accept",
+      "reasons": [
+        "All 8,652 normalized memberships passed independent source reconstruction and deterministic validation; ten existing seed-17 samples were inspected.",
+        "Approval covers exported human pathway membership with TAS/IEA and biological qualifiers preserved. K562 activity remains unknown; 2,121 quarantined source rows remain excluded."
+      ],
+      "evidence_checked": [
+        "[Reactome mapping documentation](https://reactome.org/download-data)",
+        "/home/yxcheng/project/GO_enrichment/outputs/agents/norman_task_background_002/overlay_v1/reactome_provenance.json",
+        "/home/yxcheng/project/GO_enrichment/outputs/agents/norman_task_background_002/overlay_v1/reactome_validation.json",
+        "/home/yxcheng/project/GO_enrichment/outputs/agents/norman_task_background_002/overlay_v1/reactome_coverage.json",
+        "/home/yxcheng/project/GO_enrichment/outputs/agents/norman_task_background_002/overlay_v1/reactome_audit_sample.jsonl",
+        "/home/yxcheng/project/GO_enrichment/outputs/agents/norman_task_background_002/reviewer/independent_validation.json"
+      ],
+      "review_method": "source_policy_and_sample",
+      "approved_records_path": "/home/yxcheng/project/GO_enrichment/outputs/agents/norman_task_background_002/overlay_v1/reactome_records.jsonl",
+      "approved_records_sha256": "612a85c8838f6f637058277d556cee44664241d3f635714ae3a8a3650022a1d0",
+      "audit_report_path": "/home/yxcheng/project/GO_enrichment/outputs/agents/norman_task_background_002/reviewer/reactome_review_audit.json"
+    },
+    {
+      "batch_id": "humap_membership_v1",
+      "verdict": "accept",
+      "reasons": [
+        "All 11,206 normalized memberships passed independent source reconstruction and deterministic validation; ten existing samples covering all six confidence classes were inspected.",
+        "Only 5,072 class-1-to-3 memberships are projection eligible; 6,134 lower-confidence memberships remain evidence only. The 454 quarantined members remain excluded; K562 assembly and activity remain unknown.",
+        "The sample covers 10 of 12 mapping/confidence strata. Unsampled strata are documented; this approval does not constitute per-record literature verification."
+      ],
+      "evidence_checked": [
+        "[hu.MAP schema and confidence definitions](https://humap3.proteincomplexes.org/download)",
+        "/home/yxcheng/project/GO_enrichment/outputs/agents/norman_task_background_002/overlay_v1/humap_provenance.json",
+        "/home/yxcheng/project/GO_enrichment/outputs/agents/norman_task_background_002/overlay_v1/humap_validation.json",
+        "/home/yxcheng/project/GO_enrichment/outputs/agents/norman_task_background_002/overlay_v1/humap_coverage.json",
+        "/home/yxcheng/project/GO_enrichment/outputs/agents/norman_task_background_002/overlay_v1/humap_audit_sample.jsonl",
+        "/home/yxcheng/project/GO_enrichment/outputs/agents/norman_task_background_002/reviewer/independent_validation.json"
+      ],
+      "review_method": "source_policy_and_sample",
+      "approved_records_path": "/home/yxcheng/project/GO_enrichment/outputs/agents/norman_task_background_002/overlay_v1/humap_records.jsonl",
+      "approved_records_sha256": "ed742c6276692540b79058ebe221dd30e0de938daf8632f857d53606f4670583",
+      "audit_report_path": "/home/yxcheng/project/GO_enrichment/outputs/agents/norman_task_background_002/reviewer/humap_review_audit.json"
+    }
+  ],
+  "coverage": [
+    {
+      "plan_item_id": "reactome_human_pathway_membership",
+      "status": "covered",
+      "notes": "All 3,127 genes screened. 8,652 validated memberships annotate 1,981 genes and 66/102 targets. Quarantined 2,121 source rows. Source-policy and ten-record sample audit completed; full-universe GO overlap measured."
+    },
+    {
+      "plan_item_id": "humap3_human_complex_membership",
+      "status": "covered",
+      "notes": "All 3,127 genes screened. 11,206 validated memberships annotate 2,133 genes and 79/102 targets. Primary projection includes 5,072 memberships covering 1,854 genes and 69 targets. Quarantined 454 source members. Source-policy and ten-record sample audit completed; full-universe GO overlap measured."
+    },
+    {
+      "plan_item_id": "encode_k562_regulatory_evidence",
+      "status": "pending",
+      "notes": "Metadata probe succeeded: 776 matches, one returned. No processed target-linkage resource acquired. All 3,127 genes and 102 targets remain not_screened_pending; details saved in overlay_v1/encode_pending.json."
+    }
+  ],
+  "coverage_reports": {
+    "reactome_membership_v1": {
+      "GO_overlap_report": "/home/yxcheng/project/GO_enrichment/outputs/agents/norman_task_background_002/overlay_v1/reactome_go_overlap.json",
+      "genes_annotated": 1981,
+      "genes_in_complexes_with_quarantined_members": 0,
+      "genes_mapping_unresolved": 5,
+      "genes_screened": 3127,
+      "genes_without_accepted_evidence": 1146,
+      "perturbation_targets": {
+        "genes_annotated": 66,
+        "genes_screened": 102,
+        "genes_without_accepted_evidence": 36,
+        "projection_eligible_genes": 66,
+        "universe_size": 102
+      },
+      "projection_eligible_genes": 1981,
+      "projection_eligible_records": 8652,
+      "projection_excluded_records": 0,
+      "quarantine_count": 2121,
+      "record_count": 8652,
+      "singleton_in_universe_records": 0,
+      "source_row_reconciliation": {
+        "accepted_source_rows": 9449,
+        "evidence_IEA": 1660,
+        "evidence_TAS": 7789,
+        "excluded_nonhuman_rows": 270792,
+        "excluded_outside_universe_rows": 43609,
+        "human_rows": 55179,
+        "imported_rows": 325971,
+        "quarantined_rows": 2121
+      },
+      "universe_size": 3127,
+      "unresolved_policy": "All unresolved source records quarantined. No mapped evidence is not a claim of biological absence."
+    },
+    "humap_membership_v1": {
+      "GO_overlap_report": "/home/yxcheng/project/GO_enrichment/outputs/agents/norman_task_background_002/overlay_v1/humap_go_overlap.json",
+      "genes_annotated": 2133,
+      "genes_in_complexes_with_quarantined_members": 253,
+      "genes_mapping_unresolved": 5,
+      "genes_screened": 3127,
+      "genes_without_accepted_evidence": 994,
+      "perturbation_targets": {
+        "genes_annotated": 79,
+        "genes_screened": 102,
+        "genes_without_accepted_evidence": 23,
+        "projection_eligible_genes": 69,
+        "universe_size": 102
+      },
+      "projection_eligible_genes": 1854,
+      "projection_eligible_records": 5072,
+      "projection_excluded_records": 6134,
+      "quarantine_count": 454,
+      "record_count": 11206,
+      "singleton_in_universe_records": 4698,
+      "source_row_reconciliation": {
+        "accepted_source_member_rows": 11206,
+        "excluded_outside_universe_member_rows": 63871,
+        "imported_complex_rows": 15326,
+        "imported_member_rows": 75531,
+        "quarantined_member_rows": 454
+      },
+      "universe_size": 3127,
+      "unresolved_policy": "All unresolved source records quarantined. No mapped evidence is not a claim of biological absence."
+    }
+  },
+  "total_search_queries_observed": 0,
+  "projection_status": "not_projected"
+}

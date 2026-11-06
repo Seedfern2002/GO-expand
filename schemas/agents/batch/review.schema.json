@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "enum": [
+        "2.0"
+      ]
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "batch_decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "batch_id": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "accept",
+              "request_evidence",
+              "defer",
+              "reject"
+            ]
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence_checked": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "review_method": {
+            "type": "string",
+            "enum": [
+              "source_policy_and_sample",
+              "full_record_review"
+            ]
+          },
+          "approved_records_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "approved_records_sha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "audit_report_path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "batch_id",
+          "verdict",
+          "reasons",
+          "evidence_checked",
+          "review_method",
+          "approved_records_path",
+          "approved_records_sha256",
+          "audit_report_path"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "checks_performed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "human_questions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "task_id",
+    "batch_decisions",
+    "checks_performed",
+    "human_questions"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,15 @@
+{
+  "stage": "cpu_preparation_complete",
+  "cells": 89357,
+  "readout_genes": 5045,
+  "perturbation_graph_genes": 3127,
+  "conditions": 277,
+  "split_conditions": {
+    "test": 107,
+    "train": 139,
+    "val": 31
+  },
+  "coexpression_edges": 6364,
+  "go_candidate_edges": 673899,
+  "graphs_prepared": true
+}

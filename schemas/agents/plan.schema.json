@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "enum": [
+        "1.0"
+      ]
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "task_interpretation": {
+      "type": "string"
+    },
+    "augmentations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 3
+          },
+          "biological_rationale": {
+            "type": "string"
+          },
+          "candidate_relations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "source_preferences": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "retrieval_queries": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "required_context": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence_requirements": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "category",
+          "priority",
+          "biological_rationale",
+          "candidate_relations",
+          "source_preferences",
+          "retrieval_queries",
+          "required_context",
+          "evidence_requirements"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "stop_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "human_questions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "task_id",
+    "task_interpretation",
+    "augmentations",
+    "stop_conditions",
+    "human_questions"
+  ],
+  "additionalProperties": false
+}

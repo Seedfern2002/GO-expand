@@ -1,0 +1,43 @@
+format-version: 1.2
+data-version: synthetic-teaching-example-2026-11-05
+remark: Invented terms and relations for teaching; not an official GO release.
+
+[Term]
+id: DEMO:0000
+name: example biological process
+namespace: biological_process
+def: "Synthetic root for the tutorial." []
+
+[Term]
+id: DEMO:0001
+name: example repair process
+namespace: biological_process
+is_a: DEMO:0000 ! example biological process
+
+[Term]
+id: DEMO:0002
+name: example checkpoint process
+namespace: biological_process
+is_a: DEMO:0000 ! example biological process
+relationship: regulates DEMO:0001 ! example repair process
+
+[Term]
+id: DEMO:0003
+name: example repair subprocess
+namespace: biological_process
+alt_id: DEMO:0009
+is_a: DEMO:0001 ! example repair process
+relationship: part_of DEMO:0004 ! example maintenance process
+
+[Term]
+id: DEMO:0004
+name: example maintenance process
+namespace: biological_process
+is_a: DEMO:0000 ! example biological process
+
+[Term]
+id: DEMO:0005
+name: obsolete example
+namespace: biological_process
+is_obsolete: true
+replaced_by: DEMO:0001

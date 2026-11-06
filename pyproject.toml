@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "go-enrichment-research"
+version = "0.1.0"
+description = "Task-specific Gene Ontology augmentation and biological evaluation"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+agent = ["jsonschema>=4.23,<5"]
+notebook = [
+    "jupyterlab>=4,<5",
+    "ipykernel>=6,<8",
+    "nbformat>=5,<6",
+    "nbclient>=0.10,<1",
+    "numpy>=1.26,<3",
+    "pandas>=2.2,<4",
+    "matplotlib>=3.8,<4",
+    "networkx>=3.2,<4",
+]
+
+[project.scripts]
+go-explore = "go_enrichment.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

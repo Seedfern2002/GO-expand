@@ -1,0 +1,16 @@
+{
+  "repository": "https://github.com/snap-stanford/GEARS.git",
+  "local_path": "third_party/GEARS",
+  "commit": "f374e43e197b295016d80395d7a54ddb81cc6769",
+  "commit_date": "2025-02-01",
+  "branch_at_clone": "master",
+  "package": "cell-gears",
+  "source_version": "0.1.2",
+  "license": "MIT",
+  "cloned_on": "2026-11-05",
+  "clone_depth": 1,
+  "upstream_modifications": false,
+  "setup_status": "dependencies_and_official_norman_data_ready",
+  "training_dependencies_installed": true,
+  "perturbation_datasets_downloaded": true
+}

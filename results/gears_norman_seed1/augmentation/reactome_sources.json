@@ -1,0 +1,65 @@
+{
+  "source_name": "Reactome",
+  "source_version": "98",
+  "transformation_version": "task_membership_v1",
+  "mapping_policy": "HGNC approved symbols precede unambiguous previous/alias symbols; UniProt accessions primary, isoform suffix retained with explicit canonical accession gene aggregation; ambiguous accessions and symbol conflicts quarantined.",
+  "projection_recipe": {
+    "ancestor_expansion": false,
+    "confidence_classes": null,
+    "original_GO_modified": false,
+    "physical_clique": false,
+    "relation": "direct_membership_only",
+    "version": "task_membership_v1"
+  },
+  "source_evidence_notes": "TAS and IEA retained as exported; membership export omits molecular-state and disease conditions, which remain unknown.",
+  "snapshots": {
+    "hgnc_complete_set.txt": {
+      "name": "hgnc_complete_set.txt",
+      "url": "https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt",
+      "resolved_url": "https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt",
+      "sha256": "d93ce6b22d01dc1e1ded28857246951d605ead47ed17ef973ad1142b1d13bed0",
+      "bytes": 16986126,
+      "retrieved_at_utc": "2026-11-05T09:19:19.511295+00:00"
+    },
+    "reactome98_UniProt2Reactome.txt": {
+      "name": "reactome98_UniProt2Reactome.txt",
+      "url": "https://download.reactome.org/98/UniProt2Reactome.txt",
+      "resolved_url": "https://download.reactome.org/98/UniProt2Reactome.txt",
+      "sha256": "e16cf600292fc592957daf696ab5ffd9373ed6b49582def5988ec5bedfcc48cf",
+      "bytes": 43219161,
+      "retrieved_at_utc": "2026-11-05T09:19:29.896779+00:00"
+    },
+    "reactome98_hierarchy.txt": {
+      "name": "reactome98_hierarchy.txt",
+      "url": "https://download.reactome.org/98/ReactomePathwaysRelation.txt",
+      "resolved_url": "https://download.reactome.org/98/ReactomePathwaysRelation.txt",
+      "sha256": "aa3609ee852442899b400bf4817b36311d820883ecd75259ed77531d93d8f1dc",
+      "bytes": 635604,
+      "retrieved_at_utc": "2026-11-05T09:20:02.332983+00:00"
+    },
+    "reactome98_pathways.txt": {
+      "name": "reactome98_pathways.txt",
+      "url": "https://download.reactome.org/98/ReactomePathways.txt",
+      "resolved_url": "https://download.reactome.org/98/ReactomePathways.txt",
+      "sha256": "b8103a50d625ffb6acd18cddffcce0ceb0fdf36b19392d104c32bb1fcc7e2f9f",
+      "bytes": 1596703,
+      "retrieved_at_utc": "2026-11-05T09:19:43.058118+00:00"
+    },
+    "reactome_license.html": {
+      "name": "reactome_license.html",
+      "url": "https://reactome.org/license",
+      "resolved_url": "https://reactome.org/license",
+      "sha256": "5328162447dbe1cbac2392a708756008413f1eabc398ce621b480678b70530aa",
+      "bytes": 58429,
+      "retrieved_at_utc": "2026-11-05T09:22:11.870864+00:00"
+    },
+    "reactome_version.txt": {
+      "name": "reactome_version.txt",
+      "url": "https://reactome.org/ContentService/data/database/version",
+      "resolved_url": "https://reactome.org/ContentService/data/database/version",
+      "sha256": "29db0c6782dbd5000559ef4d9e953e300e2b479eed26d887ef3f92b921c06a67",
+      "bytes": 2,
+      "retrieved_at_utc": "2026-11-05T09:19:01.348999+00:00"
+    }
+  }
+}

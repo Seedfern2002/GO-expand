@@ -1,0 +1,24 @@
+{
+  "test": {
+    "mse": 0.004340506624430418,
+    "mse_de": 0.17505639791488647,
+    "pearson": 0.9876347185868372,
+    "pearson_de": 0.8749708985294121
+  },
+  "best_validation": {
+    "phase": "val",
+    "epoch": 8,
+    "evaluation_seconds": 3.3231259929016232,
+    "metrics": {
+      "mse": 0.002288889605551958,
+      "mse_de": 0.06267537921667099,
+      "pearson": 0.9939628948282191,
+      "pearson_de": 0.9249609940953935
+    },
+    "wall_seconds": 565.2491101489868
+  },
+  "epochs_completed": 15,
+  "train_eval_analysis_seconds": 1000.6022382790688,
+  "total_run_seconds": 1039.0170541990083,
+  "peak_gpu_memory_bytes": 958675968
+}
