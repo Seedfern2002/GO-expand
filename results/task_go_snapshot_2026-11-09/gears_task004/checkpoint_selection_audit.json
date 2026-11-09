@@ -1,0 +1,120 @@
+{
+  "created_at_utc": "2026-11-07T10:09:12.753799+00:00",
+  "finding": "The telemetry wrapper stores both training and validation metric events with phase=val because upstream evaluates both loaders before computing either metric set. The wrapper best_validation metadata can therefore track a training metric. Upstream selection uses val_metrics directly and saves self.best_model.",
+  "upstream_selection": "third_party/GEARS/gears/gears.py:571-576",
+  "upstream_saved_model": "third_party/GEARS/gears/gears.py:298",
+  "reconstruction": "For each epoch the first metric event is training and the second is validation, matching upstream call order. Validation values are independently reconciled against the text log.",
+  "runs": [
+    {
+      "run": "norman_baseline_seed1_retry1",
+      "actual_best_validation_epoch": 1,
+      "actual_best_validation_metrics": {
+        "mse": 0.0051346393302083015,
+        "mse_de": 0.2180563062429428,
+        "pearson": 0.9857163163488503,
+        "pearson_de": 0.9311597741204511
+      },
+      "historical_telemetry_best_epoch": 15,
+      "historical_telemetry_mse_de": 0.06986474990844727,
+      "text_log_validation_reconciled": true,
+      "test_metrics": {
+        "mse": 0.006072790827602148,
+        "mse_de": 0.19603684544563293,
+        "pearson": 0.9827977701021174,
+        "pearson_de": 0.8654874525714765
+      },
+      "inputs": [
+        {
+          "path": "outputs/gears/norman_baseline_seed1_retry1/history.json",
+          "sha256": "3f0909667d310abb6c14be3a302d0b780c1591ad3370731b6dcbadc8bc70f544"
+        },
+        {
+          "path": "outputs/gears/norman_baseline_seed1_retry1/run.log",
+          "sha256": "da4aa692be6c7d85f1642eac59431820515a9f29221b6820ab360a6351cf5dd4"
+        },
+        {
+          "path": "outputs/gears/norman_baseline_seed1_retry1/metrics.json",
+          "sha256": "f2e25a28ba7985f391628a3efa46971197ffea26082abba2d484afc3b22fe846"
+        },
+        {
+          "path": "outputs/gears/norman_baseline_seed1_retry1/best_validation.json",
+          "sha256": "e7b6acd4b4c3998a67555b8ed46a7dff9658d6b4d75f801922c5f141b3d69166"
+        }
+      ]
+    },
+    {
+      "run": "norman_augmented_seed1",
+      "actual_best_validation_epoch": 8,
+      "actual_best_validation_metrics": {
+        "mse": 0.0034682126715779305,
+        "mse_de": 0.21172460913658142,
+        "pearson": 0.9903070492404719,
+        "pearson_de": 0.9411037641414535
+      },
+      "historical_telemetry_best_epoch": 8,
+      "historical_telemetry_mse_de": 0.06267537921667099,
+      "text_log_validation_reconciled": true,
+      "test_metrics": {
+        "mse": 0.004340506624430418,
+        "mse_de": 0.17505639791488647,
+        "pearson": 0.9876347185868372,
+        "pearson_de": 0.8749708985294121
+      },
+      "inputs": [
+        {
+          "path": "outputs/gears/norman_augmented_seed1/history.json",
+          "sha256": "e929cb20cb65c549455bb1e441cd74f34102cac943f8e9d6b08dfb80a4273883"
+        },
+        {
+          "path": "outputs/gears/norman_augmented_seed1/run.log",
+          "sha256": "703a9108aace8ba674027fa48285e33dddef2f840e91c46c5555df9d67aebb22"
+        },
+        {
+          "path": "outputs/gears/norman_augmented_seed1/metrics.json",
+          "sha256": "8e34b467c9d1ac30ca7ce6e64fffd96783a58302cc91cfa15e6761d9af998c55"
+        },
+        {
+          "path": "outputs/gears/norman_augmented_seed1/best_validation.json",
+          "sha256": "9b532449b809d358291d9336bc818a1031256125ad3ceb6ef617044b68481160"
+        }
+      ]
+    },
+    {
+      "run": "norman_task004_seed1",
+      "actual_best_validation_epoch": 9,
+      "actual_best_validation_metrics": {
+        "mse": 0.0029131253249943256,
+        "mse_de": 0.20340538024902344,
+        "pearson": 0.9917111569158027,
+        "pearson_de": 0.9416964065607419
+      },
+      "historical_telemetry_best_epoch": 12,
+      "historical_telemetry_mse_de": 0.06460889428853989,
+      "text_log_validation_reconciled": true,
+      "test_metrics": {
+        "mse": 0.004058610647916794,
+        "mse_de": 0.18285037577152252,
+        "pearson": 0.9881375815460658,
+        "pearson_de": 0.8712981017463186
+      },
+      "inputs": [
+        {
+          "path": "outputs/gears/norman_task004_seed1/history.json",
+          "sha256": "1dec833d69c6576dd3e70b84978c9d45efeddb4a898becaaba7f6afa0705e970"
+        },
+        {
+          "path": "outputs/gears/norman_task004_seed1/run.log",
+          "sha256": "ae163117e9368338beca28df29c68b486b221d4ab7e43cba562f4220ad59d6ed"
+        },
+        {
+          "path": "outputs/gears/norman_task004_seed1/metrics.json",
+          "sha256": "5100b8b045cad0f046831c23424bcb9d912b76a11aa3aead2fc6ebefdb07104c"
+        },
+        {
+          "path": "outputs/gears/norman_task004_seed1/best_validation.json",
+          "sha256": "b0b6785589f5b95eb08fc0cb5e130491f3dc08e502f5c0d6318b956f272eaa7e"
+        }
+      ]
+    }
+  ]
+}

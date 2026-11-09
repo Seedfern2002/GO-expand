@@ -25,7 +25,7 @@ def main() -> None:
     parser.add_argument("--model", help="Explicit Codex model; otherwise inherit CLI configuration.")
     parser.add_argument("--codex-bin", default="codex", help="Codex executable, including an IDE-bundled binary if needed.")
     parser.add_argument("--reasoning-effort", choices=("low", "medium", "high", "xhigh"), help="Explicit reasoning effort supported by the selected model.")
-    parser.add_argument("--workflow", choices=("record", "task_batch"), help="Override the task's workflow profile.")
+    parser.add_argument("--workflow", choices=("record", "task_batch", "task_knowledge"), help="Override the task's workflow profile.")
     args = parser.parse_args()
     if args.stage != "planner" and args.plan is None:
         parser.error("--plan is required for retriever and reviewer")
@@ -42,9 +42,9 @@ def main() -> None:
 
     task_preview = json.loads(args.task.read_text(encoding="utf-8"))
     workflow = args.workflow or task_preview.get("execution", {}).get("workflow", "record")
-    if workflow not in ("record", "task_batch"):
+    if workflow not in ("record", "task_batch", "task_knowledge"):
         parser.error(f"unsupported workflow: {workflow}")
-    schema_directory = ROOT / "schemas/agents" / ("batch" if workflow == "task_batch" else "")
+    schema_directory = ROOT / "schemas/agents" / {"record": "", "task_batch": "batch", "task_knowledge": "knowledge"}[workflow]
     paths = {
         "common_prompt": ROOT / "prompts/agents/common.md",
         "role_prompt": ROOT / f"prompts/agents/{args.stage}.md",

@@ -60,6 +60,27 @@ class GPUQueueTests(unittest.TestCase):
             query.assert_not_called()
             launch.assert_not_called()
 
+    def test_concurrent_queues_reserve_different_gpus(self):
+        rows = [{"index": i, "uuid": "GPU-test-" + str(i), "free_mib": 60000,
+                 "utilization_percent": 0, "has_compute_process": False} for i in range(2)]
+        with patch.object(self.queue, "gpu_candidates", return_value=rows):
+            first, lock1 = self.queue.reserve_gpu(rows)
+            self.addCleanup(lock1.close)
+            second, lock2 = self.queue.reserve_gpu(rows)
+            self.addCleanup(lock2.close)
+            self.assertEqual((first["index"], second["index"]), (0, 1))
+            self.assertEqual(self.queue.reserve_gpu(rows), (None, None))
+            lock1.close()
+            third, lock3 = self.queue.reserve_gpu(rows)
+            self.addCleanup(lock3.close)
+            self.assertEqual(third["index"], 0)
+
+    def test_new_occupancy_during_reservation_blocks_launch(self):
+        idle = {"index": 0, "uuid": "GPU-test", "free_mib": 60000,
+                "utilization_percent": 0, "has_compute_process": False}
+        with patch.object(self.queue, "gpu_candidates", return_value=[{**idle, "has_compute_process": True}]):
+            self.assertEqual(self.queue.reserve_gpu([idle]), (None, None))
+
 
 if __name__ == "__main__":
     unittest.main()

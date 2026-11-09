@@ -1,0 +1,33 @@
+{
+  "task_id": "human_k562_perturbation_knowledge_literature_expanded",
+  "task_description": "Construct task-specific GO augmentation for predicting transcriptional responses to genetic perturbations, using one shared knowledge overlay across the complete supplied gene universe, with broad primary-literature acquisition and complete selected database integration.",
+  "organism": {"name": "Homo sapiens", "taxon_id": "NCBITaxon:9606"},
+  "biological_context": {"cell_type": "K562", "perturbation": "CRISPRa"},
+  "candidate_categories": ["pathway", "protein_complex", "regulatory_program"],
+  "knowledge_requirements": [
+    "Integrate all biological database records that match the complete gene universe and satisfy the planned source, evidence, and mapping policies.",
+    "Treat literature acquisition as a substantial task-wide workstream. Aim to inspect 100 unique primary papers, including 60 accessible full texts, distributed across pathway, protein-complex and regulatory-program knowledge. Record actual counts, full-text versus abstract access, topic coverage and evidence-based screening decisions for every inspected paper.",
+    "Use broad topic queries, bulk literature metadata discovery, deduplicated paper bundles, relevant primary-study citations and accessible supplementary tables. Prioritize K562 and hematopoietic contexts, complemented by transferable human functional and mechanistic evidence with explicit source conditions. Select and screen papers against the complete fixed gene universe.",
+    "Extract supported gene-function annotations, pathway memberships and experimentally supported complex composition alongside typed regulatory mechanisms. Link supported functions to existing GO concepts, preserve new concepts and molecular conditions, and associate every literature statement with exact source passages and study provenance.",
+    "Allocate search and opened-source capacity to literature acquisition before spending it on database documentation. Continue through the declared literature targets or a documented resource limit or exhausted relevant accessible candidate pool. Keep inspected-paper targets separate from accepted-claim counts.",
+    "Use reusable acquisition programs and compact progress manifests. Read each paper once, reuse shared source text across claims and categories, and keep large source tables and repeated full record dumps in files."
+  ],
+  "retrieval_budget": {
+    "max_search_queries": 150,
+    "max_sources_opened": 400,
+    "max_candidate_records": 5000,
+    "record_budget_scope": "max_candidate_records applies exclusively to literature_extracted candidate statements. Process selected database sources to completion and retain all eligible gene-universe mappings. Database record counts follow source content and declared evidence filters; review sample sizes govern audit inspection only.",
+    "max_papers": 200,
+    "target_papers_inspected": 100,
+    "target_full_text_papers_inspected": 60,
+    "paper_accounting": "Deduplicate papers by DOI, PMID and PMCID cross-references. Count a paper as inspected after reading its accessible scientific text and recording a screening decision. Track discovered, fetched, inspected, full-text-inspected and evidence-contributing papers separately.",
+    "source_accounting": "Count each opened primary-paper identity once across formats and retries, and each distinct database or reference artifact separately. Record discovery and metadata API requests in the acquisition ledger.",
+    "max_download_bytes": 2147483648,
+    "max_concurrent_source_requests": 3
+  },
+  "projection_policy": {
+    "membership_relations": ["annotated_to", "member_of_pathway", "member_of_complex", "predicted_member_of_complex"],
+    "singleton_policy": "retain",
+    "context_policy": "preserve"
+  }
+}

@@ -4,6 +4,8 @@
 
 2026-11-06 增补：[创新性核对](novelty_assessment.md)，记录多资源功能整合、多图扰动预测及 LLM 本体编辑的先行工作，以及与当前实现的重合。
 
+2026-11-07 update: [GO application task landscape](go_task_landscape.md) documents pruning precedents, major-journal biological tasks, public resources, metrics and augmentation interfaces. The survey distinguishes original GO-input models from proposed consumers of independent experimental readouts.
+
 ## 应用与评价
 
 | 文献 | 年份／载体 | 涉及主题 |

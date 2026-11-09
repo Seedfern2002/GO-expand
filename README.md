@@ -34,6 +34,8 @@ GEARS 是重点应用之一。虚拟细胞与扰动预测的研究热度使其�
 12. [后台测试](docs/background_jobs.md)：脱离 session 的任务级实验、进度心跳及结果查看方式。
 13. [任务级增广结果](docs/task_wide_results_norman.md)：完整背景筛查、两类批量知识、覆盖率及审核产物。
 14. [GEARS 原始／增广对比快照](results/gears_norman_seed1/README.md)：pipeline 改造前的代码版本对应结果、精确增广记录、训练配置和来源校验和。当前 split seed 1 下，MSE 降低 28.53%，top-20 DE MSE 降低 10.70%。
+15. [v3 knowledge pipeline](docs/knowledge_pipeline.md)：数据库／论文证据批量导入、声明归并、独立校验、任务投影及冻结；泄露审计位于 pipeline 外部。
+16. [独立 task-only pipeline](standalone/task_go/README.md)：可复制出项目运行，只导入任务信息和原始知识；私有文件系统隔离项目文档、历史运行和旧会话。
 
 ## 运行
 
@@ -80,4 +82,4 @@ results/              纳入版本控制的精简实验快照与来源清单
 - 每次实验记录 ontology/annotation 版本、标识符映射、关系集合、证据筛选和数据划分。
 - 数据准备阶段填写 [数据清单模板](configs/data_manifest.example.json)。
 
-当前已提供文档、探索工具、图形 notebook、GO `2026-07-26` 本体与匹配的人类注释数据，以及 GEARS 官方源码。GO 来源、SHA256 和文件头版本保存在 [数据清单](configs/data_manifest.human.2026-07-26.json) 中；GEARS commit 记录在 [源码清单](configs/gears_source.json)。Codex 增广实验已提供角色提示词、任务卡、输出 schema、阶段准备及执行校验脚本；后续接入自动编排、知识 overlay 构建及 API 后端。
+当前已提供文档、探索工具、图形 notebook、GO `2026-07-26` 本体与匹配的人类注释数据，以及 GEARS 官方源码。GO 来源、SHA256 和文件头版本保存在 [数据清单](configs/data_manifest.human.2026-07-26.json) 中；GEARS commit 记录在 [源码清单](configs/gears_source.json)。Codex 流程支持三阶段后台编排；v3 提供数据库／论文证据导入、独立记录校验、声明归并、任务投影和冻结。API 后端尚未实现。

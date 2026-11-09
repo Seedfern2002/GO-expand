@@ -1,0 +1,1746 @@
+{
+  "STUDY:42637078_IL31_IL31RA_OSMR": [
+    {
+      "context": {
+        "assay": "SEC, SPR and 3.3 Angstrom cryo-EM",
+        "assembly": "IL-31 with IL-31Ralpha D1-D2 and OSMRbeta D1-D3",
+        "cell_type": "in vitro; recombinant proteins expressed in HEK293F",
+        "molecular_condition": "receptor extracellular fragments",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "component_identifying_passage": "To elucidate the structural basis of human IL-31 receptor recognition and assembly (Fig. 1A), we purified recombinant hIL-31, hIL-31R\u03b1 D1\u2013D2, and hOSMR\u03b2 D1\u2013D3 for structural analysis.",
+          "doi": "10.1016/j.jbc.2026.113472",
+          "locator": "Scientific body: exact paragraph/sentence",
+          "pmcid": "PMC13587731",
+          "quote": "Size-exclusion chromatography (SEC) analysis showed that the three components formed the hIL-31/hIL-31R\u03b1/hOSMR\u03b2 complex upon mixing (Fig. S1).",
+          "snapshot_path": "acquisition/papers/r001/PMID_42637078.txt",
+          "snapshot_sha256": "462af3855c822cb2058c956db33d2cba40dcd6111e062a2f372e538c8a6f437f",
+          "source_name": "PubMed/PMC cached scientific text",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13587731/",
+          "source_version": "external_cache_sha256:462af3855c822cb2058c956db33d2cba40dcd6111e062a2f372e538c8a6f437f",
+          "study_id": "PMID:42637078"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:009c8ebd641f51a612d032f6",
+      "identified_study_count": 1,
+      "object_id": "STUDY:42637078_IL31_IL31RA_OSMR",
+      "object_labels": [
+        "human IL-31/IL-31Ralpha/OSMRbeta receptor complex"
+      ],
+      "original_object_ids": [
+        "STUDY:42637078_IL31_IL31RA_OSMR"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r001:lit:42637078:24"
+      ],
+      "relation": "member_of_complex",
+      "study_ids": [
+        "PMID:42637078"
+      ],
+      "subject_id": "HGNC:8507",
+      "subject_label": "OSMR"
+    }
+  ],
+  "STUDY:42012954_Tscm_like": [
+    {
+      "context": {
+        "cell_type": "human naive CD8+ T cells",
+        "definition": "Source-defined expansion of Tscm-like CD8 cells under sustained CD28 signaling; subsequent CD3 engagement retains effector activity",
+        "molecular_condition": "CD3/TCR bypass; suppressed IRF4 induction",
+        "stimulus": "membrane-bound CD28 superagonist artificial antigen presenting cells",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "abstract",
+          "assertion_type": "experimental_result",
+          "doi": "10.1073/pnas.2524626123",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "identifier_mapping_snapshot_sha256": "fe5695f793c2923bd81b607d4467d366524daac0b4b9e8f5f8245646b31c738b",
+          "locator": "Abstract",
+          "pmcid": "PMC13123868",
+          "pmid": "42012954",
+          "quote": "Adoptive T cell therapies typically rely on ex vivo CD3/CD28 stimulation, which promotes effector differentiation and limits the persistence of transferred cells. Stem cell-like memory T cells (Tscm), with their capacity for self-renewal and multipotency, represent an ideal therapeutic subset but remain difficult to generate at scale. Here, we present a CD3-independent strategy using artificial antigen-presenting cells expressing a membrane-bound CD28 superagonist (\u03b1CD28-aAPCs) to expand CD8 +  T cells with Tscm-like features. In na\u00efve CD8 +  T cells, \u03b1CD28-aAPC stimulation initiates a distinct transcriptional and epigenetic program, marked by high TCF1 expression, metabolic fitness, and resistance to exhaustion-key hallmarks of the Tscm phenotype. Mechanistically, this approach circumvents canonical CD3/TCR signaling and notably avoids induction of IRF4, a key transcription factor that drives BLIMP1 upregulation, TCF1 downregulation, and glycolytic commitment during effector differentiation. Instead, sustained CD28 signaling alone reprograms T cells toward a Tscm-like state. Upon subsequent antigen encounter and CD3 engagement, these \u03b1CD28-aAPC-expanded T cells mount robust effector responses while retaining superior persistence and antitumor activity in preclinical models. Our findings reveal an underappreciated role of CD28 signaling in guiding Tscm-like fate through IRF4 suppression and establish a platform for generating durable and functionally potent T cell therapies.",
+          "semantic_review": "Literal experimental observation; scope restricted to the reported human system.",
+          "snapshot_path": "acquisition/papers/r003/PMID_42012954.txt",
+          "snapshot_sha256": "477efcf1a06c2e95096ccc5664a72a7e0d9b68b7329edab7a9bf6a366bd148df",
+          "source_name": "PubMed/PMC primary literature round 003",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13123868/",
+          "source_version": "sha256:477efcf1a06c2e95096ccc5664a72a7e0d9b68b7329edab7a9bf6a366bd148df",
+          "study_id": "PMID:42012954"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:0a84f28144b56a35f195bf47",
+      "identified_study_count": 1,
+      "object_id": "STUDY:42012954_Tscm_like",
+      "object_labels": [
+        "CD3-independent Tscm-like CD8 T-cell generation"
+      ],
+      "original_object_ids": [
+        "STUDY:42012954_Tscm_like"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r003:lit:42012954:44"
+      ],
+      "relation": "annotated_to",
+      "study_ids": [
+        "PMID:42012954"
+      ],
+      "subject_id": "HGNC:1653",
+      "subject_label": "CD28"
+    }
+  ],
+  "STUDY:41915740_ASB9_CRL": [
+    {
+      "context": {
+        "assay": "co-IP; ubiquitination after component siRNAs",
+        "cell_type": "human testis lysates and HEK293T reconstitution",
+        "substrate": "TNP2; retained as substrate rather than obligatory structural subunit",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1073/pnas.2522270123",
+          "locator": "Full text body offset 29968",
+          "pmcid": "PMC13056066",
+          "pmid": "41915740",
+          "quote": "ASB9 mediates TNP2 K48-linked ubiquitination and degradation via the ASB9\u2013ELOB/C\u2013CUL5\u2013RBX1 complex. (A) Co-IP assays of testis lysates from mice and humans validating the formation of the ASB9\u2013ELOB/C\u2013CUL5\u2013RBX1 complex. (B) The interaction between ASB9 and TNP2 was observed in human and mouse testes. (C) Co-IP mapping interactions between ASB9 mutants and TNP2 mutants. (D) Co-IP assays using domain deletion constructs of CUL5 and RBX1. (E) Co-IP analysis of K48-linked ubiquitinated TNP2 in HEK293T cells coexpressing ASB9 and TNP2 following individual siRNA-mediated knockdown of ELOB, ELOC, CUL5, or RBX1. (F) TNP2 K48-linked ubiquitination levels were assessed by Co-IP following simultaneous siRNA-mediated knockdown of any two proteins among ELOB, ELOC, CUL5, and RBX1. (G) TNP2 K48-linked ubiquitination levels were assessed by Co-IP following simultaneous siRNA-mediated knockdown of any three or all four proteins among ELOB, ELOC, CUL5, and RBX1. (H) Co-IP assays after cotransfecting ASB9 with WT or mutant TNP2 showed that mutating these ubiquitination sites reduced TNP2 ubiquitination, especially in the double mutant, whereas WT-TNP2 expressed without ASB9 exhibited almost no detectable ubiquitination.",
+          "snapshot_path": "acquisition/papers/r002/PMID_41915740.txt",
+          "snapshot_sha256": "efd5f8e76ff1d22b072ee61aee7bf74584b1ace24a9d3cfea6b85a35210f7b79",
+          "source_name": "PubMed/PMC cached primary scientific text",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13056066/",
+          "source_version": "sha256:efd5f8e76ff1d22b072ee61aee7bf74584b1ace24a9d3cfea6b85a35210f7b79",
+          "study_id": "PMID:41915740"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:10a95f471ad481fa6759ed31",
+      "identified_study_count": 1,
+      "object_id": "STUDY:41915740_ASB9_CRL",
+      "object_labels": [
+        "ASB9-ELOB/ELOC-CUL5-RBX1 Cullin-RING ligase"
+      ],
+      "original_object_ids": [
+        "STUDY:41915740_ASB9_CRL"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r002:lit:41915740:25"
+      ],
+      "relation": "member_of_complex",
+      "study_ids": [
+        "PMID:41915740"
+      ],
+      "subject_id": "HGNC:17184",
+      "subject_label": "ASB9"
+    }
+  ],
+  "PMID:42581047:PA200_capped_human_i20S": [
+    {
+      "context": {
+        "assay": "cryo-EM structure and human-cell anti-alpha2 pulldown/interactome validation",
+        "assembly_state": "singly and doubly PA200-capped i20S assemblies resolved by cryo-EM",
+        "cell_type": "in vitro reconstitution",
+        "expression_system": "commercial purified human 20S immunoproteasome and recombinant human PA200",
+        "molecular_condition": "8-fold molar excess PA200 with overnight incubation",
+        "qualification": "Bovine testis and murine macrophage evidence are excluded from the human claim",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1038/s41467-026-75325-w",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "locator": "Full text body offset 44779",
+          "pmcid": "PMC13463089",
+          "pmid": "42581047",
+          "quote": "i20S was obtained commercially from R&D Systems (Catalog #: E-370, 10 microliter, 25 microgram: Human 20S Immunoproteasome Protein, CF E-370-025: R&D Systems) and complexes were formed upon addition of 8x molar excess of PA200 upon overnight incubation. Before plunge freezing, QUANTIFOIL R2/1 copper grids (200 mesh) were cleaned using a glow-discharger (Leica EM ACE 200) at 8\u2009mA for 60\u2009s. 3\u2009uL of i20S-PA200 sample (0.3\u2009g/l) wa",
+          "semantic_review": "The human i20S preparation is structurally assembled with human PA200; source explicitly identifies PSMB8-10 as catalytic i20S subunits and human-cell pulldown supports the composition. PSMB10 is outside the fixed universe.",
+          "snapshot_path": "acquisition/papers/r022/PMC13463089.txt",
+          "snapshot_sha256": "e824571fd39172cb0dde5391715888891699e69f1a9fc77d666b369452c1499a",
+          "source_name": "PubMed/PMC primary literature round 022",
+          "source_uri": "https://pubmed.ncbi.nlm.nih.gov/42581047/",
+          "source_version": "sha256:e824571fd39172cb0dde5391715888891699e69f1a9fc77d666b369452c1499a",
+          "study_id": "PMID:42581047"
+        },
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1038/s41467-026-75325-w",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "locator": "Full text body offset 4239",
+          "pmcid": "PMC13463089",
+          "pmid": "42581047",
+          "quote": "Here, we obtained high-resolution structures for both singly- and doubly-capped i20S-PA200 complexes (2.85\u2009\u00c5 and 2.89\u2009\u00c5 resolution, respectively). Although the doubly-capped structure of the i20S-PA200 complex seems similar to s20S-PA20020\u201323 (Fig.\u00a01A, see Supplementary Fig.\u00a01 for details on 3D classification and Supplementary Table\u00a01 summarizing structural and refinement statistics), the structure shows a pronounced bending of the entire complex (Fig.\u00a01B, C) which, to our knowledge, has not been reported in previously described proteasome structures. The bend propagates from the proximal PA200 molecule, which was superimposed with the corresponding PA200 in the recently solved s20S-PA200 structure (6REY) with minimal Root Mean Square Deviation (RMSD\u2009~\u20091.7\u2009\u00c5; Fig.\u00a01B, black dashed line). From that region, the structure of i20S-PA200 begins to \u201cbend\u201d, as indicated by the gradual increase in calculated RMSDs to its maximal value in the distal PA200 (RMSD\u2009~\u20096.8\u2009\u00c5; Fig.\u00a01B, black dashed line). A morph animation from the s20S-PA200 structure (yellow) to the i20S-PA200 structure (blue, see supplementary Movie\u00a01) shows that the bending of the i20S-PA200 results in a slight but significant decompaction of the whole complex. To rule out the possibility that the unusual bending behavior upon binding to PA200 to the i20S is an artifact, we solved the cryo-EM structure of the s20S-PA200 complex. When comparing it to the deposited 6REY.pdb structure, we found an RMSD of ~0.2\u2009\u00c5 for both the distal and proximal PA200 molecules (Fig.\u00a01B, orange dashed line and Supplementary Fig.\u00a02). Moreov",
+          "semantic_review": "The human i20S preparation is structurally assembled with human PA200; source explicitly identifies PSMB8-10 as catalytic i20S subunits and human-cell pulldown supports the composition. PSMB10 is outside the fixed universe.",
+          "snapshot_path": "acquisition/papers/r022/PMC13463089.txt",
+          "snapshot_sha256": "e824571fd39172cb0dde5391715888891699e69f1a9fc77d666b369452c1499a",
+          "source_name": "PubMed/PMC primary literature round 022",
+          "source_uri": "https://pubmed.ncbi.nlm.nih.gov/42581047/",
+          "source_version": "sha256:e824571fd39172cb0dde5391715888891699e69f1a9fc77d666b369452c1499a",
+          "study_id": "PMID:42581047"
+        },
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1038/s41467-026-75325-w",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "locator": "Full text body offset 30496",
+          "pmcid": "PMC13463089",
+          "pmid": "42581047",
+          "quote": "To probe these questions, we used PA200 knockout (KO) human lung cancer cell lines A549 and H129926. Genetic deletion of PA200 in A549 and H1299 reduced expression of the \u03b21i catalytic subunit (PSMB9 gene) in both its pre-mature and mature forms but did not significantly affect expression of PSMB8 and PSMB10 (Fig.\u00a08A, B). Pulldown of 20S complexes using the anti-\u03b12 antibody and subsequent interactome analysis confirmed that the absence of PA200 impairs the assembly of \u03b21i containing i20S complexes (Supplementary Fig.\u00a09). This resulted in an altered cellular composition of 20S complexes with reduced formation of intermediate proteasomes containing the two immunocatalytic subunits \u03b21i and \u03b25i (\u03b21i\u03b25i i20S) and an increase in complexes harboring only the immunocatalytic subunit \u03b25i (\u03b25i i20S) in the lung two cancer cell lines (Supplementary Fig.\u00a09)34,35. We did not observe consistent regulation of the i20S subunits on the RNA level26. To analyze whether the i20S regulates PA200, we made use of primary mouse skin fibroblasts isolated from single i20S subunit KO mice36. In these cells we reconstituted the re",
+          "semantic_review": "The human i20S preparation is structurally assembled with human PA200; source explicitly identifies PSMB8-10 as catalytic i20S subunits and human-cell pulldown supports the composition. PSMB10 is outside the fixed universe.",
+          "snapshot_path": "acquisition/papers/r022/PMC13463089.txt",
+          "snapshot_sha256": "e824571fd39172cb0dde5391715888891699e69f1a9fc77d666b369452c1499a",
+          "source_name": "PubMed/PMC primary literature round 022",
+          "source_uri": "https://pubmed.ncbi.nlm.nih.gov/42581047/",
+          "source_version": "sha256:e824571fd39172cb0dde5391715888891699e69f1a9fc77d666b369452c1499a",
+          "study_id": "PMID:42581047"
+        },
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1038/s41467-026-75325-w",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "locator": "Full text body offset 26602",
+          "pmcid": "PMC13463089",
+          "pmid": "42581047",
+          "quote": "To analyze the regulation of the i20S under conditions of PA200 induction, we used primary human lung fibroblasts (phLF) that were treated with TGF-\u03b21 to upregulate PA20015. Vice versa, we investigated PA200 regulation under conditions of i20S activation in interferon gamma (IFN\u03b3) stimulated phLF and upon infection of murine bone-marrow-derived macrophages with Mycobacterium tuberculosis (Mtb)33. On the RNA level, TGF-\u03b21 treatment upregulated PA200 in several primary lung fibroblast (phLF) lines but uniformly downregulated the three i20S catalytic subunits PSMB8-10 (Fig.\u00a07A). Elevated incorporation of PA200 reduced assembly of i20S subunits which was further confirmed by an interactome analysis of TGF-\u03b21-treated phLFs compared to untreated controls (Fig.\u00a07B, C), using the anti-\u03b12 antibody for pulldown of all crosslinked proteasome complexes. phLFs were also stimulated with IFN\u03b3, resulting in the upregulation of the i20S, as indicated by a significant increase in PSMB8-10 expression, but without any impact on PA200 mRNA levels as determined by RTqPCR (Fig.\u00a07D). Similarly, Mtb infected mouse macrophages strongly upregulated the i20S subunits Psmb8-10 but did not a",
+          "semantic_review": "The human i20S preparation is structurally assembled with human PA200; source explicitly identifies PSMB8-10 as catalytic i20S subunits and human-cell pulldown supports the composition. PSMB10 is outside the fixed universe.",
+          "snapshot_path": "acquisition/papers/r022/PMC13463089.txt",
+          "snapshot_sha256": "e824571fd39172cb0dde5391715888891699e69f1a9fc77d666b369452c1499a",
+          "source_name": "PubMed/PMC primary literature round 022",
+          "source_uri": "https://pubmed.ncbi.nlm.nih.gov/42581047/",
+          "source_version": "sha256:e824571fd39172cb0dde5391715888891699e69f1a9fc77d666b369452c1499a",
+          "study_id": "PMID:42581047"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:29a256a7b73bab0db0422c2a",
+      "identified_study_count": 1,
+      "object_id": "PMID:42581047:PA200_capped_human_i20S",
+      "object_labels": [
+        "PA200-capped human immunoproteasome"
+      ],
+      "original_object_ids": [
+        "PMID:42581047:PA200_capped_human_i20S"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r022:lit:42581047:11"
+      ],
+      "relation": "member_of_complex",
+      "study_ids": [
+        "PMID:42581047"
+      ],
+      "subject_id": "HGNC:9546",
+      "subject_label": "PSMB9"
+    },
+    {
+      "context": {
+        "assay": "cryo-EM structure and human-cell anti-alpha2 pulldown/interactome validation",
+        "assembly_state": "singly and doubly PA200-capped i20S assemblies resolved by cryo-EM",
+        "cell_type": "in vitro reconstitution",
+        "expression_system": "commercial purified human 20S immunoproteasome and recombinant human PA200",
+        "molecular_condition": "8-fold molar excess PA200 with overnight incubation",
+        "qualification": "Bovine testis and murine macrophage evidence are excluded from the human claim",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1038/s41467-026-75325-w",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "locator": "Full text body offset 44779",
+          "pmcid": "PMC13463089",
+          "pmid": "42581047",
+          "quote": "i20S was obtained commercially from R&D Systems (Catalog #: E-370, 10 microliter, 25 microgram: Human 20S Immunoproteasome Protein, CF E-370-025: R&D Systems) and complexes were formed upon addition of 8x molar excess of PA200 upon overnight incubation. Before plunge freezing, QUANTIFOIL R2/1 copper grids (200 mesh) were cleaned using a glow-discharger (Leica EM ACE 200) at 8\u2009mA for 60\u2009s. 3\u2009uL of i20S-PA200 sample (0.3\u2009g/l) wa",
+          "semantic_review": "The human i20S preparation is structurally assembled with human PA200; source explicitly identifies PSMB8-10 as catalytic i20S subunits and human-cell pulldown supports the composition. PSMB10 is outside the fixed universe.",
+          "snapshot_path": "acquisition/papers/r022/PMC13463089.txt",
+          "snapshot_sha256": "e824571fd39172cb0dde5391715888891699e69f1a9fc77d666b369452c1499a",
+          "source_name": "PubMed/PMC primary literature round 022",
+          "source_uri": "https://pubmed.ncbi.nlm.nih.gov/42581047/",
+          "source_version": "sha256:e824571fd39172cb0dde5391715888891699e69f1a9fc77d666b369452c1499a",
+          "study_id": "PMID:42581047"
+        },
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1038/s41467-026-75325-w",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "locator": "Full text body offset 4239",
+          "pmcid": "PMC13463089",
+          "pmid": "42581047",
+          "quote": "Here, we obtained high-resolution structures for both singly- and doubly-capped i20S-PA200 complexes (2.85\u2009\u00c5 and 2.89\u2009\u00c5 resolution, respectively). Although the doubly-capped structure of the i20S-PA200 complex seems similar to s20S-PA20020\u201323 (Fig.\u00a01A, see Supplementary Fig.\u00a01 for details on 3D classification and Supplementary Table\u00a01 summarizing structural and refinement statistics), the structure shows a pronounced bending of the entire complex (Fig.\u00a01B, C) which, to our knowledge, has not been reported in previously described proteasome structures. The bend propagates from the proximal PA200 molecule, which was superimposed with the corresponding PA200 in the recently solved s20S-PA200 structure (6REY) with minimal Root Mean Square Deviation (RMSD\u2009~\u20091.7\u2009\u00c5; Fig.\u00a01B, black dashed line). From that region, the structure of i20S-PA200 begins to \u201cbend\u201d, as indicated by the gradual increase in calculated RMSDs to its maximal value in the distal PA200 (RMSD\u2009~\u20096.8\u2009\u00c5; Fig.\u00a01B, black dashed line). A morph animation from the s20S-PA200 structure (yellow) to the i20S-PA200 structure (blue, see supplementary Movie\u00a01) shows that the bending of the i20S-PA200 results in a slight but significant decompaction of the whole complex. To rule out the possibility that the unusual bending behavior upon binding to PA200 to the i20S is an artifact, we solved the cryo-EM structure of the s20S-PA200 complex. When comparing it to the deposited 6REY.pdb structure, we found an RMSD of ~0.2\u2009\u00c5 for both the distal and proximal PA200 molecules (Fig.\u00a01B, orange dashed line and Supplementary Fig.\u00a02). Moreov",
+          "semantic_review": "The human i20S preparation is structurally assembled with human PA200; source explicitly identifies PSMB8-10 as catalytic i20S subunits and human-cell pulldown supports the composition. PSMB10 is outside the fixed universe.",
+          "snapshot_path": "acquisition/papers/r022/PMC13463089.txt",
+          "snapshot_sha256": "e824571fd39172cb0dde5391715888891699e69f1a9fc77d666b369452c1499a",
+          "source_name": "PubMed/PMC primary literature round 022",
+          "source_uri": "https://pubmed.ncbi.nlm.nih.gov/42581047/",
+          "source_version": "sha256:e824571fd39172cb0dde5391715888891699e69f1a9fc77d666b369452c1499a",
+          "study_id": "PMID:42581047"
+        },
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1038/s41467-026-75325-w",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "locator": "Full text body offset 30496",
+          "pmcid": "PMC13463089",
+          "pmid": "42581047",
+          "quote": "To probe these questions, we used PA200 knockout (KO) human lung cancer cell lines A549 and H129926. Genetic deletion of PA200 in A549 and H1299 reduced expression of the \u03b21i catalytic subunit (PSMB9 gene) in both its pre-mature and mature forms but did not significantly affect expression of PSMB8 and PSMB10 (Fig.\u00a08A, B). Pulldown of 20S complexes using the anti-\u03b12 antibody and subsequent interactome analysis confirmed that the absence of PA200 impairs the assembly of \u03b21i containing i20S complexes (Supplementary Fig.\u00a09). This resulted in an altered cellular composition of 20S complexes with reduced formation of intermediate proteasomes containing the two immunocatalytic subunits \u03b21i and \u03b25i (\u03b21i\u03b25i i20S) and an increase in complexes harboring only the immunocatalytic subunit \u03b25i (\u03b25i i20S) in the lung two cancer cell lines (Supplementary Fig.\u00a09)34,35. We did not observe consistent regulation of the i20S subunits on the RNA level26. To analyze whether the i20S regulates PA200, we made use of primary mouse skin fibroblasts isolated from single i20S subunit KO mice36. In these cells we reconstituted the re",
+          "semantic_review": "The human i20S preparation is structurally assembled with human PA200; source explicitly identifies PSMB8-10 as catalytic i20S subunits and human-cell pulldown supports the composition. PSMB10 is outside the fixed universe.",
+          "snapshot_path": "acquisition/papers/r022/PMC13463089.txt",
+          "snapshot_sha256": "e824571fd39172cb0dde5391715888891699e69f1a9fc77d666b369452c1499a",
+          "source_name": "PubMed/PMC primary literature round 022",
+          "source_uri": "https://pubmed.ncbi.nlm.nih.gov/42581047/",
+          "source_version": "sha256:e824571fd39172cb0dde5391715888891699e69f1a9fc77d666b369452c1499a",
+          "study_id": "PMID:42581047"
+        },
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1038/s41467-026-75325-w",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "locator": "Full text body offset 26602",
+          "pmcid": "PMC13463089",
+          "pmid": "42581047",
+          "quote": "To analyze the regulation of the i20S under conditions of PA200 induction, we used primary human lung fibroblasts (phLF) that were treated with TGF-\u03b21 to upregulate PA20015. Vice versa, we investigated PA200 regulation under conditions of i20S activation in interferon gamma (IFN\u03b3) stimulated phLF and upon infection of murine bone-marrow-derived macrophages with Mycobacterium tuberculosis (Mtb)33. On the RNA level, TGF-\u03b21 treatment upregulated PA200 in several primary lung fibroblast (phLF) lines but uniformly downregulated the three i20S catalytic subunits PSMB8-10 (Fig.\u00a07A). Elevated incorporation of PA200 reduced assembly of i20S subunits which was further confirmed by an interactome analysis of TGF-\u03b21-treated phLFs compared to untreated controls (Fig.\u00a07B, C), using the anti-\u03b12 antibody for pulldown of all crosslinked proteasome complexes. phLFs were also stimulated with IFN\u03b3, resulting in the upregulation of the i20S, as indicated by a significant increase in PSMB8-10 expression, but without any impact on PA200 mRNA levels as determined by RTqPCR (Fig.\u00a07D). Similarly, Mtb infected mouse macrophages strongly upregulated the i20S subunits Psmb8-10 but did not a",
+          "semantic_review": "The human i20S preparation is structurally assembled with human PA200; source explicitly identifies PSMB8-10 as catalytic i20S subunits and human-cell pulldown supports the composition. PSMB10 is outside the fixed universe.",
+          "snapshot_path": "acquisition/papers/r022/PMC13463089.txt",
+          "snapshot_sha256": "e824571fd39172cb0dde5391715888891699e69f1a9fc77d666b369452c1499a",
+          "source_name": "PubMed/PMC primary literature round 022",
+          "source_uri": "https://pubmed.ncbi.nlm.nih.gov/42581047/",
+          "source_version": "sha256:e824571fd39172cb0dde5391715888891699e69f1a9fc77d666b369452c1499a",
+          "study_id": "PMID:42581047"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:cdc1e814d78df84d9c750a79",
+      "identified_study_count": 1,
+      "object_id": "PMID:42581047:PA200_capped_human_i20S",
+      "object_labels": [
+        "PA200-capped human immunoproteasome"
+      ],
+      "original_object_ids": [
+        "PMID:42581047:PA200_capped_human_i20S"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r022:lit:42581047:10"
+      ],
+      "relation": "member_of_complex",
+      "study_ids": [
+        "PMID:42581047"
+      ],
+      "subject_id": "HGNC:9545",
+      "subject_label": "PSMB8"
+    }
+  ],
+  "STUDY:42892655_CTLH_MKLN1_ZMYND19_UBE2H_Ub": [
+    {
+      "context": {
+        "assay": "purification and cryo-EM grid preparation",
+        "assembly": "CTLH_MKLN1_ZMYND19",
+        "cell_type": "in vitro; baculovirus/insect-cell expressed CTLH assemblies",
+        "membership_scope": "experimentally assembled catalytic-state complex",
+        "molecular_condition": "UBE2H~ubiquitin stable mimic; 8-fold molar excess; 30 min on ice before size-exclusion purification",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assembly_identifying_passage": "CTLH complexes (CTLHMKLN1, CTLHMKLN1-ZMYND19, CTLHMKLN1-FAM72A-UNG2) or subcomplexes (ZMYND19-MKLN1-RANBP9-TWA1 and FAM72A-UNG2-MKLN1-RANBP9-TWA1) used for structural studies were expressed as a single baculovirus in insect cells using methods described above (see \u201cInsect cell expression and purification\u201d).",
+          "assertion_type": "experimental_result",
+          "doi": "10.1038/s41467-026-78311-4",
+          "locator": "Scientific body: exact paragraph/sentence",
+          "pmcid": "PMC13676621",
+          "quote": "All three CTLHMKLN1-UBE2H~ubiquitin complexes were then concentrated to 2.7 mg/ml.",
+          "snapshot_path": "acquisition/papers/r001/PMID_42892655.txt",
+          "snapshot_sha256": "ab984e1c35376248d4e3860d29dd49b3828e70b4286030528bd1bf05601c7e44",
+          "source_name": "PubMed/PMC cached scientific text",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13676621/",
+          "source_version": "external_cache_sha256:ab984e1c35376248d4e3860d29dd49b3828e70b4286030528bd1bf05601c7e44",
+          "study_id": "PMID:42892655"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:3a91a85dfb34dd2e9614da0b",
+      "identified_study_count": 1,
+      "object_id": "STUDY:42892655_CTLH_MKLN1_ZMYND19_UBE2H_Ub",
+      "object_labels": [
+        "CTLH-MKLN1-ZMYND19 with UBE2H~ubiquitin stable mimic"
+      ],
+      "original_object_ids": [
+        "STUDY:42892655_CTLH_MKLN1_ZMYND19_UBE2H_Ub"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r001:lit:42892655:29"
+      ],
+      "relation": "member_of_complex",
+      "study_ids": [
+        "PMID:42892655"
+      ],
+      "subject_id": "HGNC:12484",
+      "subject_label": "UBE2H"
+    }
+  ],
+  "COMPLEX:HLA_A1101_TP53_R248Q": [
+    {
+      "context": {
+        "assay": "mild acid elution/mass spectrometry and peptide-MHC stability assay",
+        "cell_type": "engineered human K562 cells; validation in human pancreatic ductal adenocarcinoma tissue",
+        "molecular_condition": "TP53 R248Q neopeptide SCMGGMNQR; complex half-life 10.1 hours versus wild-type peptide 1.8 hours",
+        "perturbation": "ectopic HLA-A*11:01 and TP53 mutant expression in K562",
+        "qualification": "allele- and peptide-specific; CRISPRa response not inferred",
+        "subject_molecular_form": "HLA-A*11:01 allele",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1172/jci196613",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "identifier_mapping_snapshot_sha256": "fe5695f793c2923bd81b607d4467d366524daac0b4b9e8f5f8245646b31c738b",
+          "locator": "Full text body offset 7371",
+          "pmcid": "PMC12948421",
+          "pmid": "41528883",
+          "quote": "Intriguingly, although TP53R248Q (SCMGGMNQR) peptide was identified in the MAE/MS assay, it was absent from the prediction list of HLA-A*11:01\u2013binding peptides generated by NetMHCpan4.1. This suggests that the MS-based approach can complement in silico prediction tools for the precise identification of neopeptides. To further validate the immunogenicity of this neoantigen, we performed MAE/MS using clinically relevant pancreatic ductal adenocarcinoma (PDAC) patient tissue (HLA-A*11:01+/TP53R248Q+, Supplemental Table 2). Then, we successfully identified the TP53R248Q neopeptide (SCMGGMNQR) in PDAC patient tissue, and its sequence matched the TP53R248Q antigen peptide presented by K562 cell lines overexpressing the HLA-A*11:01 allele (K562A11) (Supplemental Figure 1F). To experimentally validate the binding between the TP53R248Q neopeptide and HLA-A*11:01, we performed pMHC complex stability assays. The results demonstrated that the TP53R248Q neopeptide-HLA-A*11:01 complex exhibited a half-life (t1/2) of 10.1 hours, which is much longer than that of the TP53R248WT peptide-HLA-A*11:01 (t1/2 = 1.8 hours), indicating markedly stronger binding of the TP53R248Q neopeptide to HLA-A*11:01 (Supplemental Figure 1G).",
+          "semantic_review": "Literal experimental observation; scope restricted to the reported human system.",
+          "snapshot_path": "acquisition/papers/r012/PMID_41528883.txt",
+          "snapshot_sha256": "ed9a90b749e58d13fdd29699d7ad1d674a0a5304d5b31c0b67bc7bf5591e1423",
+          "source_name": "PubMed/PMC primary literature round 012",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12948421/",
+          "source_version": "sha256:ed9a90b749e58d13fdd29699d7ad1d674a0a5304d5b31c0b67bc7bf5591e1423",
+          "study_id": "PMID:41528883"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:3e63229df867f024b920cc6e",
+      "identified_study_count": 1,
+      "object_id": "COMPLEX:HLA_A1101_TP53_R248Q",
+      "object_labels": [
+        "HLA-A*11:01\u2013TP53 R248Q peptide complex"
+      ],
+      "original_object_ids": [
+        "COMPLEX:HLA_A1101_TP53_R248Q"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r012:lit:41528883:4"
+      ],
+      "relation": "member_of_complex",
+      "study_ids": [
+        "PMID:41528883"
+      ],
+      "subject_id": "HGNC:4931",
+      "subject_label": "HLA-A"
+    }
+  ],
+  "COMPLEX:PMID42735304_TM6SF1_homodimer": [
+    {
+      "context": {
+        "assay": "cryo-EM at 2.9 angstrom; cell-based signaling and biochemical assays",
+        "cell_type": "human protein in cryo-EM structural study and cell-based assays; cell line unspecified in cached abstract",
+        "molecular_condition": "cholesterol-dependent",
+        "qualification": "Abstract-only experimental evidence; no expansion of Ragulator components or TM6SF2 function from family membership.",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "abstract",
+          "assertion_type": "experimental_result",
+          "doi": "10.1073/pnas.2622424123",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "identifier_mapping_snapshot_sha256": "fe5695f793c2923bd81b607d4467d366524daac0b4b9e8f5f8245646b31c738b",
+          "locator": "Abstract",
+          "pmcid": null,
+          "pmid": "42735304",
+          "quote": "The transmembrane 6 superfamily (TM6SF) comprises two members: TM6SF1, a ubiquitously expressed lysosomal membrane protein of unknown function, and TM6SF2, an endoplasmic reticulum protein required for bulk lipidation of Apolipoprotein B-containing lipoproteins. Here, we used cryo-electron microscopy (cryo-EM) to determine the structure of human TM6SF1 at 2.9-\u00c5 resolution. TM6SF1 forms a polytopic homodimer, with each protomer comprising 10 transmembrane helices (TMs). TMs 1-6 form a pocket that accommodates a cholesterol molecule. Cell-based assays revealed that loss of TM6SF1 perturbs mTORC1 signaling, resulting in reduced phosphorylation of S6 kinase 1 and 4E-BP1 and constitutive activation of transcription factor EB (TFEB), and that cholesterol is required for these effects. Biochemical analyses support the model that TM6SF1 directly engages LAMTOR1, a component of Ragulator complex, in a cholesterol-dependent manner. Together, these findings identify TM6SF1 as a lysosomal cholesterol binding protein involved in regulating mTORC1 signaling.",
+          "semantic_review": "Cryo-EM explicitly resolves a human TM6SF1 homodimer. No equivalence to the Ragulator complex is asserted.",
+          "snapshot_path": "acquisition/papers/r015/PMID_42735304.txt",
+          "snapshot_sha256": "6fc2c6460c62fd4c3fa5745b40d1a05830b2dd0a9ddef686bc245679b8a4c769",
+          "source_name": "PubMed/PMC primary literature round 015",
+          "source_uri": "https://pubmed.ncbi.nlm.nih.gov/42735304/",
+          "source_version": "sha256:6fc2c6460c62fd4c3fa5745b40d1a05830b2dd0a9ddef686bc245679b8a4c769",
+          "study_id": "PMID:42735304"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:409b6b675cf1441692f95920",
+      "identified_study_count": 1,
+      "object_id": "COMPLEX:PMID42735304_TM6SF1_homodimer",
+      "object_labels": [
+        "human TM6SF1 homodimer"
+      ],
+      "original_object_ids": [
+        "COMPLEX:PMID42735304_TM6SF1_homodimer"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r015:lit:42735304:14"
+      ],
+      "relation": "member_of_complex",
+      "study_ids": [
+        "PMID:42735304"
+      ],
+      "subject_id": "HGNC:11860",
+      "subject_label": "TM6SF1"
+    }
+  ],
+  "PROGRAM:RAPP": [
+    {
+      "context": {
+        "assay": "RT-qPCR; flow cytometry; RNA-seq/Ribo-seq",
+        "cell_type": "K562",
+        "isoform": "ZAP-S (short ZC3HAV1 isoform)",
+        "perturbation": "ZAP knockout; isoform-specific ablation and ectopic rescue",
+        "qualification": "RAPP mRNA degradation function; translational repression is not attributed to ZAP. Knockout findings are not relabeled as CRISPRa effects.",
+        "reporter": "PPL-delta2L aberrant signal-peptide reporter",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1038/s44318-026-00720-4",
+          "identifier_mapping_detail": {
+            "approved_symbol": "ZC3HAV1",
+            "disambiguation": "Results explicitly names ZAP as ZC3HAV1 and PARP13; zinc finger antiviral protein, rather than YLPM1 ZAP alias.",
+            "hgnc_id": "HGNC:23721",
+            "reported_symbol": "ZAP"
+          },
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "identifier_mapping_snapshot_sha256": "fe5695f793c2923bd81b607d4467d366524daac0b4b9e8f5f8245646b31c738b",
+          "locator": "XML body section A functional genetic screen identifies ZAP as a RAPP regulator; text offset 21271",
+          "pmcid": "PMC13084044",
+          "pmid": "41820617",
+          "quote": "ZAP, also known as ZC3HAV1 (Zinc Finger CCCH-type, antiviral 1) and PARP13, has previously been implicated in the innate immune response, where it inhibits viral RNA replication (Todorova et al, 2015). To further investigate the role of ZAP in RAPP, we first generated ZAP knockout (KO) cell lines (Fig.\u00a03A). As expected, PPL-\u22062\u2009L mRNA and protein levels were markedly stabilized in two isogenic ZAP KO cell lines, as measured by RT-qPCR and flow cytometry (Fig.\u00a03A\u2013C). Previous work indicates that ZAP mediates translational repression by sequestering the translation initiation factor eIF4A; this repression is required for viral mRNA degradation (Zhu et al, 2012; Todorova et al, 2015). To assess whether ZAP is responsible for the translational repression of the PPL-\u22062\u2009L reporter (Fig.\u00a01G). We next performed RNA-seq and Ribo-seq with ZAP KO cells. While RNA-seq results confirmed stabilization of the PPL-\u22062\u2009L reporter mRNA (Dataset\u00a0EV2), ZAP KO did not increase ribosome occupancy per mRNA on the PPL-\u22062\u2009L reporter (Fig.\u00a03D; Appendix Fig.\u00a0S2). These findings argue that ZAP promotes RAPP predominantly through mRNA degradation, and that loss of ZAP decouples mRNA degradation from translational repression.Figure 3ZAP-S participates in RAPP-mediated mRNA decay but not translational repression.(A) Immunoblots for ZAP expression in parental and two isogenic ZAP knockout monoclonal lines. Two major isoforms (ZAP-S and ZAP-L) are indicated. \u03b2-actin serves as a loading control. (B) RT-qPCR data showing the relative PPL-\u22062\u2009L reporter mRNA levels (normalized to EGFP mRNAs) in parental and two ZAP KO clonal lines compared to PPL-WT reporter mRNA levels in parental cells. Error bars indicate standard deviations (n\u2009=\u20093). Student\u2019s t test is indicated by asterisks. **P\u2009<\u20090.01; ***P\u2009<\u20090.001. (C) Representative flow cytometric analysis of mCherry/EGFP ratio in parental and two ZAP KO clonal lines expressing the PPL-\u22062\u2009L RAPP reporter, compared to parental cells expressing the PPL-WT reporter. Representative results from three independent experiments are shown. (D) Ribosome occupancy per mRNA for the PPL-\u22062\u2009L reporter in parental and ZAP KO cells, as determined by normalizing ribosome footprint density to mRNA abundance (n\u2009=\u20092). (E) Schematic for the domain organization of ZAP-S and ZAP-L isoforms. Four CCCH zinc fingers are shown in yellow, and a poly (ADP-ribosome) polymerase (PARP)-like domain is shown in black. Mutations (K107A/Y108A) in the second CCCH zinc finger are indicated. (F) Representative flow cytometric analysis of cells expressing the PPL-\u22062\u2009L reporter after sgRNA-mediated ablation of ZAP-S or ZAP-L compared to a control sgRNA (top). Immunoblotting for ZAP upon isoform-specific depletion (bottom). (G) Flow cytometric analysis of mCherry/EGFP ratio in parental and a ZAP-S KO clone expressing the PPL-\u22062\u2009L reporter, compared to parental cells expressing the PPL-WT reporter. (H) RT-qPCR results of relative PPL-\u22062\u2009L reporter mRNA levels (normalized to EGFP mRNAs) in parental, and a ZAP-S KO clonal line. Error bars denote standard deviations (n\u2009=\u20093). Student\u2019s t test is indicated by asterisks. ***P\u2009<\u20090.001. (I) Schematic of human progranulin (GRN) reporter. Signal peptide of progranulin is shown and the pathogenic mutation (A9D) is indicated in red. (J) RT-qPCR results of relative WT and A9D GRN reporter mRNA levels upon siRNA-mediated ZAP-S knockdown. Error bars indicate standard deviations (n\u2009=\u20093). Student\u2019s t test is indicated by asterisks. *P\u2009<\u20090.05; ***P\u2009<\u20090.001.\u00a0Source data are available online for this figure.",
+          "semantic_review": "Source-defined RAPP pathway membership supported by functional genetic screen and isoform-specific reporter assays. No expansion to mentioned pathways or unspecified genes.",
+          "snapshot_path": "acquisition/papers/r017/PMID_41820617_full.txt",
+          "snapshot_sha256": "c3fb818438742f45f368067bd52220dedf7df3caa31373b3ab72a5f5de7efd2f",
+          "source_name": "PubMed/PMC primary literature round 017",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13084044/",
+          "source_version": "sha256:c3fb818438742f45f368067bd52220dedf7df3caa31373b3ab72a5f5de7efd2f",
+          "study_id": "PMID:41820617"
+        },
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1038/s44318-026-00720-4",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "identifier_mapping_snapshot_sha256": "fe5695f793c2923bd81b607d4467d366524daac0b4b9e8f5f8245646b31c738b",
+          "locator": "XML body section Generation of cell lines; text offset 57412",
+          "pmcid": "PMC13084044",
+          "pmid": "41820617",
+          "quote": "To generate ZAP KO cells, K562 cells were transduced with lentivirus containing an sgRNA (5\u2019-ATGTGGAGTCTTGAACACGG-3\u2019) targeting ZAP exon 3. To create ZAP-S isoform-specific KO cells, K562 cells were transduced with lentivirus containing an sgRNA pair targeting ZAP-S iPAS (5\u2019-TAAAGGAAATGTTGCTGTGG-3\u2019 and 5\u2019-TTCATGAACATTTTTGGAGT-3\u2019). KO lines were validated by sequencing genomic DNA to characterize Cas9 editing and loss of protein was confirmed by immunoblotting. To rescue ZAP KO cells, coding sequences of ZAP-S, ZAP-S KY mutant, and ZAP-L were cloned into a PiggyBac-Hygro vector. The resulting constructs were transduced into ZAP or ZAP-S KO cells along with a plasmid encoding a PiggyBac transposase using nucleofection (Lonza Bioscience, V4XC-2032). Two days after nucleofection, cells were selected with 400\u2009\u00b5g/mL hygromycin B (Thermo Fisher Scientific, 10687010) for 5 days.",
+          "semantic_review": "Source-defined RAPP pathway membership supported by functional genetic screen and isoform-specific reporter assays. No expansion to mentioned pathways or unspecified genes.",
+          "snapshot_path": "acquisition/papers/r017/PMID_41820617_full.txt",
+          "snapshot_sha256": "c3fb818438742f45f368067bd52220dedf7df3caa31373b3ab72a5f5de7efd2f",
+          "source_name": "PubMed/PMC primary literature round 017",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13084044/",
+          "source_version": "sha256:c3fb818438742f45f368067bd52220dedf7df3caa31373b3ab72a5f5de7efd2f",
+          "study_id": "PMID:41820617",
+          "support_role": "experimental system and isoform-specific perturbation methods"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:4790f80e4d132b405d7c037f",
+      "identified_study_count": 1,
+      "object_id": "PROGRAM:RAPP",
+      "object_labels": [
+        "regulation of aberrant protein production (RAPP) mRNA quality-control pathway"
+      ],
+      "original_object_ids": [
+        "PROGRAM:RAPP"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r017:lit:41820617:2"
+      ],
+      "relation": "member_of_pathway",
+      "study_ids": [
+        "PMID:41820617"
+      ],
+      "subject_id": "HGNC:23721",
+      "subject_label": "ZC3HAV1"
+    }
+  ],
+  "STUDY:42892655_CTLH_MKLN1_FAM72A_UNG2_UBE2H_Ub": [
+    {
+      "context": {
+        "assay": "purification and cryo-EM grid preparation",
+        "assembly": "CTLH_MKLN1_FAM72A_UNG2",
+        "cell_type": "in vitro; baculovirus/insect-cell expressed CTLH assemblies",
+        "membership_scope": "experimentally assembled catalytic-state complex",
+        "molecular_condition": "UBE2H~ubiquitin stable mimic; 8-fold molar excess; 30 min on ice before size-exclusion purification",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assembly_identifying_passage": "CTLH complexes (CTLHMKLN1, CTLHMKLN1-ZMYND19, CTLHMKLN1-FAM72A-UNG2) or subcomplexes (ZMYND19-MKLN1-RANBP9-TWA1 and FAM72A-UNG2-MKLN1-RANBP9-TWA1) used for structural studies were expressed as a single baculovirus in insect cells using methods described above (see \u201cInsect cell expression and purification\u201d).",
+          "assertion_type": "experimental_result",
+          "doi": "10.1038/s41467-026-78311-4",
+          "locator": "Scientific body: exact paragraph/sentence",
+          "pmcid": "PMC13676621",
+          "quote": "All three CTLHMKLN1-UBE2H~ubiquitin complexes were then concentrated to 2.7 mg/ml.",
+          "snapshot_path": "acquisition/papers/r001/PMID_42892655.txt",
+          "snapshot_sha256": "ab984e1c35376248d4e3860d29dd49b3828e70b4286030528bd1bf05601c7e44",
+          "source_name": "PubMed/PMC cached scientific text",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13676621/",
+          "source_version": "external_cache_sha256:ab984e1c35376248d4e3860d29dd49b3828e70b4286030528bd1bf05601c7e44",
+          "study_id": "PMID:42892655"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:58d191da2deadfb2ded3effe",
+      "identified_study_count": 1,
+      "object_id": "STUDY:42892655_CTLH_MKLN1_FAM72A_UNG2_UBE2H_Ub",
+      "object_labels": [
+        "CTLH-MKLN1-FAM72A-UNG2 with UBE2H~ubiquitin stable mimic"
+      ],
+      "original_object_ids": [
+        "STUDY:42892655_CTLH_MKLN1_FAM72A_UNG2_UBE2H_Ub"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r001:lit:42892655:30"
+      ],
+      "relation": "member_of_complex",
+      "study_ids": [
+        "PMID:42892655"
+      ],
+      "subject_id": "HGNC:12484",
+      "subject_label": "UBE2H"
+    }
+  ],
+  "COMPLEX:PMID42907447_ORF3a_HLAA0101": [
+    {
+      "context": {
+        "assay": "cryo-EM and affinity measurements",
+        "assembly_context": "TCRpub or TCRpriv recognition; alternative TCRs preserved",
+        "cell_type": "purified human peptide-MHC and TCR assemblies",
+        "peptide": "SARS-CoV-2 ORF3a(207-215), FTSDYYQLY",
+        "subject_molecular_form": "HLA-A*01:01 allele",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1038/s41467-026-77827-z",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "identifier_mapping_snapshot_sha256": "fe5695f793c2923bd81b607d4467d366524daac0b4b9e8f5f8245646b31c738b",
+          "locator": "Full text body offset 3675",
+          "pmcid": "PMC13687542",
+          "pmid": "42907447",
+          "quote": "Here, we combine epitope mapping, single-cell TCR sequencing, affinity measurements, and cryo-EM to determine the structures of TCRpub and TCRpriv bound to ORF3a(207-215)/HLA-A*01:01. Despite comparable micromolar affinities and similar overall docking architectures, the two receptors engage the peptide-MHC surface through divergent CDR-loop configurations. Together, our findings show how alternative \u03b1-chain pairings reconfigure the antigen-binding interface and shape antigen recognition within a shared \u03b2-chain framework, while also demonstrating that cryo-EM provides a powerful complementary approach for the structural determination of micromolar-affinity TCR/pMHC complexes.",
+          "semantic_review": "Literal experimental observation; scope restricted to the reported human system.",
+          "snapshot_path": "acquisition/papers/r009/PMID_42907447.txt",
+          "snapshot_sha256": "93e471ef6b53bff5ae4df68fca23b50fdeff92a1148a5c38f91e5729ef4c5e6f",
+          "source_name": "PubMed/PMC primary literature round 009",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13687542/",
+          "source_version": "sha256:93e471ef6b53bff5ae4df68fca23b50fdeff92a1148a5c38f91e5729ef4c5e6f",
+          "study_id": "PMID:42907447"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:6958f34cc3de979a9391c9ff",
+      "identified_study_count": 1,
+      "object_id": "COMPLEX:PMID42907447_ORF3a_HLAA0101",
+      "object_labels": [
+        "ORF3a(207-215)-HLA-A*01:01 peptide-MHC complex"
+      ],
+      "original_object_ids": [
+        "COMPLEX:PMID42907447_ORF3a_HLAA0101"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r009:lit:42907447:19"
+      ],
+      "relation": "member_of_complex",
+      "study_ids": [
+        "PMID:42907447"
+      ],
+      "subject_id": "HGNC:4931",
+      "subject_label": "HLA-A"
+    }
+  ],
+  "STUDY:42892655_CTLH_MKLN1_UBE2H_Ub": [
+    {
+      "context": {
+        "assay": "purification and cryo-EM grid preparation",
+        "assembly": "CTLH_MKLN1",
+        "cell_type": "in vitro; baculovirus/insect-cell expressed CTLH assemblies",
+        "membership_scope": "experimentally assembled catalytic-state complex",
+        "molecular_condition": "UBE2H~ubiquitin stable mimic; 8-fold molar excess; 30 min on ice before size-exclusion purification",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assembly_identifying_passage": "CTLH complexes (CTLHMKLN1, CTLHMKLN1-ZMYND19, CTLHMKLN1-FAM72A-UNG2) or subcomplexes (ZMYND19-MKLN1-RANBP9-TWA1 and FAM72A-UNG2-MKLN1-RANBP9-TWA1) used for structural studies were expressed as a single baculovirus in insect cells using methods described above (see \u201cInsect cell expression and purification\u201d).",
+          "assertion_type": "experimental_result",
+          "doi": "10.1038/s41467-026-78311-4",
+          "locator": "Scientific body: exact paragraph/sentence",
+          "pmcid": "PMC13676621",
+          "quote": "All three CTLHMKLN1-UBE2H~ubiquitin complexes were then concentrated to 2.7 mg/ml.",
+          "snapshot_path": "acquisition/papers/r001/PMID_42892655.txt",
+          "snapshot_sha256": "ab984e1c35376248d4e3860d29dd49b3828e70b4286030528bd1bf05601c7e44",
+          "source_name": "PubMed/PMC cached scientific text",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13676621/",
+          "source_version": "external_cache_sha256:ab984e1c35376248d4e3860d29dd49b3828e70b4286030528bd1bf05601c7e44",
+          "study_id": "PMID:42892655"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:70c20807e424fac3db04e81a",
+      "identified_study_count": 1,
+      "object_id": "STUDY:42892655_CTLH_MKLN1_UBE2H_Ub",
+      "object_labels": [
+        "CTLH-MKLN1 with UBE2H~ubiquitin stable mimic"
+      ],
+      "original_object_ids": [
+        "STUDY:42892655_CTLH_MKLN1_UBE2H_Ub"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r001:lit:42892655:28"
+      ],
+      "relation": "member_of_complex",
+      "study_ids": [
+        "PMID:42892655"
+      ],
+      "subject_id": "HGNC:12484",
+      "subject_label": "UBE2H"
+    }
+  ],
+  "STUDY:41017120_cBAF": [
+    {
+      "context": {
+        "assay": "ARID1A omission and purified subunit add-back",
+        "assembly": "ARID1A-containing cBAF; ARID1B alternative assembly kept distinct",
+        "cell_type": "in vitro; human recombinant proteins in baculoviral expression system",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1093/nar/gkaf958",
+          "locator": "Full text body offset 23858",
+          "pmcid": "PMC12476982",
+          "pmid": "41017120",
+          "quote": "Finally, we measured the histone octamer transfer activity of BAF8. Surprisingly, BAF8 did not exhibit detectable histone octamer transfer activity (Fig. 2D), suggesting that the four subunits of cBAF that are missing from BAF8 (BCL7a, SS18, ARID1A, and DPF2) are required for histone octamer transfer activity. To identify which subunit(s) is required for histone octamer transfer activity, we added the BCL7a and SS18 subunits to BAF8, leading to a BAF10 subcomplex (Fig. 2A). However, BAF10 remained inactive in the histone octamer transfer assay (Fig. 2E). Reconstitution of a cBAF complex that only lacked the DPF2 subunit had no effect on the overall integrity of cBAF (Supplementary Fig. S2C), but reduced histone octamer transfer activity (Fig. 2F), suggesting that DPF2 contributes to histone octamer transfer activity, but is not essential. Finally, we assembled a cBAF complex that lacks ARID1A (\u0394ARID1 complex). Removal of ARID1A did not grossly change the composition of BAF (Fig. 3A), except for reduced level of DPF2, consistent with the known interaction between ARID1A and DPF2 [5]. Whereas loss of ARID1A led only to small defects in ATPase, nucleosome binding, and nucleosome sliding activities (Fig. 3B\u2013D, and Supplementary Fig. S3A and B), the \u0394ARID1 complex was inactive in the histone octamer transfer assay (Fig. 3E). Adding back purified, recombinant ARID1A (Supplementary Fig. S3C) to the \u0394ARID1 complex restored histone octamer transfer activity (Fig. 3F), confirming that ARID1A is required for the histone octamer transfer activity of cBAF.",
+          "snapshot_path": "acquisition/papers/r002/PMID_41017120.txt",
+          "snapshot_sha256": "eeda26e9f8520f06238cfef5a2d3e8f58d739a96b246ea4ac5871b4a54801756",
+          "source_name": "PubMed/PMC cached primary scientific text",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12476982/",
+          "source_version": "sha256:eeda26e9f8520f06238cfef5a2d3e8f58d739a96b246ea4ac5871b4a54801756",
+          "study_id": "PMID:41017120"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:76715fce81008da0bc9e2c66",
+      "identified_study_count": 1,
+      "object_id": "STUDY:41017120_cBAF",
+      "object_labels": [
+        "reconstituted human canonical BAF complex"
+      ],
+      "original_object_ids": [
+        "STUDY:41017120_cBAF"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r002:lit:41017120:26"
+      ],
+      "relation": "member_of_complex",
+      "study_ids": [
+        "PMID:41017120"
+      ],
+      "subject_id": "HGNC:11110",
+      "subject_label": "ARID1A"
+    }
+  ],
+  "STUDY:41639071_AKIRIN2_import_assembly": [
+    {
+      "context": {
+        "assay": "sucrose gradient co-sedimentation",
+        "assembly_state": "transient import assembly; RanGTP-dependent importin release",
+        "cell_type": "human proteins in vitro reconstitution",
+        "molecular_condition": "intact AKIRIN2 cNLS; KPNA2/KPNB1 heterodimer",
+        "qualification": "KPNA2 knockout alone does not alter nuclear proteasome localization; no constitutive 20S component assertion",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1038/s41467-026-69162-0",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "identifier_mapping_snapshot_sha256": "fe5695f793c2923bd81b607d4467d366524daac0b4b9e8f5f8245646b31c738b",
+          "locator": "Full text body offset 23023",
+          "pmcid": "PMC12979645",
+          "pmid": "41639071",
+          "quote": "Our SMScreens confirmed the critical role of AKIRIN2\u2019s bipartite cNLS in proteasomal nuclear localisation. In the canonical import pathway, cNLSs are recognised by importin-\u03b1 (KPNA) proteins which form a heterodimer with importin-\u03b21 (KPNB1)2. This aligns with our previous co-immunoprecipitation studies12 that identified interactions of AKIRIN2 with KPNA2/3/4 and KPNB1, suggesting their involvement in this pathway. To test this hypothesis, we examined whether KPNA2/KPNB1 heterodimers recognize AKIRIN2\u2019s cNLS and facilitate proteasome recruitment. In vitro reconstitution using sucrose density gradients demonstrated that AKIRIN2 forms a complex with KPNA2/KPNB1 and mediates their association with the proteasome (Fig. 4a). This interaction depends on AKIRIN2\u2019s cNLS, as an AKIRIN2\u0394NLS mutant failed to recruit KPNA2/KPNB1 despite retaining proteasome binding (Fig. 4a, Supplementary Fig. 7a,b). These results indicate that KPNA2/KPNB1 and IPO9 engage distinct binding sites on AKIRIN2, allowing non-competitive recruitment.Fig. 4AKIRIN2 mediates formation of the canonical nuclear import machinery.a SDS-PAGE Biorad TGX stainfree gel of fractionated 10\u201330% sucrose density gradients comparing proteasome co-sedimentation with KPNA2/KPNB1. Left panel shows complex formation in the presence of wild-type AKIRIN2, while right panel demonstrates abolished complex formation with the AKIRIN2\u0394NLS mutant. The lower panels display the corresponding GFP signal of the GFP-AKIRIN2 fusion protein in the same gradient fractions. b Schematic of the nuclear import assay procedure. c Representative confocal image of nuclear import of A647-20S labelled proteasome in digitonin permeabilized cells in different combinations of import factors after 60 min incubation time, n = 111-206 cells. d Quantified nuclear signal of A647-labelled proteasomes in a time-dependent manner using 7.5 \u00b5M AKIRIN2, 1 \u00b5M IPO9",
+          "semantic_review": "Literal experimental observation; scope restricted to the reported human system.",
+          "snapshot_path": "acquisition/papers/r003/PMID_41639071.txt",
+          "snapshot_sha256": "f1d9aae6c55c3fc54298f7c720d5337fe9067d1cb8d7fe7ba5eeb591f99938bb",
+          "source_name": "PubMed/PMC primary literature round 003",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12979645/",
+          "source_version": "sha256:f1d9aae6c55c3fc54298f7c720d5337fe9067d1cb8d7fe7ba5eeb591f99938bb",
+          "study_id": "PMID:41639071"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:78d9296a447fbe96a0a54933",
+      "identified_study_count": 1,
+      "object_id": "STUDY:41639071_AKIRIN2_import_assembly",
+      "object_labels": [
+        "AKIRIN2-KPNA2-KPNB1-20S proteasome import assembly"
+      ],
+      "original_object_ids": [
+        "STUDY:41639071_AKIRIN2_import_assembly"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r003:lit:41639071:39"
+      ],
+      "relation": "member_of_complex",
+      "study_ids": [
+        "PMID:41639071"
+      ],
+      "subject_id": "HGNC:6395",
+      "subject_label": "KPNA2"
+    }
+  ],
+  "STUDY:42167218_immunoproteasome": [
+    {
+      "context": {
+        "assay": "native complexome profiling",
+        "assembly_state": "wild-type immunoproteasome",
+        "cell_type": "human 143B and THP-1 cells and IFN-gamma-stimulated control fibroblasts",
+        "qualification": "mutant PSMB8 incorporation is impaired, not assumed equal to wild type",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1016/j.ajhg.2026.04.015",
+          "locator": "Full text body offset 22340",
+          "pmcid": "PMC13277692",
+          "pmid": "42167218",
+          "quote": "Complexome profiling, a technique that separates protein complexes under native conditions to analyze their composition and abundance by MS, was employed to assess proteasome assembly. Using a non-immune (143B) and an immune (THP-1) cell line, we first validated the specificity and sensitivity of this method to distinguish IP from SP through clear detection and quantification of IP-specific subunits (PSMB8-10) and SP-specific subunits (PSMB5-7) (supplemental note: additional complexome profiling findings; Figure S6). To enhance IP expression in fibroblasts, IFN\u03b3 stimulation was applied, which markedly increased the IP fraction from \u223c15% to \u223c65% of total proteasome abundance (Figure S7).",
+          "snapshot_path": "acquisition/papers/r002/PMID_42167218.txt",
+          "snapshot_sha256": "44b1e9986f6a3a7129b9f8dca73bc98df094b9fbe1527a5bca67195d4f27e361",
+          "source_name": "PubMed/PMC cached primary scientific text",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13277692/",
+          "source_version": "sha256:44b1e9986f6a3a7129b9f8dca73bc98df094b9fbe1527a5bca67195d4f27e361",
+          "study_id": "PMID:42167218"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:7a5c2c69ef3dfbb0a49513cf",
+      "identified_study_count": 1,
+      "object_id": "STUDY:42167218_immunoproteasome",
+      "object_labels": [
+        "human immunoproteasome"
+      ],
+      "original_object_ids": [
+        "STUDY:42167218_immunoproteasome"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r002:lit:42167218:23"
+      ],
+      "relation": "member_of_complex",
+      "study_ids": [
+        "PMID:42167218"
+      ],
+      "subject_id": "HGNC:9545",
+      "subject_label": "PSMB8"
+    }
+  ],
+  "PMID:42727851:jasplakinolide_NOX5_actin_vATPase_assembly": [
+    {
+      "context": {
+        "assay": "co-immunoprecipitation supported by glycerol gradient fractionation",
+        "assembly_state": "induced transient assembly containing NOX5, actin and v-ATPase components",
+        "cell_type": "HEK293",
+        "directness": "Co-complex detection; direct binary binding is not assigned",
+        "expression_system": "stable NOX5beta expression",
+        "isoform": "NOX5 beta",
+        "stoichiometry": "not determined",
+        "taxon_id": "NCBITaxon:9606",
+        "treatment": "1 micromolar jasplakinolide for 2 minutes"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1016/j.jbc.2026.113546",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "locator": "Full text body offset 16371",
+          "pmcid": "PMC13677954",
+          "pmid": "42727851",
+          "quote": "Coimmunoprecipitation studies found that treatment of HEK293 cells stably expressing NOX5\u03b2 with 1 \u03bcM jasplakinolide for 2 min increased the association of the V1 subunit A1 (V1A1) with NOX5, actin, and a subunit of the V0 complex, D1, compared to the DMSO control (Fig. 2, C and D). Jasplakinolide treatment also increased the amount of cortactin coimmunoprecipitated with NOX5 (Fig. 2E), and the amount of actin coimmunoprecipitated with the V1 subunit C1 (V1C1), which is known to interact with actin (51) (Fig. 2F). We did not see any coimmunoprecipitation with cortactin and subunits of the v-ATPase (data not shown). Finally, buffer-based PM isolation revealed an increase in NOX5 at the PM after cells were treated with 1 \u03bcM jasplakinolide for 2 min (Fig. 2G), suggesting that this complex may be localized to the PM.Figure 2Jasplakinolide treatment induces formation of a protein complex including actin, NOX5, and thev-ATPase.A, Western blot of odd-numbered glycerol gradient fractions of HEK-NOX5 cell lysates after treatment with DMSO (vehicle control) or 1 \u03bcM jasplakinolide for ",
+          "semantic_review": "The source experimentally defines an induced assembly and observes NOX5 as a component. Unenumerated actin isoforms and v-ATPase subunits receive no extra memberships.",
+          "snapshot_path": "acquisition/papers/r004/PMID_42727851.txt",
+          "snapshot_sha256": "b6f2f7e6a51bd5260818f1b5793d4728c889c4de1fd7a727eca03c76d1859cf8",
+          "source_name": "PubMed/PMC primary literature round 022",
+          "source_uri": "https://pubmed.ncbi.nlm.nih.gov/42727851/",
+          "source_version": "sha256:b6f2f7e6a51bd5260818f1b5793d4728c889c4de1fd7a727eca03c76d1859cf8",
+          "study_id": "PMID:42727851"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:7b8cd4f4531387788d9eeddb",
+      "identified_study_count": 1,
+      "object_id": "PMID:42727851:jasplakinolide_NOX5_actin_vATPase_assembly",
+      "object_labels": [
+        "Jasplakinolide-stabilized NOX5-actin-v-ATPase assembly"
+      ],
+      "original_object_ids": [
+        "PMID:42727851:jasplakinolide_NOX5_actin_vATPase_assembly"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r022:lit:42727851:4"
+      ],
+      "relation": "member_of_complex",
+      "study_ids": [
+        "PMID:42727851"
+      ],
+      "subject_id": "HGNC:14874",
+      "subject_label": "NOX5"
+    }
+  ],
+  "STUDY:41017120_histone_octamer_transfer": [
+    {
+      "context": {
+        "cell_type": "in vitro human cBAF reconstitution",
+        "definition": "Transfer of a histone octamer from donor nucleosome to recipient DNA, supported by deletion and add-back",
+        "molecular_condition": "cBAF assembly; ATP-dependent transfer assay",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1093/nar/gkaf958",
+          "locator": "Full text body offset 23858",
+          "pmcid": "PMC12476982",
+          "pmid": "41017120",
+          "quote": "Finally, we measured the histone octamer transfer activity of BAF8. Surprisingly, BAF8 did not exhibit detectable histone octamer transfer activity (Fig. 2D), suggesting that the four subunits of cBAF that are missing from BAF8 (BCL7a, SS18, ARID1A, and DPF2) are required for histone octamer transfer activity. To identify which subunit(s) is required for histone octamer transfer activity, we added the BCL7a and SS18 subunits to BAF8, leading to a BAF10 subcomplex (Fig. 2A). However, BAF10 remained inactive in the histone octamer transfer assay (Fig. 2E). Reconstitution of a cBAF complex that only lacked the DPF2 subunit had no effect on the overall integrity of cBAF (Supplementary Fig. S2C), but reduced histone octamer transfer activity (Fig. 2F), suggesting that DPF2 contributes to histone octamer transfer activity, but is not essential. Finally, we assembled a cBAF complex that lacks ARID1A (\u0394ARID1 complex). Removal of ARID1A did not grossly change the composition of BAF (Fig. 3A), except for reduced level of DPF2, consistent with the known interaction between ARID1A and DPF2 [5]. Whereas loss of ARID1A led only to small defects in ATPase, nucleosome binding, and nucleosome sliding activities (Fig. 3B\u2013D, and Supplementary Fig. S3A and B), the \u0394ARID1 complex was inactive in the histone octamer transfer assay (Fig. 3E). Adding back purified, recombinant ARID1A (Supplementary Fig. S3C) to the \u0394ARID1 complex restored histone octamer transfer activity (Fig. 3F), confirming that ARID1A is required for the histone octamer transfer activity of cBAF.",
+          "snapshot_path": "acquisition/papers/r002/PMID_41017120.txt",
+          "snapshot_sha256": "eeda26e9f8520f06238cfef5a2d3e8f58d739a96b246ea4ac5871b4a54801756",
+          "source_name": "PubMed/PMC cached primary scientific text",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12476982/",
+          "source_version": "sha256:eeda26e9f8520f06238cfef5a2d3e8f58d739a96b246ea4ac5871b4a54801756",
+          "study_id": "PMID:41017120"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:7f1824de474e5535affdcd45",
+      "identified_study_count": 1,
+      "object_id": "STUDY:41017120_histone_octamer_transfer",
+      "object_labels": [
+        "cBAF-dependent histone octamer transfer between DNA templates"
+      ],
+      "original_object_ids": [
+        "STUDY:41017120_histone_octamer_transfer"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r002:lit:41017120:28"
+      ],
+      "relation": "annotated_to",
+      "study_ids": [
+        "PMID:41017120"
+      ],
+      "subject_id": "HGNC:11110",
+      "subject_label": "ARID1A"
+    }
+  ],
+  "STUDY:41974573_repeated_antigen_survival": [
+    {
+      "context": {
+        "cell_type": "human CD19 CAR-T",
+        "definition": "Enhanced live-cell fraction after repetitive CD19-positive target-cell challenge; does not equate computational memory score with universal memory fate",
+        "perturbation": "BATF3 overexpression",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.26508/lsa.202503550",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "identifier_mapping_snapshot_sha256": "fe5695f793c2923bd81b607d4467d366524daac0b4b9e8f5f8245646b31c738b",
+          "locator": "Full text body offset 17501",
+          "pmcid": "PMC13080723",
+          "pmid": "41974573",
+          "quote": "To examine the effect of TF-OE on CAR-T cells, we lentivirally transduced TF on day 1 and retrovirally transduced CD19 CAR on day 3 into CD8+ cells (Fig 5A). After EGFR selection, CD19 CAR-T cells with BATF or BATF3 showed a higher percentage of EGFP+ cells than CD19 CAR-T cells with control or JUN (Fig 5B and C). We observed higher EGFP+ cell percentages in BATF- and BATF3-transduced CD19 CAR-T cells throughout the culture period. BATF3+ CAR-T cells showed a higher EGFP+ population than BATF+CAR-T cells (Fig 5C). We observed a significantly higher fold expansion during repetitive culture of BATF3+CD19 CAR-T cells (Fig 5D). In contrast to proliferation, CD19 CAR-T cells expressing BATF3 showed a significantly lower cytokine production after repetitive stimulation (Fig 5E and F). CD19 CAR-T cells with BATF and BATF3 demonstrated significantly lower TCM and higher TEM proportions after repetitive stimulation (Fig 5G\u2013I). Each CD19 CAR-T cell was stimulated with CD19-positive tumor cell lines, and the percentage of live cells was measured after 24 h. Only BATF3-OE CD19 CAR-T cells showed a significantly higher percentage of live cells than control CD19 CAR-T cells (Fig 5J). Surface phenotype analysis after three repeated stimulations demonstrated that the expression levels of TIM-3 and LAG3 were similar between BATF3-OE and control groups. However, the expression levels of CTLA-4 and PD-1 were significantly lower in the BATF3-OE group than those in the control (Fig S4A\u2013D).",
+          "semantic_review": "Literal experimental observation; scope restricted to the reported human system.",
+          "snapshot_path": "acquisition/papers/r003/PMID_41974573.txt",
+          "snapshot_sha256": "da93eee8f375fc6f9d72fda32954eac6d2c8f3a6146d4bfbab341ac0c1fe48b4",
+          "source_name": "PubMed/PMC primary literature round 003",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13080723/",
+          "source_version": "sha256:da93eee8f375fc6f9d72fda32954eac6d2c8f3a6146d4bfbab341ac0c1fe48b4",
+          "study_id": "PMID:41974573"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:805900f6fc028b0a43943af5",
+      "identified_study_count": 1,
+      "object_id": "STUDY:41974573_repeated_antigen_survival",
+      "object_labels": [
+        "CAR-T survival under repetitive CD19 stimulation"
+      ],
+      "original_object_ids": [
+        "STUDY:41974573_repeated_antigen_survival"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r003:lit:41974573:14"
+      ],
+      "relation": "annotated_to",
+      "study_ids": [
+        "PMID:41974573"
+      ],
+      "subject_id": "HGNC:28915",
+      "subject_label": "BATF3"
+    }
+  ],
+  "STUDY:41485079_BRG1Ct_ARP": [
+    {
+      "context": {
+        "assay": "tandem affinity isolation of stable subcomplex; structural prediction provides domain model",
+        "assembly_state": "engineered human SWI/SNF submodule; BRG1(Ct) contains HSA, helicase, SnAc and bromodomain",
+        "cell_type": "HEK293T",
+        "expression_system": "co-overexpression and V5-FLAG tandem affinity purification",
+        "molecular_condition": "WT or N-terminal delta20 BCL7A; ACTB-ACTL6A dimer",
+        "qualification": "Specific engineered assembly; no direct ACTB-BCL7A binding claim from co-purification alone",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1093/procel/pwaf114",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "identifier_mapping_snapshot_sha256": "fe5695f793c2923bd81b607d4467d366524daac0b4b9e8f5f8245646b31c738b",
+          "locator": "Full text body offset 13166",
+          "pmcid": "PMC13161475",
+          "pmid": "41485079",
+          "quote": "In addition, our structural prediction indicates that BCL7A, in conjunction with ACTB and ACTL6A, specifically binds to the HSA domain of BRG1, forming a core subcomplex distinct from the previously reported structures of the cBAF, PBAF, or ncBAF complexes. To determine whether this partial complex\u2014particularly with the N-terminal truncation of BRG1 that folds into the base module\u2014can exist as a stable physical entity, we reconstituted this hSWI/SNF submodule. This submodule contains a FLAG-tagged BRG1 C-terminal construct (BRG1(Ct)), which includes only the HSA, helicase, SnAc, and bromodomain (Fig. 1H). BRG1(Ct) was overexpressed in HEK293T cells along with V5-tagged WT or N-terminal truncated BCL7A (\u039420), and the respective subcomplexes were isolated using V5-FLAG tandem affinity purification. The results demonstrate the formation of a stable subcomplex, with no significant compositional difference between the WT and \u039420 BCL7A variants (Fig. 1I). Together, our findings demonstrate that the N-terminal double-stranded \u03b2-sheet of BCL7A mediates its incorporation into hSWI/SNF by directly engaging the ACTB-ACTL6A dimer, which in turn associates with the HSA domain of BRG1. In contrast to the \u03b2-sheet, the \u03b1-helix of BCL7A shows dispensability for hSWI/SNF incorporation.",
+          "semantic_review": "Results distinguish the AlphaFold prediction from a physically reconstituted stable submodule. ACTB is explicitly part of its ACTB-ACTL6A dimer; retain the engineered assembly rather than equate it with every endogenous BAF variant.",
+          "snapshot_path": "acquisition/papers/r008/PMID_41485079.txt",
+          "snapshot_sha256": "95ec69728f8d5b3e30474c112334f386ef1f9b99ffa336ec4d8fa3f092e1e036",
+          "source_name": "PubMed/PMC primary literature round 020",
+          "source_uri": "https://pubmed.ncbi.nlm.nih.gov/41485079/",
+          "source_version": "sha256:95ec69728f8d5b3e30474c112334f386ef1f9b99ffa336ec4d8fa3f092e1e036",
+          "study_id": "PMID:41485079"
+        },
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1093/procel/pwaf114",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "identifier_mapping_snapshot_sha256": "fe5695f793c2923bd81b607d4467d366524daac0b4b9e8f5f8245646b31c738b",
+          "locator": "Full text body offset 6757",
+          "pmcid": "PMC13161475",
+          "pmid": "41485079",
+          "quote": "BCL7A is a shared subunit of all three human SWI/SNF complex variants: cBAF, PBAF, and ncBAF. Previous studies using co-immunoprecipitation (co-IP), followed by Western blotting or mass spectrometry, showed that BCL7A interacts with the ATPase BRG1 (Mashtalir et al., 2018; Schick et al., 2019). However, detailed structural information of BCL7A in the context of hSWI/SNF complex remains elusive. To bridge this gap in knowledge, we utilized the AlphaFold3 algorithm (Abramson et al., 2024) to predict the structure of a core subcomplex, including a BRG1 fragment (amino acids 446\u20131,367, encompassing the HSA domain and helicase region), the ARP module (ACTL6A, ACTB, BCL7A), and a nucleosome core particle (NCP) consisted of Xenopus histones and Widom\u2019s 601 DNA sequence (Fig. 1A). The high pLDDT score of the BCL7A N-terminal region indicates a robust and reliable structural prediction (Fig. 1A) and the structural model reveals a defined positively charged N-terminal \u03b1-helix (amino acids 2\u201322, \u03b1N) and a double-stranded \u03b2-sheet (amino acids 31\u201350, \u03b2-sheet fold) in this region (Fig. 1A and 1B). As expected, the unstructured C-terminal region of BCL7A is not visualized in this model (Fig. 1A). In addition, the model predicts that the BCL7A N-terminal \u03b1-helix, rich in arginine and lysine residues, binds stably to the acidic patch of H2A/H2B in the nucleosome while the \u03b2-sheet fold of BCL7A facilitates its interaction with ACTB and ACTL6A (Fig. 1B). Notably, the predicted structure of the BRG1 fragment, ACTB, ACTL6A, and NCP closely resembles the cryo-EM-determined structure (Fig. S1A) with the only exception of the BRG1 HSA domain. PAE analysis indicates high prediction confidence for the spatial arrangement of BCL7A\u2019s N-terminal \u03b1-helix near the nucleosome and \u03b2-sheet near the ARP ",
+          "semantic_review": "Results distinguish the AlphaFold prediction from a physically reconstituted stable submodule. ACTB is explicitly part of its ACTB-ACTL6A dimer; retain the engineered assembly rather than equate it with every endogenous BAF variant.",
+          "snapshot_path": "acquisition/papers/r008/PMID_41485079.txt",
+          "snapshot_sha256": "95ec69728f8d5b3e30474c112334f386ef1f9b99ffa336ec4d8fa3f092e1e036",
+          "source_name": "PubMed/PMC primary literature round 020",
+          "source_uri": "https://pubmed.ncbi.nlm.nih.gov/41485079/",
+          "source_version": "sha256:95ec69728f8d5b3e30474c112334f386ef1f9b99ffa336ec4d8fa3f092e1e036",
+          "study_id": "PMID:41485079"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:87a8f238158df307b65b6eb2",
+      "identified_study_count": 1,
+      "object_id": "STUDY:41485079_BRG1Ct_ARP",
+      "object_labels": [
+        "Reconstituted BRG1 C-terminal\u2013ACTB\u2013ACTL6A\u2013BCL7A subcomplex"
+      ],
+      "original_object_ids": [
+        "STUDY:41485079_BRG1Ct_ARP"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r020:lit:41485079:1"
+      ],
+      "relation": "member_of_complex",
+      "study_ids": [
+        "PMID:41485079"
+      ],
+      "subject_id": "HGNC:132",
+      "subject_label": "ACTB"
+    }
+  ],
+  "STUDY:42608480_TDMD": [
+    {
+      "context": {
+        "assay": "miRNA-seq and AGO2-eCLIP",
+        "cell_type": "human breast cancer subtypes",
+        "definition": "ZSWIM8-dependent canonical TDMD of identified substrates; SERPINE1/miR-30c-5p noncanonical pathway excluded",
+        "perturbation": "ZSWIM8 CRISPRi",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "abstract",
+          "assertion_type": "experimental_result",
+          "doi": "10.1038/s44318-026-00889-8",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "identifier_mapping_snapshot_sha256": "fe5695f793c2923bd81b607d4467d366524daac0b4b9e8f5f8245646b31c738b",
+          "locator": "Abstract",
+          "pmcid": "PMC13631368",
+          "pmid": "42608480",
+          "quote": "Target-directed microRNA degradation (TDMD) is an emerging post-transcriptional mechanism that controls miRNA turnover, yet its role in human cancers remains largely unexplored. Here, we combine CRISPRi-mediated ZSWIM8 depletion, miRNA-seq, and AGO2-eCLIP to define the TDMD landscape across breast cancer subtypes. We identify 19 high-confidence TDMD substrates, including miR-29b-3p and miR-33a/b-5p, and show that TDMD shapes miRNA target occupancy and target repression. Integration with single-cell transcriptomics reveals that TDMD of miR-29b-3p triggered by NREP transcript is associated with transcriptional plasticity along the epithelial-mesenchymal axis and marks a stem-like subpopulation of malignat cells with tumor-initiating potential in triple-negative breast cancer. Unexpectedly, we also uncover a non-canonical TDMD mechanism, independent of ubiquitin ligase ZSWIM8 and the proteasome, which includes SERPINE1-triggered miR-30c-5p degradation, conferring paclitaxel resistance and enhancing sphere-forming potential. These findings establish target-directed microRNA degradation as a functional layer of miRNA regulation in cancer, linking miRNA decay to cellular state transitions and therapeutic response. Our results broaden the mechanistic spectrum of TDMD and provide a framework to investigate how regulated miRNA decay contributes to aggressive breast cancer phenotypes.",
+          "semantic_review": "Literal experimental observation; scope restricted to the reported human system.",
+          "snapshot_path": "acquisition/papers/r007/PMID_42608480.txt",
+          "snapshot_sha256": "169f0fc37784d3ae437abbcb77342979efadf0e6492280be205d0d204f692eb7",
+          "source_name": "PubMed/PMC primary literature round 007",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13631368/",
+          "source_version": "sha256:169f0fc37784d3ae437abbcb77342979efadf0e6492280be205d0d204f692eb7",
+          "study_id": "PMID:42608480"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:87dc16f88505adc3430cbc85",
+      "identified_study_count": 1,
+      "object_id": "STUDY:42608480_TDMD",
+      "object_labels": [
+        "canonical target-directed microRNA degradation"
+      ],
+      "original_object_ids": [
+        "STUDY:42608480_TDMD"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r007:lit:42608480:30"
+      ],
+      "relation": "annotated_to",
+      "study_ids": [
+        "PMID:42608480"
+      ],
+      "subject_id": "HGNC:23528",
+      "subject_label": "ZSWIM8"
+    }
+  ],
+  "COMPLEX:PMID42647634_IGFBP7_dodecamer": [
+    {
+      "context": {
+        "assay": "cryo-electron microscopy",
+        "cell_type": "in vitro purified human IGFBP7",
+        "molecular_conditions": "heparin present",
+        "stoichiometry": "12 IGFBP7 subunits; D6 symmetry",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1126/sciadv.aeg1148",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "identifier_mapping_snapshot_sha256": "fe5695f793c2923bd81b607d4467d366524daac0b4b9e8f5f8245646b31c738b",
+          "locator": "Full text body offset 4815",
+          "pmcid": "PMC13510594",
+          "pmid": "42647634",
+          "quote": "In this study, we determined the cryo\u2013electron microscopy (cryo-EM) structure of IGFBP7 in the presence of heparin. The structure reveals that heparin binding induces higher-order oligomerization of IGFBP7 into a barrel-shaped dodecameric complex with the D6 symmetry. Notably, cell aggregation assays showed that the IGFBP7 barrel can simultaneously engage heparan sulfate proteoglycans (HSPGs) on adjacent cells, thereby directly promoting cell-cell adhesion independent of classical cell surface receptors. Moreover, cell-based assays demonstrated that IGFBP7 enhances and prolongs the activation of both IR and c-MET receptors through its adhesion-mediated mechanism. Together, our structural and functional findings identify IGFBP7 as a \u201ccell glue\u201d molecule and provide insight into how it achieves functional pleiotropy through its adhesion activity.",
+          "semantic_review": "Literal experimental observation; scope restricted to the reported human system.",
+          "snapshot_path": "acquisition/papers/r008/PMID_42647634.txt",
+          "snapshot_sha256": "ae48a7d4d8b8b870d44a000054b3d723f4760db5b85926aa978be854114c7f07",
+          "source_name": "PubMed/PMC primary literature round 008",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13510594/",
+          "source_version": "sha256:ae48a7d4d8b8b870d44a000054b3d723f4760db5b85926aa978be854114c7f07",
+          "study_id": "PMID:42647634"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:918ee9e6eb0156fc527c5bf6",
+      "identified_study_count": 1,
+      "object_id": "COMPLEX:PMID42647634_IGFBP7_dodecamer",
+      "object_labels": [
+        "heparin-induced IGFBP7 homo-dodecamer"
+      ],
+      "original_object_ids": [
+        "COMPLEX:PMID42647634_IGFBP7_dodecamer"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r008:lit:42647634:16"
+      ],
+      "relation": "member_of_complex",
+      "study_ids": [
+        "PMID:42647634"
+      ],
+      "subject_id": "HGNC:5476",
+      "subject_label": "IGFBP7"
+    }
+  ],
+  "STUDY:37858248_immune_evasion": [
+    {
+      "context": {
+        "cell_type": "human cancer cells; NK, T and CAR effector assays",
+        "definition": "MUC21 surface expression prevents immune-cell interactions and recognition; complement-dependent cytotoxicity spared",
+        "perturbation": "gain-of-function CRISPRa and validation",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "abstract",
+          "assertion_type": "experimental_result",
+          "doi": "10.1186/s13046-023-02840-9",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "identifier_mapping_snapshot_sha256": "fe5695f793c2923bd81b607d4467d366524daac0b4b9e8f5f8245646b31c738b",
+          "locator": "Abstract",
+          "pmcid": "PMC10588101",
+          "pmid": "37858248",
+          "quote": "Background Immunotherapy has significantly advanced cancer treatments, but many patients do not respond to it, partly due to immunosuppressive mechanisms used by tumor cells. These cells employ immunosuppressive ligands to evade detection and elimination by the immune system. Therefore, the discovery and characterization of novel immunosuppressive ligands that facilitate immune evasion are crucial for developing more potent anti-cancer therapies. Methods We conducted gain-of-function screens using a CRISPRa (CRISPR activation) library that covered the entire human transmembrane sub-genome to identify surface molecules capable of hindering NK-mediated cytotoxicity. The immunosuppressive role and mechanism of MUC21 were validated using NK and T cell mediated cytotoxicity assays. Bioinformatics tools were employed to assess the clinical implications of mucin-21 (MUC21) in cancer cell immunity. Results Our genetic screens revealed that MUC21 expression on cancer cell surfaces inhibits both the cytotoxic activity of NK cells and antibody-dependent cellular cytotoxicity, but not affecting complement-dependent cytotoxicity. Additionally, MUC21 expression hinders T cell activation by impeding antigen recognition, thereby diminishing the effectiveness of the immune checkpoint inhibitor, anti-PD-L1. Moreover, MUC21 expression suppress the antitumor function of both CAR-T cells and CAR-NK cells. Mechanistically, MUC21 facilitates immune evasion by creating steric hindrance, preventing interactions between cancer and immune cells. Bioinformatics analysis revealed elevated MUC21 expression in lung cancer, which correlated with reduced infiltration and activation of cytotoxic immune cells. Intriguingly, MUC21 expression was higher in non-small cell lung cancer (NSCLC) tumors that were non-responsive to anti-PD-(L)1 treatment compared to responsive tumors. Conclusions These findings indicate that surface MUC21 serves as a potent immunosuppressive ligand, shielding cancer cells from NK and CD8 + T cell attacks. This suggests that inhibiting MUC21 could be a promising strategy to improve cancer immunotherapy.",
+          "semantic_review": "Literal experimental observation; scope restricted to the reported human system.",
+          "snapshot_path": "acquisition/papers/r003/PMID_37858248.txt",
+          "snapshot_sha256": "f8f1466f2a0f1b0580a9f433f660752e6d9708eb1bd183741323b50067b642fd",
+          "source_name": "PubMed/PMC primary literature round 003",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10588101/",
+          "source_version": "sha256:f8f1466f2a0f1b0580a9f433f660752e6d9708eb1bd183741323b50067b642fd",
+          "study_id": "PMID:37858248"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:9e3384cf2f36df55ed05448f",
+      "identified_study_count": 1,
+      "object_id": "STUDY:37858248_immune_evasion",
+      "object_labels": [
+        "steric inhibition of tumor-immune-cell interaction"
+      ],
+      "original_object_ids": [
+        "STUDY:37858248_immune_evasion"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r003:lit:37858248:42"
+      ],
+      "relation": "annotated_to",
+      "study_ids": [
+        "PMID:37858248"
+      ],
+      "subject_id": "HGNC:21661",
+      "subject_label": "MUC21"
+    }
+  ],
+  "STUDY:37523060_doxorubicin_export": [
+    {
+      "context": {
+        "assay": "genetic screen and direct drug uptake",
+        "cell_type": "K562",
+        "definition": "Source-defined cellular doxorubicin uptake or export; transport substrate scope retained",
+        "substrate": "doxorubicin",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1007/s13402-023-00847-0",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "identifier_mapping_snapshot_sha256": "fe5695f793c2923bd81b607d4467d366524daac0b4b9e8f5f8245646b31c738b",
+          "locator": "Full text body offset 2907",
+          "pmcid": "PMC10698112",
+          "pmid": "37523060",
+          "quote": "We performed CRISPRko and CRISPRa genetic screens to identify the potential transporters for doxorubicin, the most widely used anthracycline drug with strong side effects such as cardiotoxicity [18, 21\u201323]. Integrating the data from these comprehensive CRISPR screenings, we confirmed drug exporters for doxorubicin such as ABCB1 and ABCG2 genes, and identified novel doxorubicin importer gene SLC2A3 based on the CRISPRa genetic screens. Upregulation of SLC2A3 led to higher drug uptake and better cell killing, indicating SLC2A3 could be a new marker to predict doxorubicin drug response and minimize side effects for the personalized application of this conventional chemotherapeutic drug. These results also highlight the necessity of combining both CRISPRko and CRISPRa genetic screens for the identification of drug transporters.",
+          "semantic_review": "Literal experimental observation; scope restricted to the reported human system.",
+          "snapshot_path": "acquisition/papers/r003/PMID_37523060.txt",
+          "snapshot_sha256": "09dfbf31f6a8bb4a1ae7a4104cbb8c8afd377ac097bb75d5a7bda2cb178babfe",
+          "source_name": "PubMed/PMC primary literature round 003",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10698112/",
+          "source_version": "sha256:09dfbf31f6a8bb4a1ae7a4104cbb8c8afd377ac097bb75d5a7bda2cb178babfe",
+          "study_id": "PMID:37523060"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:9f06a91add405fc9cb60fa3c",
+      "identified_study_count": 1,
+      "object_id": "STUDY:37523060_doxorubicin_export",
+      "object_labels": [
+        "doxorubicin export"
+      ],
+      "original_object_ids": [
+        "STUDY:37523060_doxorubicin_export"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r003:lit:37523060:12"
+      ],
+      "relation": "annotated_to",
+      "study_ids": [
+        "PMID:37523060"
+      ],
+      "subject_id": "HGNC:74",
+      "subject_label": "ABCG2"
+    },
+    {
+      "context": {
+        "assay": "genetic screen and direct drug uptake",
+        "cell_type": "K562",
+        "definition": "Source-defined cellular doxorubicin uptake or export; transport substrate scope retained",
+        "substrate": "doxorubicin",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1007/s13402-023-00847-0",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "identifier_mapping_snapshot_sha256": "fe5695f793c2923bd81b607d4467d366524daac0b4b9e8f5f8245646b31c738b",
+          "locator": "Full text body offset 2907",
+          "pmcid": "PMC10698112",
+          "pmid": "37523060",
+          "quote": "We performed CRISPRko and CRISPRa genetic screens to identify the potential transporters for doxorubicin, the most widely used anthracycline drug with strong side effects such as cardiotoxicity [18, 21\u201323]. Integrating the data from these comprehensive CRISPR screenings, we confirmed drug exporters for doxorubicin such as ABCB1 and ABCG2 genes, and identified novel doxorubicin importer gene SLC2A3 based on the CRISPRa genetic screens. Upregulation of SLC2A3 led to higher drug uptake and better cell killing, indicating SLC2A3 could be a new marker to predict doxorubicin drug response and minimize side effects for the personalized application of this conventional chemotherapeutic drug. These results also highlight the necessity of combining both CRISPRko and CRISPRa genetic screens for the identification of drug transporters.",
+          "semantic_review": "Literal experimental observation; scope restricted to the reported human system.",
+          "snapshot_path": "acquisition/papers/r003/PMID_37523060.txt",
+          "snapshot_sha256": "09dfbf31f6a8bb4a1ae7a4104cbb8c8afd377ac097bb75d5a7bda2cb178babfe",
+          "source_name": "PubMed/PMC primary literature round 003",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10698112/",
+          "source_version": "sha256:09dfbf31f6a8bb4a1ae7a4104cbb8c8afd377ac097bb75d5a7bda2cb178babfe",
+          "study_id": "PMID:37523060"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:ebdd74f018c79257d65a1255",
+      "identified_study_count": 1,
+      "object_id": "STUDY:37523060_doxorubicin_export",
+      "object_labels": [
+        "doxorubicin export"
+      ],
+      "original_object_ids": [
+        "STUDY:37523060_doxorubicin_export"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r003:lit:37523060:10"
+      ],
+      "relation": "annotated_to",
+      "study_ids": [
+        "PMID:37523060"
+      ],
+      "subject_id": "HGNC:40",
+      "subject_label": "ABCB1"
+    }
+  ],
+  "STUDY:37523060_doxorubicin_import": [
+    {
+      "context": {
+        "assay": "genetic screen and direct drug uptake",
+        "cell_type": "K562",
+        "definition": "Source-defined cellular doxorubicin uptake or export; transport substrate scope retained",
+        "substrate": "doxorubicin",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1007/s13402-023-00847-0",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "identifier_mapping_snapshot_sha256": "fe5695f793c2923bd81b607d4467d366524daac0b4b9e8f5f8245646b31c738b",
+          "locator": "Full text body offset 2907",
+          "pmcid": "PMC10698112",
+          "pmid": "37523060",
+          "quote": "We performed CRISPRko and CRISPRa genetic screens to identify the potential transporters for doxorubicin, the most widely used anthracycline drug with strong side effects such as cardiotoxicity [18, 21\u201323]. Integrating the data from these comprehensive CRISPR screenings, we confirmed drug exporters for doxorubicin such as ABCB1 and ABCG2 genes, and identified novel doxorubicin importer gene SLC2A3 based on the CRISPRa genetic screens. Upregulation of SLC2A3 led to higher drug uptake and better cell killing, indicating SLC2A3 could be a new marker to predict doxorubicin drug response and minimize side effects for the personalized application of this conventional chemotherapeutic drug. These results also highlight the necessity of combining both CRISPRko and CRISPRa genetic screens for the identification of drug transporters.",
+          "semantic_review": "Literal experimental observation; scope restricted to the reported human system.",
+          "snapshot_path": "acquisition/papers/r003/PMID_37523060.txt",
+          "snapshot_sha256": "09dfbf31f6a8bb4a1ae7a4104cbb8c8afd377ac097bb75d5a7bda2cb178babfe",
+          "source_name": "PubMed/PMC primary literature round 003",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10698112/",
+          "source_version": "sha256:09dfbf31f6a8bb4a1ae7a4104cbb8c8afd377ac097bb75d5a7bda2cb178babfe",
+          "study_id": "PMID:37523060"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:a4a667043ee1732f193abd06",
+      "identified_study_count": 1,
+      "object_id": "STUDY:37523060_doxorubicin_import",
+      "object_labels": [
+        "doxorubicin import"
+      ],
+      "original_object_ids": [
+        "STUDY:37523060_doxorubicin_import"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r003:lit:37523060:8"
+      ],
+      "relation": "annotated_to",
+      "study_ids": [
+        "PMID:37523060"
+      ],
+      "subject_id": "HGNC:11007",
+      "subject_label": "SLC2A3"
+    }
+  ],
+  "STUDY:42662417_HIV_neutralization": [
+    {
+      "context": {
+        "cell_type": "human HSPC-derived red blood cells",
+        "definition": "engineered red-cell CD4 viral trap neutralizes HIV-1 pseudovirus in vitro",
+        "perturbation": "CRISPR-Cas9 HBA1-locus knock-in",
+        "subject_molecular_form": "engineered CD4-glycophorin A fusion; truncated EPOR co-expression",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1016/j.omta.2026.201799",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "identifier_mapping_snapshot_sha256": "fe5695f793c2923bd81b607d4467d366524daac0b4b9e8f5f8245646b31c738b",
+          "locator": "Abstract",
+          "pmcid": "PMC13519646",
+          "pmid": "42662417",
+          "quote": "Canonical HIV-1 entry into target cells depends on binding to CD4 as a primary receptor. Because of this, use of the CD4 receptor as a viral trap (a decoy receptor used to prevent infection of target cells) is a promising strategy for the treatment of HIV-1. One challenge in using CD4 viral traps is maintaining enough of the decoy receptor in circulation to remain effective. Here, we present a strategy to produce cell-based CD4 viral traps by engineering hematopoietic stem and progenitor cells (HSPCs) to express the CD4 receptor in red blood cell (RBC) progeny. This takes advantage of the ability of the HSPC to repopulate the blood system for a lifetime, while leveraging the fact that RBCs greatly outnumber any cell targeted for infection. CRISPR-Cas9-engineered HSPCs efficiently express CD4 on their cell surface after differentiation to the RBC lineage  in vitro . Fusion of CD4 to glycophorin A (GPA) and introduction of a truncated erythropoietin receptor (tEPOR) leads to increased CD4 expression and enrichment of edited cells (CD4-GPA-tEPOR) to levels capable of neutralizing HIV-1 pseudovirus  in vitro . In sum, this work presents a potential strategy for the one-time delivery of CD4-RBC viral traps through autologous transplantation of engineered HSPCs.",
+          "semantic_review": "Literal experimental observation; scope restricted to the reported human system.",
+          "snapshot_path": "acquisition/papers/r007/PMID_42662417.txt",
+          "snapshot_sha256": "32cb18e24bd48a4d6f6a31d4f1f910f45512d2851466d7d34aba196507e72f51",
+          "source_name": "PubMed/PMC primary literature round 007",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13519646/",
+          "source_version": "sha256:32cb18e24bd48a4d6f6a31d4f1f910f45512d2851466d7d34aba196507e72f51",
+          "study_id": "PMID:42662417"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:a6efc4995d5cc54f394c70fa",
+      "identified_study_count": 1,
+      "object_id": "STUDY:42662417_HIV_neutralization",
+      "object_labels": [
+        "HIV-1 pseudovirus neutralization"
+      ],
+      "original_object_ids": [
+        "STUDY:42662417_HIV_neutralization"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r007:lit:42662417:22"
+      ],
+      "relation": "annotated_to",
+      "study_ids": [
+        "PMID:42662417"
+      ],
+      "subject_id": "HGNC:1678",
+      "subject_label": "CD4"
+    }
+  ],
+  "STUDY:42733088_FAT10_E2_loading": [
+    {
+      "context": {
+        "assay": "FAT10 transthiolation from UBA6",
+        "cell_type": "in vitro biochemical reconstitution",
+        "definition": "UBE2S accepts thioester-linked FAT10 from UBA6 under reconstituted conditions; downstream substrate conjugation not asserted",
+        "loading": "approximately 2 percent in 1 minute",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1038/s41467-026-76603-3",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "identifier_mapping_snapshot_sha256": "fe5695f793c2923bd81b607d4467d366524daac0b4b9e8f5f8245646b31c738b",
+          "locator": "Full text body offset 23127",
+          "pmcid": "PMC13572539",
+          "pmid": "42733088",
+          "quote": "ll UBA6-competent ubiquitin E2s for their ability to receive FAT10 in in vitro transthiolation assays. Out of the 15 ubiquitin E2s capable of working with UBA6, six robustly received FAT10 over short and extended timeframes (5 min and 15 min, respectively): UBE2Z, UBE2J2, UBE2D2, UBE2D3, UBE2D4 and UBE2S (Fig. 3a and Supplementary Fig. 5a). Very weak transfer of FAT10 was also observed to BIRC6 and UBE2O at 15 min, consistent with earlier reports39,40 (Fig. 3a). Importantly, the ability of E2s to receive FAT10 did not directly correlate with their propensity to receive ubiquitin from UBA6 since robust UBA6 ubiquitin-active E2s such as UBE2L3, UBE2G2 and BIRC6 did not robustly receive FAT10 (Fig. 3a and Supplementary Fig. 5b). We then established a hierarchy of FAT10 E2 activity. Focusing on the E2s most proficient at receiving FAT10 (UBE2Z, UBE2J2, UBE2D2 and UBE2S), we quantified multi-turnover time course transthiolation assays, confirming that UBE2Z (also known as UBA6-specific E2 enzyme 1, USE1) is the best E2 at receiving FAT10 from UBA6 with ~25% loading on UBE2Z detected in 1 min compared to UBE2D2 (~8%), UBE2J2 (~5%) and UBE2S (~2%) (Fig. 3b). Importantly, the observed E2~FAT10 signal corresponds to a thioester-linked species as incubation with reducing agent DTT collapsed the E2~FAT10 adduct with loss of FAT10 signal (Supplementary Fig. 5c). Focussing on UBE2Z, a very weak signal remained at longer time points (15 min) suggesting low level formation of an isopeptide-linked UBE2Z\u2013FAT10 species, consistent with reports that UBE2Z displays auto-FAT10ylation activity38,41.Fig. 3Structural visualisation of ubiquitin and FAT10 transfer to UBE2Z, the most efficient FAT10 E2.a A subset of the 15 UBA6-competent ubiquitin-conjugating E2 enzymes receive FAT10. Shown by in vitro FAT10 translocation assays in 5 min using Cy3-labelled FAT10. E2 enzymes are ordered by incre",
+          "semantic_review": "Literal experimental observation; scope restricted to the reported human system.",
+          "snapshot_path": "acquisition/papers/r004/PMID_42733088.txt",
+          "snapshot_sha256": "bb91ee844e8760ede32aa6f2cbfeb920b32c850da2d88549d4eb41d2d7658c6d",
+          "source_name": "PubMed/PMC primary literature round 006",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13572539/",
+          "source_version": "sha256:bb91ee844e8760ede32aa6f2cbfeb920b32c850da2d88549d4eb41d2d7658c6d",
+          "study_id": "PMID:42733088"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:bd76a5a195ec50c6c00a4536",
+      "identified_study_count": 1,
+      "object_id": "STUDY:42733088_FAT10_E2_loading",
+      "object_labels": [
+        "FAT10 receiving E2 activity"
+      ],
+      "original_object_ids": [
+        "STUDY:42733088_FAT10_E2_loading"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r006:lit:42733088:3"
+      ],
+      "relation": "annotated_to",
+      "study_ids": [
+        "PMID:42733088"
+      ],
+      "subject_id": "HGNC:17895",
+      "subject_label": "UBE2S"
+    }
+  ],
+  "COMPLEX:PMID42463693_GPR84_Gi": [
+    {
+      "context": {
+        "assay": "cryo-EM",
+        "cell_type": "purified recombinant human GPR84 signaling assembly",
+        "molecular_conditions": "DL-175-bound active state",
+        "qualification": "no inference of other component gene identities",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1038/s41467-026-75728-9",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "identifier_mapping_snapshot_sha256": "fe5695f793c2923bd81b607d4467d366524daac0b4b9e8f5f8245646b31c738b",
+          "locator": "Abstract",
+          "pmcid": "PMC13490371",
+          "pmid": "42463693",
+          "quote": "GPR84 is an orphan class A GPCR primarily expressed in immune cells, where it plays key roles in inflammation and metabolism. Here, we present the cryo-electron microscopy structures of the GPR84-Gi complex bound to the G protein-biased agonist DL-175, and the inactive state of GPR84 bound to the antagonist GLPG1205. Combined with signaling assays and molecular dynamics simulations, these structures elucidate the conformational landscape spanning the inactive and G protein-biased active states of GPR84, providing a mechanistic basis for biased agonism. Notably, steric interactions between DL-175 and L336 6.52  selectively preclude the conformational changes required for efficient \u03b2-arrestin recruitment without compromising G protein activation. These structural insights provide a structural context for the rational design of GPR84-targeted therapeutics with precisely tuned signaling profiles.",
+          "semantic_review": "Literal experimental observation; scope restricted to the reported human system.",
+          "snapshot_path": "acquisition/papers/r009/PMID_42463693.txt",
+          "snapshot_sha256": "b58799c5dea0784869dbc8d08d12de3a5284884d2deed6ab813d7b860414919f",
+          "source_name": "PubMed/PMC primary literature round 009",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13490371/",
+          "source_version": "sha256:b58799c5dea0784869dbc8d08d12de3a5284884d2deed6ab813d7b860414919f",
+          "study_id": "PMID:42463693"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:c5312956fb7840055c60a672",
+      "identified_study_count": 1,
+      "object_id": "COMPLEX:PMID42463693_GPR84_Gi",
+      "object_labels": [
+        "DL-175-bound human GPR84-Gi signaling complex"
+      ],
+      "original_object_ids": [
+        "COMPLEX:PMID42463693_GPR84_Gi"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r009:lit:42463693:25"
+      ],
+      "relation": "member_of_complex",
+      "study_ids": [
+        "PMID:42463693"
+      ],
+      "subject_id": "HGNC:4535",
+      "subject_label": "GPR84"
+    }
+  ],
+  "STUDY:42350764_ACE2_SLC6A19": [
+    {
+      "context": {
+        "assay": "cryo-EM",
+        "assembly": "ACE2-mediated dimer of ACE2-B0AT1 units",
+        "cell_type": "HEK293S GnTI-negative expression; purified in vitro",
+        "construct": "stabilized sB0AT1; engineered for structural work",
+        "molecular_condition": "engineered structural assembly; wild-type used separately for transport assays",
+        "taxon_id": "NCBITaxon:9606"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1038/s42003-026-10535-y",
+          "locator": "Scientific body: exact paragraph/sentence",
+          "pmcid": "PMC13669362",
+          "quote": "Human wild-type B0AT1 (encoded by SLC6A19) was unstable when expressed alone. To address this, we stabilized the protein through complex formation with ACE2, a strategy commonly used in previous structural studies of B0AT1 and related transporters19,20, and with Collectrin, or by introducing stabilizing mutations and antibody Fab fragments.",
+          "snapshot_path": "acquisition/papers/r001/PMID_42350764.txt",
+          "snapshot_sha256": "fcb66caf8c5d2404ba486089442d8917de8bf937ee608cf3b6115ae3bd87b64c",
+          "source_name": "PubMed/PMC cached scientific text",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13669362/",
+          "source_version": "external_cache_sha256:fcb66caf8c5d2404ba486089442d8917de8bf937ee608cf3b6115ae3bd87b64c",
+          "study_id": "PMID:42350764"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:dfef513d83a5b7a99dab622f",
+      "identified_study_count": 1,
+      "object_id": "STUDY:42350764_ACE2_SLC6A19",
+      "object_labels": [
+        "ACE2-B0AT1 structural complex"
+      ],
+      "original_object_ids": [
+        "STUDY:42350764_ACE2_SLC6A19"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r001:lit:42350764:25"
+      ],
+      "relation": "member_of_complex",
+      "study_ids": [
+        "PMID:42350764"
+      ],
+      "subject_id": "HGNC:27960",
+      "subject_label": "SLC6A19"
+    }
+  ],
+  "STUDY:41742461_NK_degranulation": [
+    {
+      "context": {
+        "cell_type": "human peripheral blood NK cells",
+        "definition": "Partial restoration of NK degranulation with S6/STAT5 signaling under CRC-plasma suppression",
+        "taxon_id": "NCBITaxon:9606",
+        "treatment": "CRC plasma; TNF-alpha supplementation"
+      },
+      "evidence": [
+        {
+          "access_scope": "full_text",
+          "assertion_type": "experimental_result",
+          "doi": "10.1080/2162402x.2026.2636311",
+          "identifier_mapping_snapshot": "acquisition/sources/hgnc.json",
+          "identifier_mapping_snapshot_sha256": "fe5695f793c2923bd81b607d4467d366524daac0b4b9e8f5f8245646b31c738b",
+          "locator": "Full text body offset 28389",
+          "pmcid": "PMC12940107",
+          "pmid": "41742461",
+          "quote": "To further explore the role of TNF-\u03b1 in CRC-associated NK cell dysfunction, we quantified the levels of this cytokine in the plasma of both CRC patients and HDs. This analysis showed significantly lower concentrations of TNF-\u03b1 in the plasma of CRC patients compared to those of HDs. Additionally, we observed that the total intracellular TNF-\u03b1 content of NK cells isolated from CRC patients was markedly reduced compared to HD NK cells (Figure 6A). Moreover, treatment of HD NK cells with the TNF-\u03b1 inhibitor etanercept significantly reduced their degranulation capacity when cultured with HD plasma (Figure 6B), highlighting a physiological role for TNF-\u03b1 in regulating NK cell function. Accordingly, supplementation of CRC plasma with exogenous TNF-\u03b1 partially rescued the defective NK cell degranulation and restored S6 protein phosphorylation in response to K562 target cells, as well as cytokine-induced STAT5 and S6 phosphorylation (Figure 6C-E).",
+          "semantic_review": "Literal experimental observation; scope restricted to the reported human system.",
+          "snapshot_path": "acquisition/papers/r004/PMID_41742461.txt",
+          "snapshot_sha256": "1645fd602938ba540a25f86a93c8965fb8db85b88003e5219e8e87f6063ba721",
+          "source_name": "PubMed/PMC primary literature round 006",
+          "source_uri": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12940107/",
+          "source_version": "sha256:1645fd602938ba540a25f86a93c8965fb8db85b88003e5219e8e87f6063ba721",
+          "study_id": "PMID:41742461"
+        }
+      ],
+      "evidence_classes": [
+        "literature_extracted"
+      ],
+      "id": "STMT:e75df668a0ab571340efe02d",
+      "identified_study_count": 1,
+      "object_id": "STUDY:41742461_NK_degranulation",
+      "object_labels": [
+        "positive regulation of human NK-cell degranulation"
+      ],
+      "original_object_ids": [
+        "STUDY:41742461_NK_degranulation"
+      ],
+      "polarity": "positive",
+      "projection_eligible": true,
+      "record_ids": [
+        "r006:lit:41742461:8"
+      ],
+      "relation": "annotated_to",
+      "study_ids": [
+        "PMID:41742461"
+      ],
+      "subject_id": "HGNC:11892",
+      "subject_label": "TNF"
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "snapshot_utc": "2026-11-09T02:45:15.075994+00:00",
+  "scope": "Current pipeline, completed GEARS comparison summaries, and task007 added-attribute concept-identity audit before prompt/skill optimization.",
+  "source_artifacts_preserved": true,
+  "validation": {
+    "root_unittest": {
+      "tests": 66,
+      "status": "passed"
+    },
+    "standalone_unittest": {
+      "tests": 14,
+      "status": "passed"
+    }
+  },
+  "files": [
+    {
+      "path": "attribute_identity/REPORT.txt",
+      "source_path": "/home/yxcheng/project/GO_enrichment/outputs/analysis/norman_task007_new_attribute_identity_001/REPORT.txt",
+      "bytes": 7544,
+      "sha256": "a14f14984f303304deabcb5673c3d9d2afb95ede5f2a6ebe79901018230026e0"
+    },
+    {
+      "path": "attribute_identity/code_hashes_before.json",
+      "source_path": "/home/yxcheng/project/GO_enrichment/outputs/analysis/norman_task007_new_attribute_identity_001/code_hashes_before.json",
+      "bytes": 9636,
+      "sha256": "1a6d5ba3ab254b434e2e490307720b71e1ab3b68f8637cd8788f19bd668dcf1c"
+    },
+    {
+      "path": "attribute_identity/complexportal_GO_semantic_review.tsv",
+      "source_path": "/home/yxcheng/project/GO_enrichment/outputs/analysis/norman_task007_new_attribute_identity_001/complexportal_GO_semantic_review.tsv",
+      "bytes": 106541,
+      "sha256": "ad969750214de47e92f6e40ccb5b48f78d34f079e8178cffeec4e896a730cdd1"
+    },
+    {
+      "path": "attribute_identity/confirmed_concept_overlap.tsv",
+      "source_path": "/home/yxcheng/project/GO_enrichment/outputs/analysis/norman_task007_new_attribute_identity_001/confirmed_concept_overlap.tsv",
+      "bytes": 31047,
+      "sha256": "cd098c4251c28d7d80b8953d1be555ffd151a996503fa334b6218db45edc3ce0"
+    },
+    {
+      "path": "attribute_identity/database_and_local_to_full_GO_candidates.tsv",
+      "source_path": "/home/yxcheng/project/GO_enrichment/outputs/analysis/norman_task007_new_attribute_identity_001/database_and_local_to_full_GO_candidates.tsv",
+      "bytes": 354170,
+      "sha256": "7dc0cf7f57d94ab9b8f222943e22018f9f697effd5455cd9ee65921991f38bd4"
+    },
+    {
+      "path": "attribute_identity/literature_local_semantic_review.tsv",
+      "source_path": "/home/yxcheng/project/GO_enrichment/outputs/analysis/norman_task007_new_attribute_identity_001/literature_local_semantic_review.tsv",
+      "bytes": 24153,
+      "sha256": "7b59bac4b2c9cccf2d8ffbd5475faa53bdb852649653c20ec2cedb923c1ba4c0"
+    },
+    {
+      "path": "attribute_identity/local_attribute_statement_evidence.json",
+      "source_path": "/home/yxcheng/project/GO_enrichment/outputs/analysis/norman_task007_new_attribute_identity_001/local_attribute_statement_evidence.json",
+      "bytes": 118213,
+      "sha256": "228a49c5bd15a8a8de86b3cfa90ba9b9208e9d11ab7f1bb523f72bac91cfebf9"
+    },
+    {
+      "path": "attribute_identity/new_attribute_inventory.tsv",
+      "source_path": "/home/yxcheng/project/GO_enrichment/outputs/analysis/norman_task007_new_attribute_identity_001/new_attribute_inventory.tsv",
+      "bytes": 376784,
+      "sha256": "057196ab85e108824dd910b20be9eea0c41e2d35b60f6988f179613444ffd522"
+    },
+    {
+      "path": "attribute_identity/preservation_checks.json",
+      "source_path": "/home/yxcheng/project/GO_enrichment/outputs/analysis/norman_task007_new_attribute_identity_001/preservation_checks.json",
+      "bytes": 1694,
+      "sha256": "798b10182a8f9d6a40608bc7134e065d28c6d962edefc3433c3f7f023a56ad06"
+    },
+    {
+      "path": "attribute_identity/reactome_GO_semantic_review.tsv",
+      "source_path": "/home/yxcheng/project/GO_enrichment/outputs/analysis/norman_task007_new_attribute_identity_001/reactome_GO_semantic_review.tsv",
+      "bytes": 530800,
+      "sha256": "8fb29abc8182a36dfc60c9ec28634afcd3d877dc64fac2335453516b6b439550"
+    },
+    {
+      "path": "attribute_identity/reactome_official_GO_mappings.tsv",
+      "source_path": "/home/yxcheng/project/GO_enrichment/outputs/analysis/norman_task007_new_attribute_identity_001/reactome_official_GO_mappings.tsv",
+      "bytes": 385258,
+      "sha256": "fe92c809fccb23d3bbf0c2c6403f6071a113bbccc2e264ed77f56947c4ecf0aa"
+    },
+    {
+      "path": "attribute_identity/same_name_and_cross_type_review.tsv",
+      "source_path": "/home/yxcheng/project/GO_enrichment/outputs/analysis/norman_task007_new_attribute_identity_001/same_name_and_cross_type_review.tsv",
+      "bytes": 2510,
+      "sha256": "ad5ba89840bdaaa0b095467c1276f4c1d6ae512950c32b241ab5748f4a1366a5"
+    },
+    {
+      "path": "attribute_identity/sources/Pathways2GoTerms_human.txt",
+      "source_path": "/home/yxcheng/project/GO_enrichment/outputs/analysis/norman_task007_new_attribute_identity_001/sources/Pathways2GoTerms_human.txt",
+      "bytes": 61415,
+      "sha256": "68b307d8b25cd33d9c7df67b312e1b388fb9325d32aa6b8f87db2b2f781ac122"
+    },
+    {
+      "path": "attribute_identity/sources/reactome_mapping_manifest.json",
+      "source_path": "/home/yxcheng/project/GO_enrichment/outputs/analysis/norman_task007_new_attribute_identity_001/sources/reactome_mapping_manifest.json",
+      "bytes": 283,
+      "sha256": "8abb03b4f2564e4f87106a87485fd732dcb0d7eff19d0ec617b573a336738198"
+    },
+    {
+      "path": "attribute_identity/sources/reactome_selected_events.json",
+      "source_path": "/home/yxcheng/project/GO_enrichment/outputs/analysis/norman_task007_new_attribute_identity_001/sources/reactome_selected_events.json",
+      "bytes": 166999,
+      "sha256": "2d89dac96a8468602f26fbf6ad30543e2a7d0d7ae2825efbee650f1df316cf4b"
+    },
+    {
+      "path": "attribute_identity/sources/reactome_selected_events_manifest.json",
+      "source_path": "/home/yxcheng/project/GO_enrichment/outputs/analysis/norman_task007_new_attribute_identity_001/sources/reactome_selected_events_manifest.json",
+      "bytes": 520,
+      "sha256": "08709df78074c6049aa175d13c9e868ddbaf3f22f9b3aa65895c754524efab11"
+    },
+    {
+      "path": "attribute_identity/summary.json",
+      "source_path": "/home/yxcheng/project/GO_enrichment/outputs/analysis/norman_task007_new_attribute_identity_001/summary.json",
+      "bytes": 2855,
+      "sha256": "b51f8b0ff964eafa8a6b2da3121849ef419cdb170b23be2889890aa12ba1f40f"
+    },
+    {
+      "path": "gears_task005_random/REPORT.md",
+      "source_path": "/home/yxcheng/project/GO_enrichment/outputs/analysis/norman_task005_random_comparison/REPORT.md",
+      "bytes": 886,
+      "sha256": "4d599ba14782c57de41c7bb08820536f927fb546f66ffd26c75960f8d22151a7"
+    },
+    {
+      "path": "gears_task005_random/comparison.json",
+      "source_path": "/home/yxcheng/project/GO_enrichment/outputs/analysis/norman_task005_random_comparison/comparison.json",
+      "bytes": 1243,
+      "sha256": "f70f6c906e21fcf75abcee1aaf15efb7f3c694f0b2e12f9c2e21bf1e3a7bd6d8"
+    },
+    {
+      "path": "gears_task004/REPORT.md",
+      "source_path": "/home/yxcheng/project/GO_enrichment/outputs/analysis/norman_task004_gears_comparison/REPORT.md",
+      "bytes": 982,
+      "sha256": "5aeb1465328e420f4f210652a342e48361f7794dec7f47fef64ae822f0821df8"
+    },
+    {
+      "path": "gears_task004/checkpoint_selection_audit.json",
+      "source_path": "/home/yxcheng/project/GO_enrichment/outputs/analysis/norman_task004_gears_comparison/checkpoint_selection_audit.json",
+      "bytes": 4905,
+      "sha256": "383d0c0f01608b02627ed2a8bc4e98c1b92d9108581b9de525a8adc96d38a365"
+    },
+    {
+      "path": "gears_task004/comparison.json",
+      "source_path": "/home/yxcheng/project/GO_enrichment/outputs/analysis/norman_task004_gears_comparison/comparison.json",
+      "bytes": 2227,
+      "sha256": "6cba63f217058864114a66d311ebf3b8a3737ff3f55a85c317ccf083a059dfc2"
+    }
+  ]
+}

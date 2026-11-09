@@ -88,7 +88,7 @@ def summarize(run_dir):
         "approved_batches": approved, "coverage": candidates.get("coverage", []),
         "coverage_reports": coverage_reports,
         "total_search_queries_observed": sum(item["search_queries"] for item in stages.values()),
-        "projection_status": "not_projected",
+        "projection_status": "frozen" if (run_dir / "knowledge/freeze_manifest.json").exists() else "not_projected",
     }
 
 
@@ -170,6 +170,15 @@ def worker(run_dir):
                     if digest(ROOT / path) != expected:
                         raise RuntimeError(f"Experiment code or prompt changed during this run: {path}")
                 run_stage(run_dir, stage, job, update)
+            task = read_json(run_dir / "task.json")
+            if task.get("execution", {}).get("workflow") == "task_knowledge":
+                update(phase="compiling_knowledge")
+                compiler_python = task.get("execution", {}).get("compilation_python", sys.executable)
+                if not Path(compiler_python).is_absolute():
+                    compiler_python = str(ROOT / compiler_python)
+                subprocess.run([compiler_python, str(ROOT / "scripts/compile_agent_knowledge.py"),
+                                "--run-dir", str(run_dir), "--output-dir", str(run_dir / "knowledge")],
+                               cwd=ROOT, check=True, timeout=job["stage_timeout_seconds"])
             summary = summarize(run_dir)
             write_json(run_dir / "summary.json", summary)
             gaps = any(item.get("status") != "covered" for item in summary["coverage"])
@@ -212,8 +221,9 @@ def launch(args):
     if shutil.disk_usage(ROOT).free < 2 * 1024**3:
         raise ValueError("Less than 2 GiB free disk space")
     task = read_json(args.task)
-    if task.get("execution", {}).get("workflow") != "task_batch":
-        raise ValueError("This job requires task_batch workflow")
+    workflow = task.get("execution", {}).get("workflow")
+    if workflow not in {"task_batch", "task_knowledge"}:
+        raise ValueError("This job requires task_batch or task_knowledge workflow")
     universe = Path(task["scope"]["gene_universe_path"])
     if not universe.is_absolute():
         universe = ROOT / universe
@@ -232,7 +242,8 @@ def launch(args):
         references.append(str(target))
     task["reference_files"] = references
     task["execution"]["approval_mode"] = "auto_review"
-    task["retrieval_budget"]["max_download_bytes"] = min(task["retrieval_budget"]["max_download_bytes"], 256 * 1024**2)
+    if workflow == "task_batch":
+        task["retrieval_budget"]["max_download_bytes"] = min(task["retrieval_budget"]["max_download_bytes"], 256 * 1024**2)
     task["background_test"] = {
         "artifact_root": str(directory),
         "scope": "Run task-wide acquisition and review across the complete declared universe. Prioritize reusable bulk Reactome and hu.MAP membership processing; record other knowledge families as pending when appropriate.",
@@ -242,10 +253,21 @@ def launch(args):
         "completion": "Use task_batch schema. Return pending directions explicitly rather than inventing artifacts. Keep source/policy decisions independent of downstream results. Do not launch training, GPU work, other background jobs, or additional agents.",
         "resources": "At most 2 CPU threads, 256 MiB aggregate downloaded data, and the task's bounded literature budget. Prefer small official bulk files over raw assay data."
     }
+    if workflow == "task_knowledge":
+        task["background_test"].update({
+            "scope": "Execute the planner-selected database, literature, or combined route for the complete fixed gene universe. Source candidates are options, not a hard-coded priority list.",
+            "data_contract": "Use docs/knowledge_pipeline.md statement/evidence format. Materialize exact local snapshots, source hashes, source/study identifiers, source conditions and evidence assertion types. Validate all published rows with the shared library. Literature claims require saved quotations and explicit per-record evidence review.",
+            "completion": "Return schema 3.0 artifacts. The controller independently validates, compiles and freezes accepted knowledge. Leakage auditing is external and must not be performed or claimed by the augmentation pipeline. Do not launch downstream training, other background jobs, or additional agents.",
+            "resources": f"At most 2 CPU threads. Use task.retrieval_budget as the acquisition budget; maximum download bytes: {task['retrieval_budget']['max_download_bytes']}. Cache shared source snapshots and papers.",
+        })
     write_json(directory / "task.json", task)
     tracked = ["scripts/prepare_agent_stage.py", "scripts/run_agent_stage.py", "scripts/run_agent_background.py", "AGENTS.md"]
     tracked += [str(p.relative_to(ROOT)) for p in (ROOT / "prompts/agents").glob("*.md")]
     tracked += [str(p.relative_to(ROOT)) for p in (ROOT / "schemas/agents/batch").glob("*.json")]
+    if workflow == "task_knowledge":
+        tracked += ["src/go_enrichment/knowledge.py", "src/go_enrichment/ontology.py",
+                    "scripts/compile_agent_knowledge.py", "scripts/import_knowledge_batch.py"]
+        tracked += [str(p.relative_to(ROOT)) for p in (ROOT / "schemas/agents/knowledge").glob("*.json")]
     write_json(directory / "job.json", {"created_at_utc": now(), "codex_bin": str(codex), "stage_timeout_seconds": args.stage_timeout_seconds, "source_hashes": {name: digest(ROOT / name) for name in tracked}})
     write_json(directory / "status.json", {"status": "launching", "phase": "starting", "created_at_utc": now()})
     env = os.environ.copy()

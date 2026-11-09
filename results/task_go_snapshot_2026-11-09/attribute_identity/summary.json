@@ -1,0 +1,78 @@
+{
+  "audit_workspace": "/tmp/task-go-runs/k562_task_only_007_multiround/workspace",
+  "created_utc": "2026-11-09T02:30:42.529592+00:00",
+  "audit_unit": "concept identity for human task gene-attribute projection, with relation types and evidence qualifiers preserved",
+  "final_attributes": 13275,
+  "original_attributes": 10175,
+  "new_feature_ids": 3100,
+  "new_feature_ids_by_source": {
+    "Literature_local": 28,
+    "ComplexPortal": 431,
+    "Reactome": 2078,
+    "GO": 563
+  },
+  "external_new_feature_ids": 2537,
+  "full_GO_screen": {
+    "active_terms": 38092,
+    "source_to_GO_candidate_pairs": 833,
+    "ComplexPortal_lexical_pairs_reviewed": 62,
+    "ComplexPortal_review_counts": {
+      "same_concept_at_gene_feature_scope": 47,
+      "qualified_or_broader_concept": 14,
+      "distinct_concepts": 1
+    }
+  },
+  "reactome": {
+    "official_mapping_pairs": 794,
+    "exact_GO_name_or_synonym_matches": 131,
+    "pathway_descriptions_reviewed": 14,
+    "confirmed_same_process_pairs": 10
+  },
+  "literature": {
+    "local_ids_reviewed": 28,
+    "review_counts": {
+      "qualified_or_broader_concept": 15,
+      "specific_concept_no_equivalent_identified": 10,
+      "same_concept_at_gene_feature_scope": 2,
+      "assembly_scope_unresolved": 1
+    }
+  },
+  "confirmed_overlap": {
+    "pairs": 59,
+    "unique_added_source_ids": 59,
+    "by_source": {
+      "ComplexPortal": 47,
+      "Reactome": 10,
+      "Literature_local": 2
+    },
+    "target_in_original_vocabulary": 38,
+    "target_in_final_vocabulary": 52,
+    "identical_projected_gene_vector_pairs": 37,
+    "overlapping_gene_attribute_memberships": 75,
+    "both_feature_columns_present": 52,
+    "both_feature_columns_present_by_source": {
+      "ComplexPortal": 41,
+      "Reactome": 10,
+      "Literature_local": 1
+    },
+    "concept_in_GO_but_target_feature_absent": 7,
+    "named_complexes_with_source_definition_discrepancies": 3
+  },
+  "scope": "A source-wide lexical and authoritative-crossreference screen with reviewed cases. Confirmed counts are an audited lower bound; source associations with wider or unresolved scope remain separately classified. Legacy GO-to-GO alternate identifiers are excluded from these confirmed counts.",
+  "preservation": {
+    "existing_code_files_checked": 88,
+    "existing_code_changes_during_audit": 0,
+    "frozen_knowledge_files_verified": 8,
+    "knowledge_or_model_changes_applied": false
+  },
+  "authoritative_inputs": {
+    "frozen_GO_version": "data-version: releases/2026-07-26",
+    "Reactome_mapping_download": {
+      "url": "https://reactome.org/download/current/Pathways2GoTerms_human.txt",
+      "fetched_utc": "2026-11-09T02:25:01.913159+00:00",
+      "sha256": "68b307d8b25cd33d9c7df67b312e1b388fb9325d32aa6b8f87db2b2f781ac122",
+      "bytes": 61415,
+      "last_modified": "Sun, 18 Oct 2026 04:46:03 GMT"
+    }
+  }
+}

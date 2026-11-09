@@ -1,0 +1,53 @@
+Added-attribute concept-identity audit: task007
+
+The added database and literature attributes contain cross-identifier concept overlap with GO. This audit examines the frozen task007 product at the human gene-attribute feature level. Existing code, knowledge products, and model inputs remain unchanged.
+
+Scope
+The augmented product contains 13,275 attribute columns, including 3,100 IDs absent from the original feature vocabulary: 2,078 Reactome, 431 Complex Portal, 28 literature-local, and 563 standard GO IDs. The cross-source review focuses on the 2,537 added external IDs and compares them with the full frozen GO ontology (38,092 active terms), existing features, native database crossreferences, and retrieved primary-paper evidence. Legacy GO-to-GO alternate-ID normalization is outside the reported overlap counts.
+
+Verified findings
+At gene-feature concept scope, 59 added external IDs have reviewed counterparts in GO: 47 Complex Portal complex concepts, 10 Reactome process concepts, and two literature-local concepts.
+
+52 pairs have both columns present in the current augmented features: 41 Complex Portal/GO, 10 Reactome/GO, and one literature/GO. Within these reviewed pairs, 37 have identical gene-carrier sets in the fixed 3,127-gene universe. The source/GO intersections contain 75 gene-attribute memberships across the reviewed pairs. These are descriptive counts; downstream graph or metric effects were not measured in this audit.
+
+Seven further source concepts have an existing GO concept whose target column is absent from the current feature matrix. This includes literature-local FAT10 E2 loading, which matches GO:0061652 FAT10 conjugating enzyme activity under the source's in-vitro transthiolation conditions. These seven cases show existing ontology concepts receiving new local/database IDs, rather than two simultaneous feature columns.
+
+Examples
+ComplexPortal:CPX-6016 ISGF3 complex and GO:0070721 identify the STAT1/STAT2/IRF9 complex. Both current feature columns carry IRF9 and STAT2 in the task gene universe.
+ComplexPortal:CPX-2386 RNA polymerase I complex and GO:0005736 identify the same named transcription complex. Both columns carry POLR2E in this task universe.
+Reactome R-HSA-72766 Translation and GO:0006412 translation identify the same process at gene-feature scope. The official GO association and pathway summation support this conclusion. The source columns have 31 and 11 genes respectively, sharing nine genes. Their evidence coverage differs even though their process concept agrees.
+STUDY:41742461_NK_degranulation and GO:0043323 positive regulation of natural killer cell degranulation identify the same process. The local column carries TNF and the GO column carries HLA-F. Their gene-carrier sets are disjoint, showing why matching gene sets alone cannot identify semantic duplicates. The human NK-cell, CRC-plasma, and TNF-treatment contexts are preserved in the source evidence.
+
+Scope-sensitive findings
+All 62 Complex Portal-to-GO name/alias candidates received source-definition review: 47 share a named complex concept at human gene-feature scope, 14 have narrower composition/state or broader-class differences, and one is a distinct concept despite a matching source alias. CPX-8806 is the catalytic 20S proteasome core; its Proteasome activator complex alias conflicts with its components and description, so GO:0008537 proteasome activator complex is a false identity candidate.
+
+Three of the 47 shared named-complex concepts contain explicit source-definition discrepancies: VCP cofactor stoichiometry (CPX-137), GMPPA/GMPPB stoichiometry (CPX-2234), and respiratory complex IV subunit count (CPX-6123). The tables retain the conflicting details. Their classification concerns the named concept used as a gene feature; molecular-entity equivalence remains qualified.
+
+The official Reactome pathway-to-GO export maps 794 current pathway columns to GO processes. Among them, 131 also match a GO name or EXACT synonym. Ten process pairs have additional pathway-description review and are included in the verified count. The remaining official mappings retain their scope-review status; a many-to-one process association can describe different mechanisms or stages within a broader GO process.
+
+The two same-name Reactome pairs inspected here describe SARS-CoV-1 and SARS-CoV-2 separately: Attachment and Entry (R-HSA-9678110/R-HSA-9694614) and Translation of Structural Proteins (R-HSA-9683701/R-HSA-9694635). Disease metadata and pathway summations establish the difference. Spliceosomal C and C* complexes likewise have different assembly states and component lists. Source punctuation is biologically meaningful in that example.
+
+All 28 literature-local IDs received concept/context review. Two match an existing GO concept, 15 have a narrower or assembly-qualified relationship to a broader concept, ten have a specific concept with no equivalent identified by the cached concept screen, and one immunoproteasome record has unresolved core-versus-capped-assembly scope. The CTLH assemblies differ in FAM72A/UNG2/ZMYND19 components and their UBE2H-ubiquitin mimic state; identical task-gene carrier sets do not establish the same assembly. The ACE2-B0AT1 record uses an engineered structural construct, which qualifies its relationship with Complex Portal CPX-8192.
+
+Artifacts
+summary.json: inventory, reviewed counts, scope, preservation checks.
+confirmed_concept_overlap.tsv: the 59 reviewed source/GO concept pairs, including current feature presence and gene-carrier overlap.
+complexportal_GO_semantic_review.tsv: all 62 lexical candidates, GO definitions, source descriptions, components, and verdicts.
+reactome_GO_semantic_review.tsv: 794 official associations, matching-name flags, description-review status, and stored summations.
+literature_local_semantic_review.tsv: all 28 local IDs and context-specific conclusions.
+same_name_and_cross_type_review.tsv: five source-internal and complex/event contrast cases.
+new_attribute_inventory.tsv: all 3,100 feature IDs absent from the original vocabulary.
+local_attribute_statement_evidence.json: the underlying accepted literature statements, contexts, and provenance.
+sources/: freshly cached Reactome primary-source exports and selected API records, each with URL/time/SHA256 manifest.
+preservation_checks.json: verification of all 88 snapshotted existing code/prompt/config files and all eight frozen knowledge-manifest files.
+
+Primary sources
+Frozen inputs/go.obo: GO release 2026-07-26, checked directly against the ontology definitions and EXACT synonyms.
+Frozen acquisition/sources/complexportal_9606.tsv: recommended names, aliases, GO annotations, component identifiers, stoichiometry, and descriptions, with physical row locators in the review table.
+Reactome official mapping: https://reactome.org/download/current/Pathways2GoTerms_human.txt
+Reactome export documentation: https://reactome.org/download-data
+Reactome event API: https://reactome.org/ContentService/data/query/ids
+Example pathway: https://reactome.org/content/detail/R-HSA-72766
+Literature evidence: frozen acquisition/papers snapshots and canonical statement evidence, with PMID/PMCID/DOI, locators, and quotations preserved in the evidence JSON.
+
+The reviewed counts are a lower bound from source-wide lexical/crossreference screening and selected definition/context verification. Scope-unreviewed associations remain explicitly labeled in the tables. The audit applies zero changes to the knowledge matrix, graph, prompts, or training code.

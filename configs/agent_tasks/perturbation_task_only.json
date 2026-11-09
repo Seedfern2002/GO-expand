@@ -1,0 +1,26 @@
+{
+  "task_id": "human_k562_perturbation_knowledge",
+  "task_description": "Construct task-specific GO augmentation for predicting transcriptional responses to genetic perturbations, using one shared knowledge overlay across the complete supplied gene universe.",
+  "organism": {"name": "Homo sapiens", "taxon_id": "NCBITaxon:9606"},
+  "biological_context": {"cell_type": "K562", "perturbation": "CRISPRa"},
+  "candidate_categories": ["pathway", "protein_complex", "regulatory_program"],
+  "knowledge_requirements": [
+    "Integrate all biological database records that match the complete gene universe and satisfy the planned source, evidence, and mapping policies.",
+    "Acquire literature-derived functional and mechanistic evidence using task-wide topic queries and shared paper bundles.",
+    "Link supported gene functions to existing GO concepts, retain genuinely additional concepts and typed mechanisms, and preserve biological conditions."
+  ],
+  "retrieval_budget": {
+    "max_search_queries": 20,
+    "max_sources_opened": 15,
+    "max_candidate_records": 500,
+    "record_budget_scope": "max_candidate_records applies exclusively to literature_extracted candidate statements. Process selected database sources to completion and retain all eligible gene-universe mappings. Database record counts follow source content and declared evidence filters; review sample sizes govern audit inspection only.",
+    "max_papers": 100,
+    "max_download_bytes": 2147483648,
+    "max_concurrent_source_requests": 3
+  },
+  "projection_policy": {
+    "membership_relations": ["annotated_to", "member_of_pathway", "member_of_complex", "predicted_member_of_complex"],
+    "singleton_policy": "retain",
+    "context_policy": "preserve"
+  }
+}

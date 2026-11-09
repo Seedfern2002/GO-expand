@@ -1,0 +1,42 @@
+{
+  "updated_at_utc": "2026-11-08T17:25:00.784686+00:00",
+  "state": "complete",
+  "runs": [
+    {
+      "label": "Original GO",
+      "run": "/home/yxcheng/project/GO_enrichment/outputs/gears/norman_baseline_seed1_retry1",
+      "state": "complete",
+      "stage": "complete",
+      "metrics": {
+        "mse": 0.006072790827602148,
+        "mse_de": 0.19603684544563293,
+        "pearson": 0.9827977701021174,
+        "pearson_de": 0.8654874525714765
+      }
+    },
+    {
+      "label": "Literature-expanded GO (task005)",
+      "run": "/home/yxcheng/project/GO_enrichment/outputs/gears/norman_task005_seed1",
+      "state": "complete",
+      "stage": "complete",
+      "metrics": {
+        "mse": 0.004302599932998419,
+        "mse_de": 0.19248075783252716,
+        "pearson": 0.9876449325010419,
+        "pearson_de": 0.8701615777099526
+      }
+    },
+    {
+      "label": "Random GO graph (seed 0)",
+      "run": "/home/yxcheng/project/GO_enrichment/outputs/gears/norman_random_go_seed1",
+      "state": "complete",
+      "stage": "complete",
+      "metrics": {
+        "mse": 0.006990586407482624,
+        "mse_de": 0.23545999825000763,
+        "pearson": 0.9794834045365235,
+        "pearson_de": 0.8320102280057087
+      }
+    }
+  ]
+}

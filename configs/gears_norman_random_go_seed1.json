@@ -1,0 +1,49 @@
+{
+  "experiment": "norman_random_go_seed1",
+  "paper_recipe_url": "https://github.com/yhr91/GEARS_misc/blob/main/paper/fig2_train.py",
+  "paper_recipe_tested_version": "0.1.1",
+  "implementation_commit": "f374e43e197b295016d80395d7a54ddb81cc6769",
+  "implementation_version": "0.1.2",
+  "data_path": "data/raw/gears",
+  "output_path": "outputs/gears/norman_random_go_seed1",
+  "dataset": "norman",
+  "default_pert_graph": false,
+  "split": "simulation",
+  "split_seed": 1,
+  "model_seed": 0,
+  "train_gene_set_size": 0.75,
+  "combo_seen2_train_frac": 0.75,
+  "batch_size": 32,
+  "test_batch_size": 32,
+  "model": {
+    "hidden_size": 64,
+    "num_go_gnn_layers": 1,
+    "num_gene_gnn_layers": 1,
+    "decoder_hidden_size": 16,
+    "num_similar_genes_go_graph": 20,
+    "num_similar_genes_co_express_graph": 20,
+    "coexpress_threshold": 0.4,
+    "uncertainty": false,
+    "uncertainty_reg": 1,
+    "direction_lambda": 0.1,
+    "no_perturb": false
+  },
+  "training": {
+    "epochs": 15,
+    "lr": 0.001,
+    "weight_decay": 0.0005
+  },
+  "optimizer": "Adam",
+  "scheduler": {
+    "type": "StepLR",
+    "step_size": 1,
+    "gamma": 0.5
+  },
+  "checkpoint_selection": "minimum validation mse_de",
+  "go_annotation_source": "Random directed GO-graph control, graph seed 0; matched reference edge count, incoming degrees, self-loops and shuffled weight distribution",
+  "go_augmentation": {
+    "manifest_path": "outputs/gears/norman_random_go_seed1/augmentation_manifest.json",
+    "manifest_sha256": "c310c3ef69b8fa4336bead4be7938c3c9b3ae5e39d143dbd46d7b172e70c438f"
+  },
+  "torch_threads": 8
+}

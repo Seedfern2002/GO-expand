@@ -1,0 +1,22 @@
+{
+  "url": "https://reactome.org/ContentService/data/query/ids",
+  "ids": [
+    "R-HSA-72766",
+    "R-HSA-5358508",
+    "R-HSA-73884",
+    "R-HSA-73894",
+    "R-HSA-9612973",
+    "R-HSA-8852135",
+    "R-HSA-191273",
+    "R-HSA-6798695",
+    "R-HSA-5205647",
+    "R-HSA-5696398",
+    "R-HSA-9678110",
+    "R-HSA-9694614",
+    "R-HSA-9683701",
+    "R-HSA-9694635"
+  ],
+  "fetched_utc": "2026-11-09T02:27:47.935381+00:00",
+  "sha256": "2d89dac96a8468602f26fbf6ad30543e2a7d0d7ae2825efbee650f1df316cf4b",
+  "bytes": 166999
+}

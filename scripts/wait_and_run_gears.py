@@ -34,7 +34,33 @@ def gpu_candidates():
     return rows
 
 
-def run(poll_seconds=30, stable_polls=3, config_path=None):
+def reserve_gpu(ready):
+    """Hold a project-wide per-GPU lock and recheck occupancy before launch."""
+    directory = ROOT / "outputs/gears/.gpu_locks"
+    directory.mkdir(parents=True, exist_ok=True)
+    for chosen in sorted(ready, key=lambda row: row["index"]):
+        lock = (directory / (chosen["uuid"] + ".lock")).open("a+")
+        try:
+            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            lock.close()
+            continue
+        try:
+            current = next((row for row in gpu_candidates() if row["uuid"] == chosen["uuid"]), None)
+            if current and not current["has_compute_process"] and current["utilization_percent"] <= 5 and current["free_mib"] >= 16384:
+                lock.seek(0)
+                lock.truncate()
+                lock.write(str(os.getpid()))
+                lock.flush()
+                return current, lock
+        except BaseException:
+            lock.close()
+            raise
+        lock.close()
+    return None, None
+
+
+def run(poll_seconds=30, stable_polls=3, config_path=None, runner_path=None):
     config_path = Path(config_path) if config_path else ROOT / "configs/gears_norman_baseline.json"
     if not config_path.is_absolute():
         config_path = ROOT / config_path
@@ -45,10 +71,10 @@ def run(poll_seconds=30, stable_polls=3, config_path=None):
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         lock.write(str(os.getpid()))
         lock.flush()
-        return wait_and_run(out, poll_seconds, stable_polls, config_path)
+        return wait_and_run(out, poll_seconds, stable_polls, config_path, runner_path)
 
 
-def wait_and_run(out, poll_seconds, stable_polls, config_path=None):
+def wait_and_run(out, poll_seconds, stable_polls, config_path=None, runner_path=None):
 
     def status(stage, **extra):
         value = {"stage": stage, "queue_pid": os.getpid(),
@@ -80,21 +106,26 @@ def wait_and_run(out, poll_seconds, stable_polls, config_path=None):
                        next_check_seconds=poll_seconds)
                 time.sleep(poll_seconds)
                 continue
-            chosen = sorted(ready, key=lambda row: row["index"])[0]
-            # Re-check occupancy immediately before launching.
-            if any(row["uuid"] == chosen["uuid"] and row["has_compute_process"] for row in gpu_candidates()):
-                streaks.pop(chosen["uuid"], None)
+            chosen, gpu_lock = reserve_gpu(ready)
+            if gpu_lock is None:
+                status("waiting_for_unoccupied_gpu", reservation_pending=True, next_check_seconds=poll_seconds)
+                time.sleep(poll_seconds)
                 continue
             environment = os.environ.copy()
             environment.update(CUDA_VISIBLE_DEVICES=chosen["uuid"], OMP_NUM_THREADS="8", MKL_NUM_THREADS="8",
                                OPENBLAS_NUM_THREADS="8", MPLCONFIGDIR=str(ROOT / "outputs/gears/.matplotlib"))
-            with (out / "run.log").open("a", buffering=1) as log:
-                command = [str(ROOT / ".venv-gears/bin/python"), "-u", str(ROOT / "scripts/run_gears_baseline.py")]
-                if config_path is not None:
-                    command.extend(["--config", str(config_path)])
-                child = subprocess.Popen(command, cwd=ROOT, env=environment, stdout=log, stderr=subprocess.STDOUT)
-                status("baseline_running", selected_gpu=chosen, training_pid=child.pid)
-                code = child.wait()
+            try:
+                with (out / "run.log").open("a", buffering=1) as log:
+                    runner = Path(runner_path) if runner_path else ROOT / "scripts/run_gears_baseline.py"
+                    command = [str(ROOT / ".venv-gears/bin/python"), "-u", str(runner)]
+                    if config_path is not None:
+                        command.extend(["--config", str(config_path)])
+                    child = subprocess.Popen(command, cwd=ROOT, env=environment, stdout=log, stderr=subprocess.STDOUT,
+                                             pass_fds=(gpu_lock.fileno(),))
+                    status("baseline_running", selected_gpu=chosen, training_pid=child.pid, runner=str(runner))
+                    code = child.wait()
+            finally:
+                gpu_lock.close()
             status("complete" if code == 0 else "baseline_failed", returncode=code, selected_gpu=chosen)
             return
         except subprocess.CalledProcessError as error:
@@ -107,7 +138,8 @@ if __name__ == "__main__":
     parser.add_argument("--poll-seconds", type=int, default=30)
     parser.add_argument("--stable-polls", type=int, default=3)
     parser.add_argument("--config", default="configs/gears_norman_baseline.json")
+    parser.add_argument("--runner", type=Path)
     args = parser.parse_args()
     if args.poll_seconds < 1 or args.stable_polls < 1:
         parser.error("Polling interval and stable poll count must be positive")
-    run(args.poll_seconds, args.stable_polls, args.config)
+    run(args.poll_seconds, args.stable_polls, args.config, args.runner)

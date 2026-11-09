@@ -13,6 +13,8 @@ import sys
 
 import jsonschema
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from go_enrichment.knowledge import validate_batches, validate_contract, validate_knowledge_review
 
 def now() -> str:
     return datetime.now(timezone.utc).isoformat()
@@ -96,6 +98,16 @@ def validate_result(stage_dir: Path, manifest: dict, result: dict) -> None:
     task = read_json(stage_dir / "task.input.json")
     if result["task_id"] != task["task_id"]:
         raise ValueError("result task_id differs from input task")
+    if manifest.get("workflow") == "task_knowledge":
+        validate_batch_result(stage_dir, manifest, task, result)
+        if manifest["stage"] == "planner":
+            validate_contract(task, result)
+        elif manifest["stage"] == "retriever":
+            reports = validate_batches(task, result["batches"], manifest["working_directory"])
+            (stage_dir / "independent_validation.json").write_text(json.dumps(reports, indent=2) + "\n")
+        else:
+            validate_knowledge_review(task, read_json(stage_dir / "candidates.input.json"), result, manifest["working_directory"])
+        return
     if manifest.get("workflow", "record") == "task_batch":
         validate_batch_result(stage_dir, manifest, task, result)
         return

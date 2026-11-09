@@ -45,7 +45,9 @@ def write_report(baseline, augmented, output):
     temporary.write_text(json.dumps(result, indent=2) + "\n")
     temporary.replace(output / "comparison.json")
     lines = ["# Matched GEARS GO comparison", "", f"State: {state}.", "",
-             "The augmentation is the unchanged primary Reactome/hu.MAP attribute union used in the top-k analysis.",
+             "Augmentation: " + read_optional(augmented / "run_config.json").get(
+                 "go_annotation_source", "Frozen task-specific knowledge overlay"
+             ) + ".",
              "Training settings, split, model seed, gene order and coexpression graph are checked against the baseline.",
              "Checkpoint selection uses validation mse_de. The table contains test metrics.", "",
              "| Metric | Baseline | Augmented | Augmented - baseline | Error reduction (%) |",
