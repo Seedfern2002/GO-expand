@@ -4,6 +4,7 @@ __pycache__/
 .venv/
 .venv-gears/
 /third_party/GEARS/
+/third_party/DrugCell/
 build/
 dist/
 .pytest_cache/

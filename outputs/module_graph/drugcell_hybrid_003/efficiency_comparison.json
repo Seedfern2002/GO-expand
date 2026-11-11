@@ -1,0 +1,190 @@
+{
+  "baseline": {
+    "actions": {
+      "add": 13,
+      "defer": 8,
+      "reuse": 3
+    },
+    "context_bytes": 425579,
+    "events": {
+      "agent_invocations": 9,
+      "failed_shell_commands": 17,
+      "shell_commands": 101,
+      "stages": [
+        {
+          "agent_invocations": 1,
+          "failed_shell_commands": 1,
+          "path": "batches/module_batch_001/editor_1",
+          "role": "editor",
+          "shell_commands": 9,
+          "wall_seconds": 106.15531033696607
+        },
+        {
+          "agent_invocations": 1,
+          "failed_shell_commands": 1,
+          "path": "batches/module_batch_001/editor_2",
+          "role": "editor",
+          "shell_commands": 8,
+          "wall_seconds": 80.60332292597741
+        },
+        {
+          "agent_invocations": 1,
+          "failed_shell_commands": 2,
+          "path": "batches/module_batch_001/reviewer",
+          "role": "reviewer",
+          "shell_commands": 16,
+          "wall_seconds": 129.13161047874019
+        },
+        {
+          "agent_invocations": 1,
+          "failed_shell_commands": 1,
+          "path": "batches/module_batch_002/editor_1",
+          "role": "editor",
+          "shell_commands": 9,
+          "wall_seconds": 117.37123054126278
+        },
+        {
+          "agent_invocations": 1,
+          "failed_shell_commands": 1,
+          "path": "batches/module_batch_002/editor_2",
+          "role": "editor",
+          "shell_commands": 6,
+          "wall_seconds": 97.12360764015466
+        },
+        {
+          "agent_invocations": 1,
+          "failed_shell_commands": 4,
+          "path": "batches/module_batch_002/reviewer",
+          "role": "reviewer",
+          "shell_commands": 16,
+          "wall_seconds": 177.35963621968403
+        },
+        {
+          "agent_invocations": 1,
+          "failed_shell_commands": 1,
+          "path": "batches/module_batch_003/editor_1",
+          "role": "editor",
+          "shell_commands": 11,
+          "wall_seconds": 135.9832045948133
+        },
+        {
+          "agent_invocations": 1,
+          "failed_shell_commands": 1,
+          "path": "batches/module_batch_003/editor_2",
+          "role": "editor",
+          "shell_commands": 6,
+          "wall_seconds": 109.03436745004728
+        },
+        {
+          "agent_invocations": 1,
+          "failed_shell_commands": 5,
+          "path": "batches/module_batch_003/reviewer",
+          "role": "reviewer",
+          "shell_commands": 20,
+          "wall_seconds": 420.0200767023489
+        }
+      ],
+      "usage": {
+        "cache_write_input_tokens": 0,
+        "cached_input_tokens": 2433024,
+        "input_tokens": 2924237,
+        "output_tokens": 32221,
+        "reasoning_output_tokens": 2146
+      }
+    },
+    "graph": {
+      "added_nodes": 13,
+      "added_nodes_attached_to_root": 0,
+      "added_nodes_by_depth": {
+        "2": 2,
+        "3": 5,
+        "5": 6
+      },
+      "direct_memberships": 59962,
+      "genes": 3008,
+      "maximum_model_depth": 6,
+      "model_edges": 3184,
+      "nodes": 2099,
+      "propagated_model_memberships": 156528,
+      "revision": 3,
+      "source_aliases": 16,
+      "typed_edges": 3190
+    },
+    "seconds": 1374.0773834125139,
+    "workspace": "/tmp/task-go-runs/drug_response_module_graph_002/workspace"
+  },
+  "comparison_scope": "Observed combined change in group recipes, batch size, compact context and execution configuration; single runs of the same 24 source modules. Independent biological ground-truth accuracy is outside this timing measurement.",
+  "context_byte_reduction_fraction": 0.7973302254105583,
+  "hybrid": {
+    "actions": {
+      "add": 19,
+      "defer": 2,
+      "reuse": 3
+    },
+    "context_bytes": 86252,
+    "events": {
+      "agent_invocations": 2,
+      "failed_shell_commands": 0,
+      "shell_commands": 15,
+      "stages": [
+        {
+          "agent_invocations": 1,
+          "failed_shell_commands": 0,
+          "path": "batches/hybrid_batch_001/editor_1",
+          "role": "recipe_editor",
+          "shell_commands": 6,
+          "wall_seconds": 107.2417109659873
+        },
+        {
+          "agent_invocations": 1,
+          "failed_shell_commands": 0,
+          "path": "batches/hybrid_batch_001/reviewer",
+          "role": "recipe_reviewer",
+          "shell_commands": 9,
+          "wall_seconds": 63.02069746609777
+        }
+      ],
+      "usage": {
+        "cache_write_input_tokens": 0,
+        "cached_input_tokens": 376320,
+        "input_tokens": 491690,
+        "output_tokens": 6993,
+        "reasoning_output_tokens": 1004
+      }
+    },
+    "graph": {
+      "added_nodes": 19,
+      "added_nodes_attached_to_root": 1,
+      "added_nodes_by_depth": {
+        "1": 1,
+        "2": 5,
+        "3": 6,
+        "5": 7
+      },
+      "direct_memberships": 60400,
+      "genes": 3008,
+      "maximum_model_depth": 6,
+      "model_edges": 3193,
+      "nodes": 2105,
+      "propagated_model_memberships": 157333,
+      "revision": 1,
+      "source_aliases": 22,
+      "typed_edges": 3194
+    },
+    "seconds": 170.608817697037,
+    "workspace": "/tmp/task-go-runs/drug_response_module_graph_003_hybrid/workspace"
+  },
+  "matched_inputs": {
+    "inputs/baseline_graph.json": true,
+    "inputs/genes.json": true,
+    "inputs/modules.json": true,
+    "inputs/placement_evidence.json": true,
+    "model": true,
+    "pinned_source_snapshots": true,
+    "processing_module_set": true,
+    "reasoning_effort": true,
+    "task.json": true
+  },
+  "speedup": 8.05396463067089,
+  "wall_time_reduction_fraction": 0.8758375476107969
+}

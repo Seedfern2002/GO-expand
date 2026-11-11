@@ -17,6 +17,8 @@ from engine.knowledge import (
     validate_contract, validate_knowledge_review, workspace_file, write_json,
 )
 from engine.rounds import next_action, validate_round
+from engine.reading import adaptive, validate_reading_plan, round_reading_input, READING_PLAN_SCHEMA, READING_DECISION_SCHEMA
+from engine.knowledge_context import KnowledgeContext
 
 
 def validate_schema(value, schema, location="result"):
@@ -68,6 +70,7 @@ def validate_stage(stage, task, result, root):
             if result["scope"][key] != task["scope"][key]:
                 raise ValueError("Planner changed the fixed gene universe")
         validate_contract(task, result)
+        validate_reading_plan(task, result)
     elif stage == "retriever":
         plan = read_json(root / "stages/planner/result.json")
         plan_ids = unique(plan["augmentations"], "id")
@@ -95,6 +98,9 @@ def run_stage(stage, task, runtime, root, directory=None, round_input=None):
     directory = directory or root / "stages" / stage
     directory.mkdir(parents=True)
     schema = read_json(root / "pipeline/schemas" / {"planner": "plan.schema.json", "retriever": "candidates.schema.json", "reviewer": "review.schema.json"}[stage])
+    if stage == "planner" and adaptive(task):
+        schema["properties"]["reading_plan"] = READING_PLAN_SCHEMA
+        schema["required"].append("reading_plan")
     if stage == "planner":
         schema["properties"]["augmentations"]["items"]["properties"]["category"]["enum"] = task["candidate_categories"]
     if round_input is not None:
@@ -102,6 +108,9 @@ def run_stage(stage, task, runtime, root, directory=None, round_input=None):
                  "supersedes_batch_ids": {"type": "array", "items": {"type": "string"}}}
         schema["properties"].update(extra)
         schema["required"].extend(extra)
+        if adaptive(task):
+            schema["properties"]["reading_decision"] = READING_DECISION_SCHEMA
+            schema["required"].append("reading_decision")
     write_json(directory / "schema.json", schema)
     # The complete task was allowlisted and copied before entering this runtime.
     write_json(directory / "task.input.json", task)
@@ -173,10 +182,13 @@ def run_retrieval_rounds(task, runtime, root, status):
     for number in range(state["attempt"] + 1, maximum + 1):
         stage_dir = directory / f"retriever_{number:03d}"
         previous = dict(state["progress"])
+        context_path = directory / f"knowledge_context_{number:03d}.sqlite"
+        context = KnowledgeContext.build(root, context_path, state["candidates"])
+        context.close()
         round_input = {
             "number": number, "maximum_rounds": maximum,
-            "new_papers_target": runtime.get("papers_per_round", 50),
-            "full_text_inspections_target": runtime.get("full_texts_per_round", 30),
+            **round_reading_input(task, plan, runtime, previous, state.get("reading_decision")),
+            "knowledge_context_index": str(context_path.relative_to(root)),
             "previous_progress": previous, "controller_feedback": state["feedback"],
             "active_candidates_path": "rounds/active_candidates.json",
             "previous_paper_inspections_path": "rounds/paper_inspections.jsonl",
@@ -187,13 +199,15 @@ def run_retrieval_rounds(task, runtime, root, status):
         try:
             result = run_stage("retriever", task, runtime, root, stage_dir, round_input)
             updated = validate_round(task, result, root, stage_dir, state)
-            progressed = any(updated["progress"][key] > previous.get(key, 0)
-                             for key in ("inspected_primary", "full_text_inspected_primary"))
+            progress_keys = ("inspected_primary", "active_records") if adaptive(task) else ("inspected_primary", "full_text_inspected_primary")
+            progressed = any(updated["progress"].get(key, 0) > previous.get(key, 0) for key in progress_keys)
             state.update(updated)
             state["stalled"] = 0 if progressed else state["stalled"] + 1
-            state["feedback"] = "Continue remaining topics and full-text upgrades using the cumulative validated progress"
+            state["feedback"] = ("Continue the remaining biological questions; use body reading for explicit information needs."
+                                 if adaptive(task) else "Continue remaining topics and full-text upgrades using the cumulative validated progress")
             if not progressed:
-                state["feedback"] = "Reading counts were unchanged. Prioritize scientific reading of cached primary papers and body passages in the next round, then publish supported additions and inspection decisions."
+                state["feedback"] = ("Report the remaining questions and evidence-based continuation or stopping decision."
+                                     if adaptive(task) else "Reading counts were unchanged. Prioritize scientific reading of cached primary papers and body passages in the next round, then publish supported additions and inspection decisions.")
             write_json(stage_dir / "controller_validation.json", {
                 "passed": True, "progress": state["progress"], "batches": updated["validation"],
             })
@@ -203,7 +217,7 @@ def run_retrieval_rounds(task, runtime, root, status):
             write_json(stage_dir / "controller_validation.json", {"passed": False, "error": state["feedback"]})
         state["attempt"] = number
         state["stop_reason"] = next_action(task, state["progress"], number, maximum, state["stalled"],
-                                           runtime.get("stalled_round_limit", 3))
+                                           runtime.get("stalled_round_limit", 3), state.get("reading_decision"))
         write_json(state_path, state)
         write_json(directory / "active_candidates.json", state["candidates"])
         paper_path = directory / "paper_inspections.jsonl"
@@ -212,6 +226,8 @@ def run_retrieval_rounds(task, runtime, root, status):
         temporary.replace(paper_path)
         write_json(directory / "progress.json", {"round": number, "maximum_rounds": maximum,
                    "stop_reason": state["stop_reason"], "progress": state["progress"],
+                   "reading_mode": task["retrieval_budget"].get("reading_mode", "fixed_target"),
+                   "reading_plan": plan.get("reading_plan"), "reading_decision": state.get("reading_decision"),
                    "feedback": state["feedback"], "targets": {
                        "papers": task["retrieval_budget"].get("target_papers_inspected", 0),
                        "full_texts": task["retrieval_budget"].get("target_full_text_papers_inspected", 0)}})
@@ -242,7 +258,7 @@ def worker(root):
         retrieval_stop = None
         for phase in ("planner", "retriever", "reviewer"):
             status("running", phase)
-            if phase == "retriever" and runtime.get("retrieval_rounds", 1) > 1:
+            if phase == "retriever" and (adaptive(task) or runtime.get("retrieval_rounds", 1) > 1):
                 retrieval_stop = run_retrieval_rounds(task, runtime, root, status)
             else:
                 run_stage(phase, task, runtime, root)
@@ -262,7 +278,7 @@ def worker(root):
         write_json(root / "summary.json", summary)
         gaps = any(c["status"] != "covered" for c in candidates["coverage"])
         gaps = gaps or any(d["verdict"] != "accept" for d in review["batch_decisions"])
-        gaps = gaps or retrieval_stop not in {None, "targets_met"}
+        gaps = gaps or retrieval_stop not in {None, "targets_met", "coverage_sufficient"}
         status("completed_with_gaps" if gaps else "completed", "finished", approved_batches=len(accepted))
         return 0
     except Exception as error:

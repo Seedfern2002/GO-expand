@@ -12,6 +12,7 @@ import shutil
 import subprocess
 
 from engine.knowledge import RELATIONS, sha256, write_json
+from engine.reading import adaptive
 
 
 TASK_FIELDS = {"task_id", "task_description", "organism", "biological_context", "candidate_categories",
@@ -59,12 +60,14 @@ def import_paper_cache(source_root, workspace):
 
 
 def prepare(task_path, genes_path, gene_field, annotations_path, ontology_path, output, model, reasoning_effort, timeout,
-            paper_cache=None):
+            paper_cache=None, include_research_skills=True):
     source = Path(__file__).resolve().parent
     output = Path(output).resolve()
     if output.exists():
         raise FileExistsError("Use a new private run directory")
     task = json.loads(Path(task_path).read_text())
+    if adaptive(task) and not include_research_skills:
+        raise ValueError("Planner-adaptive reading uses the packaged add-go-knowledge skill")
     if task.keys() - TASK_FIELDS:
         raise ValueError("Task card contains fields outside the scientific input contract")
     required = TASK_FIELDS - {"source_candidates"}
@@ -88,7 +91,8 @@ def prepare(task_path, genes_path, gene_field, annotations_path, ontology_path, 
     output.mkdir(parents=True)
     workspace = output / "workspace"
     (workspace / "inputs").mkdir(parents=True)
-    shutil.copytree(source, workspace / "pipeline", ignore=shutil.ignore_patterns("__pycache__", "tests"))
+    excluded = ["__pycache__", "tests"] + ([] if include_research_skills else ["skills"])
+    shutil.copytree(source, workspace / "pipeline", ignore=shutil.ignore_patterns(*excluded))
     write_json(workspace / "inputs/genes.json", {"genes": genes})
     write_json(workspace / "inputs/annotations.json", annotations)
     if ontology_path:
@@ -116,11 +120,18 @@ def prepare(task_path, genes_path, gene_field, annotations_path, ontology_path, 
     (output / "private_home/.codex").mkdir(parents=True)
     write_json(output / "receipt.json", {"created_at_utc": datetime.now(timezone.utc).isoformat(),
                                          "workspace": str(workspace), "task_source_sha256": sha256(task_path),
+                                         "research_skills_included": include_research_skills,
+                                         "skill_files": [{"path": str(p.relative_to(workspace)), "sha256": sha256(p)}
+                                                         for p in sorted((workspace / "pipeline/skills").rglob("*")) if p.is_file()],
+                                         "prompt_files": [{"path": str(p.relative_to(workspace)), "sha256": sha256(p)}
+                                                          for p in sorted((workspace / "pipeline/prompts").glob("*.md"))],
                                          "boundary": "Only workspace, clean runtime home, system libraries and Codex executable are mounted"})
     return workspace
 
 
-def sandbox_command(output, codex_bin, auth_file):
+def sandbox_command(output, codex_bin, auth_file, entrypoint="run.py"):
+    if entrypoint not in {"run.py", "place_modules.py"}:
+        raise ValueError("Unknown task-only entrypoint")
     output = Path(output).resolve()
     home_path = Path.home()
     args = ["bwrap", "--unshare-user", "--unshare-pid", "--unshare-uts", "--unshare-ipc", "--new-session",
@@ -142,8 +153,13 @@ def sandbox_command(output, codex_bin, auth_file):
     auth_root = Path(os.environ.get("CODEX_HOME", home_path / ".codex"))
     if auth_root != home_path / ".codex":
         args += ["--bind", str(output / "private_home/.codex"), str(auth_root)]
+    if entrypoint == "place_modules.py":
+        args += ["--ro-bind", str(output / "workspace/inputs"), "/workspace/inputs",
+                 "--ro-bind", str(output / "workspace/pipeline"), "/workspace/pipeline",
+                 "--symlink", "/usr/bin/python3", "/opt/python",
+                 "--setenv", "PATH", "/opt:/usr/local/bin:/usr/bin:/bin"]
     args += ["--ro-bind", str(Path(auth_file).resolve()), str(auth_root / "auth.json"),
-             "--chdir", "/workspace", "--", "/usr/bin/python3", "/workspace/pipeline/run.py", "--workspace", "/workspace"]
+             "--chdir", "/workspace", "--", "/usr/bin/python3", "/workspace/pipeline/" + entrypoint, "--workspace", "/workspace"]
     return args
 
 
@@ -161,15 +177,23 @@ def main():
     parser.add_argument("--stage-timeout-seconds", type=int, default=1800)
     parser.add_argument("--prepare-only", action="store_true")
     parser.add_argument("--paper-cache-workspace", type=Path)
-    parser.add_argument("--retrieval-rounds", type=int, default=1)
+    parser.add_argument("--without-research-skills", action="store_true",
+                        help="Package the current prompts with the research-skills directory excluded")
+    parser.add_argument("--retrieval-rounds", type=int, default=None)
     parser.add_argument("--papers-per-round", type=int, default=50)
     parser.add_argument("--full-texts-per-round", type=int, default=30)
     parser.add_argument("--stalled-round-limit", type=int, default=3)
     args = parser.parse_args()
+    task_preview = json.loads(args.task.read_text())
+    if args.retrieval_rounds is None:
+        args.retrieval_rounds = 60 if adaptive(task_preview) else 1
+    if args.without_research_skills and adaptive(task_preview):
+        parser.error("Planner-adaptive acquisition uses the add-go-knowledge skill; include research skills")
     if min(args.retrieval_rounds, args.papers_per_round, args.full_texts_per_round, args.stalled_round_limit) < 1:
         parser.error("Round limits and reading targets must be positive")
     workspace = prepare(args.task, args.genes, args.gene_field, args.annotations, args.ontology,
-                        args.run_dir, args.model, args.reasoning_effort, args.stage_timeout_seconds, args.paper_cache_workspace)
+                        args.run_dir, args.model, args.reasoning_effort, args.stage_timeout_seconds,
+                        args.paper_cache_workspace, not args.without_research_skills)
     runtime = json.loads((workspace / "runtime.json").read_text())
     runtime.update(retrieval_rounds=args.retrieval_rounds, papers_per_round=args.papers_per_round,
                    full_texts_per_round=args.full_texts_per_round, stalled_round_limit=args.stalled_round_limit)

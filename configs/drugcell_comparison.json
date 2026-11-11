@@ -1,0 +1,89 @@
+{
+  "experiment_id": "drugcell_pruned_vs_augmented_v1",
+  "model_seed": 0,
+  "source_manifest": "configs/drugcell_source.json",
+  "runtime": {
+    "python": ".venv-gears/bin/python",
+    "environment_manifest": "configs/drugcell_environment.json",
+    "gene_layer_forward": "masked_gather",
+    "gpu_policy": "Use an unoccupied GPU reserved through the shared project GPU lock and occupancy checks."
+  },
+  "data": {
+    "responses": "data/raw/drugcell/v1/drugcell_all.txt",
+    "prepared_directory": "data/processed/drugcell/v1",
+    "split_unit": "cell_drug_pair",
+    "folds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "split_seed": 0,
+    "validation_pairs_per_fold": 5000,
+    "split_origin": "Project-generated grouped five-fold splits; all repeated measurements of one cell-drug pair share an assignment."
+  },
+  "knowledge": {
+    "baseline_ontology": "data/processed/drugcell/pruned_go/drugcell_ont.txt",
+    "baseline_inputs": "data/processed/drugcell/pruned_go",
+    "augmentation_task": "configs/agent_tasks/drug_response_task_only.json",
+    "augmentation_workspace": "/tmp/task-go-runs/drug_response_task_only_001/workspace",
+    "augmented_ontology": null,
+    "comparison": "Released pruned GO versus the same pruned GO with a frozen additive overlay.",
+    "original_rows": "preserve",
+    "gene_universe": "fixed",
+    "new_membership_novelty": "Compare against existing descendant-propagated membership before adding a direct input.",
+    "new_go_term_placement": "Compress authoritative GO biological-process is_a ancestry to retained and selected terms.",
+    "external_module_placement": "Require an explicit parent map and preserve its model-aggregation semantics separately from GO is_a."
+  },
+  "released_training_settings": {
+    "genotype_hiddens": 6,
+    "drug_hiddens": [
+      100,
+      50,
+      6
+    ],
+    "final_hiddens": 6,
+    "max_epochs": 300,
+    "batch_size": 5000,
+    "learning_rate": 0.001,
+    "optimizer": "Adam",
+    "betas": [
+      0.9,
+      0.99
+    ],
+    "epsilon": 1e-05,
+    "shuffle": false,
+    "auxiliary_loss_weight_per_head": 0.2,
+    "loss": "MSE(final) + 0.2 * sum(MSE(each GO and drug auxiliary head))",
+    "released_checkpoint_ranking": "validation_pearson",
+    "released_early_stopping": false
+  },
+  "evaluation": {
+    "primary_metric": "test_spearman",
+    "additional_metrics": [
+      "test_pearson",
+      "test_mse",
+      "test_rmse",
+      "per_drug_spearman"
+    ],
+    "checkpoint_policy": "Select using validation data and evaluate the selected checkpoint on the held-out test fold.",
+    "matched_inputs": [
+      "gene_order",
+      "cell_features",
+      "compound_fingerprints",
+      "response_records",
+      "split_assignments",
+      "training_settings",
+      "random_seeds"
+    ],
+    "architecture_accounting": [
+      "ontology_terms",
+      "direct_gene_memberships",
+      "hierarchy_edges",
+      "parameter_count",
+      "auxiliary_head_count"
+    ]
+  },
+  "initialization_scope": "Official source and data, grouped split files, pruned GO task inputs, additive ontology adapter, and CPU runtime verification."
+}

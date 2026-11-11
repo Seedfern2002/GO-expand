@@ -98,6 +98,43 @@ class TaskBoundaryTests(unittest.TestCase):
         self.assertNotIn(str(source), manifest)
         self.assertIn("paper_00001.txt", manifest)
 
+    def test_prompt_only_package_excludes_research_skills_and_binds_prompt_hashes(self):
+        from engine.knowledge import sha256
+        workspace = prepare(self.task_path, self.genes_path, "genes", self.annotations_path, None,
+                            self.root / "prompt_only", "test-model", "medium", 30,
+                            include_research_skills=False)
+        self.assertFalse((workspace / "pipeline/skills").exists())
+        receipt = json.loads((self.root / "prompt_only/receipt.json").read_text())
+        self.assertFalse(receipt["research_skills_included"])
+        self.assertEqual(len(receipt["prompt_files"]), 5)
+        for item in receipt["prompt_files"]:
+            copied = workspace / item["path"]
+            self.assertEqual(sha256(copied), item["sha256"])
+            self.assertEqual(copied.read_bytes(), (PACKAGE / "prompts" / copied.name).read_bytes())
+
+    def test_adaptive_package_runs_knowledge_tools_after_isolated_copy(self):
+        self.task["retrieval_budget"].update(reading_mode="planner_adaptive", max_full_text_papers=1)
+        self.write(self.task_path, self.task)
+        workspace = self.prepare()
+        helper = workspace / "pipeline/skills/add-go-knowledge/scripts/knowledge.py"
+        built = subprocess.run([sys.executable, str(helper), "build", "--index", "context.sqlite"],
+                               cwd=workspace, capture_output=True, text=True)
+        self.assertEqual(built.returncode, 0, built.stderr)
+        queried = subprocess.run([sys.executable, str(helper), "query", "--index", "context.sqlite", "--genes", "A"],
+                                 cwd=workspace, capture_output=True, text=True)
+        self.assertEqual(queried.returncode, 0, queried.stderr)
+        self.assertEqual(json.loads(queried.stdout)["genes"]["A"]["assertions"][0]["object_id"], "GO:0000001")
+        receipt = json.loads((self.root / "run/receipt.json").read_text())
+        self.assertTrue(any(f["path"].endswith("add-go-knowledge/SKILL.md") for f in receipt["skill_files"]))
+
+    def test_adaptive_skill_requirement_checked_before_workspace_creation(self):
+        self.task["retrieval_budget"]["reading_mode"] = "planner_adaptive"
+        self.write(self.task_path, self.task)
+        with self.assertRaisesRegex(ValueError, "add-go-knowledge"):
+            prepare(self.task_path, self.genes_path, "genes", self.annotations_path, None,
+                    self.root / "missing_skill", "test-model", "medium", 30, include_research_skills=False)
+        self.assertFalse((self.root / "missing_skill").exists())
+
 
 if __name__ == "__main__":
     unittest.main()

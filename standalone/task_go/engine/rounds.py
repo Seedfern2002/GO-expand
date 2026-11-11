@@ -5,6 +5,7 @@ import re
 from pathlib import Path
 
 from .knowledge import read_json, sha256, validate_batches, workspace_file
+from .reading import adaptive, validate_reading_decision
 
 USAGE_FIELDS = ("search_queries", "sources_opened", "paper_identities_opened", "literature_candidate_statements")
 
@@ -148,18 +149,20 @@ def measured_usage(root):
             "distinct_download_urls": len(set(urls))}
 
 
-def next_action(task, progress, round_number, maximum_rounds, stalled_rounds, stall_limit):
+def next_action(task, progress, round_number, maximum_rounds, stalled_rounds, stall_limit, reading_decision=None):
     budget = task["retrieval_budget"]
     reached = progress.get("inspected_primary", 0) >= budget.get("target_papers_inspected", 0) and (
         progress.get("full_text_inspected_primary", 0) >= budget.get("target_full_text_papers_inspected", 0)
     )
-    if reached:
+    if reached and not adaptive(task):
         return "targets_met"
     for key, limit in [("search_queries", "max_search_queries"), ("sources_opened", "max_sources_opened"),
                        ("paper_identities_opened", "max_papers"), ("literature_candidate_statements", "max_candidate_records"),
                        ("downloaded_bytes", "max_download_bytes")]:
         if limit in budget and progress.get(key, 0) >= budget[limit]:
             return "resource_limit:" + key
+    if adaptive(task) and reading_decision and reading_decision["decision"] == "stop":
+        return reading_decision["stop_code"]
     if stalled_rounds >= stall_limit:
         return "stalled_reading"
     if round_number >= maximum_rounds:
@@ -222,5 +225,9 @@ def validate_round(task, result, root, directory, state):
                        ("paper_identities_opened", "max_papers"), ("literature_candidate_statements", "max_candidate_records")]:
         if progress[key] > task["retrieval_budget"][limit]:
             raise ValueError("Cumulative retrieval budget exceeded: " + key)
-    return {"candidates": candidates, "observations": observations, "progress": progress,
-            "validation": validation}
+    decision = validate_reading_decision(task, plan, result, new, progress)
+    updated = {"candidates": candidates, "observations": observations, "progress": progress,
+               "validation": validation}
+    if decision is not None:
+        updated["reading_decision"] = decision
+    return updated

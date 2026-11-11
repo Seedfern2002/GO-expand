@@ -1,0 +1,17 @@
+{
+  "interpreter": ".venv-gears/bin/python",
+  "setup": "Reuse the existing verified environment without modifying packages.",
+  "versions": {
+    "python": "3.12.3",
+    "torch": "2.5.1+cu124",
+    "numpy": "1.26.4",
+    "networkx": "3.3"
+  },
+  "additional_packages": {
+    "scipy": "1.14.1"
+  },
+  "cpu_check": "outputs/drugcell/initialization/cpu_smoke_verified.json",
+  "check_scope": "CPU forward, one masked-gradient Adam update, and evaluation forward on a sample training batch",
+  "check_sha256": "1d0a10dee207b8fc8a98b296120803a8ee613de41c005522bdbeecfb123d3f44",
+  "training_device_policy": "Unoccupied GPU with a held project reservation; initialization used CPU only."
+}

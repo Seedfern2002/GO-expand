@@ -1,0 +1,37 @@
+{
+  "task_id": "human_cancer_drug_response_knowledge",
+  "task_description": "Construct task-specific GO augmentation for predicting cancer-cell response to small-molecule treatment from somatic mutation profiles and compound chemical features. Produce one shared knowledge overlay across the complete supplied gene universe and all cell-line and compound contexts.",
+  "organism": {"name": "Homo sapiens", "taxon_id": "NCBITaxon:9606"},
+  "biological_context": {
+    "cell_type": "Human cancer cell lines from multiple tissue lineages",
+    "perturbation": "Small-molecule treatment",
+    "condition": "In vitro drug response measured by area under the viability dose-response curve"
+  },
+  "candidate_categories": ["pathway", "protein_complex", "regulatory_program"],
+  "knowledge_requirements": [
+    "Plan functional knowledge for the complete task and fixed gene universe. Use a shared representation across cancer lineages and compounds, retaining the biological context of each evidence statement.",
+    "Interpret the supplied annotations as the functional knowledge already available through the supplied hierarchy. Identify evidence-supported additional memberships and functional modules relevant to drug response.",
+    "Consider signaling, DNA-damage response and repair, cell-cycle control, apoptosis, metabolic adaptation, drug transport and metabolism, and protein assemblies where supported by task-relevant external evidence. The planner selects sources and acquisition priorities.",
+    "Process selected biological database sources to completion within declared resource budgets, preserving identifiers, source versions, mapping rules, evidence types, conditions and provenance.",
+    "Inspect 100 primary papers, including relevant body sections from 60 accessible full texts, using shared topic queries and reusable paper bundles. Track inspected papers separately from accepted claims and retain exact supporting passages for literature-derived statements.",
+    "Support a hierarchical functional representation: associate new GO biological-process concepts with their authoritative is_a ancestry. Preserve external pathway and complex identifiers together with evidence-backed relationships to existing functional modules, so the downstream adapter can place each new module explicitly.",
+    "Keep typed regulatory mechanisms, polarity and condition-specific findings in the evidence product alongside membership annotations. Freeze one evidence-backed knowledge product for subsequent evaluation."
+  ],
+  "retrieval_budget": {
+    "max_search_queries": 150,
+    "max_sources_opened": 400,
+    "max_candidate_records": 5000,
+    "record_budget_scope": "max_candidate_records applies to literature_extracted statements. Complete selected database integration retains all eligible gene-universe mappings; review samples determine inspection effort.",
+    "max_papers": 200,
+    "target_papers_inspected": 100,
+    "target_full_text_papers_inspected": 60,
+    "paper_accounting": "Deduplicate DOI, PMID and PMCID identities. Record discovered, acquired, inspected, full-text-inspected and evidence-contributing papers separately.",
+    "max_download_bytes": 2147483648,
+    "max_concurrent_source_requests": 3
+  },
+  "projection_policy": {
+    "membership_relations": ["annotated_to", "member_of_pathway", "member_of_complex", "predicted_member_of_complex"],
+    "singleton_policy": "retain",
+    "context_policy": "preserve"
+  }
+}

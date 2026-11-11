@@ -1,0 +1,48 @@
+{
+  "repository": "https://github.com/idekerlab/DrugCell.git",
+  "local_path": "third_party/DrugCell",
+  "commit": "c507e1d821fac0201e42f831a1d772e7ef42b00e",
+  "commit_date": "2021-11-01",
+  "release_label": "v1.0",
+  "license": "MIT",
+  "initialized_on": "2026-11-09",
+  "upstream_modifications": false,
+  "files": {
+    "code/drugcell_NN.py": "e6be9c1103e9c5274c85922dddb0c90927492befbf7524bb7138e0e95666aab4",
+    "code/util.py": "51f5c081578d822c580c354ed2fe8fe8cf9f98061d36d87d6fdbdd8eb1652cc9",
+    "code/train_drugcell.py": "f76f0e480571880c91b84f39fc458f599ecc7d19585b88571a204e81fd562f7e",
+    "code/predict_drugcell.py": "6875b7611d934a91cfbe5b32aa67ab11e082b3b7f1a890e4341bc005bf5ab369",
+    "data/drugcell_ont.txt": "c850100dfe2517e703c60048e77c3b600107c78096f94ccc4becfc10e540788b",
+    "data/gene2ind.txt": "fb155e937660f13fed06561751e0ae858ccab744ca5ac6726f8430cc46601dc2",
+    "data/cell2ind.txt": "f64b8f7733f7738e753edf1f89cac431c300df1ab3f5866af9130bb53b41749a",
+    "data/drug2ind.txt": "f7f8c66210885bc7e488bda72e6d0d2fa50e7fc06ebad10b2c75508644af12c6",
+    "data/cell2mutation.txt": "e08ad8a54a0bd3c99881a92d8cbdcf41ff585685f5fd8c7d8d8247b2ceab5437",
+    "data/drug2fingerprint.txt": "0e8f69c5bc35233fb0065284783709f918ab89187bccce08531b45c738dd8e28"
+  },
+  "responses": {
+    "url": "https://drugcell.ucsd.edu/downloads/drugcell_all.txt",
+    "path": "data/raw/drugcell/v1/drugcell_all.txt",
+    "bytes": 59517087,
+    "sha256": "75e2e3183868b8fa4410ce6c2c64d253e0d28558e0f0a80f571100754f84bb0b",
+    "records": 509294,
+    "distinct_cell_drug_pairs": 484325,
+    "observed_cells": 1224,
+    "observed_drugs": 684
+  },
+  "released_dimensions": {
+    "mapped_genes": 3008,
+    "mapped_cells": 1225,
+    "mapped_drugs": 684,
+    "ontology_terms": 2086,
+    "hierarchy_edges": 3167,
+    "direct_gene_memberships": 59753,
+    "propagated_gene_memberships": 156257
+  },
+  "paper_reported_dimensions": {
+    "cells": 1235,
+    "genes": 3008,
+    "drugs": 684,
+    "response_records": 509294
+  },
+  "dimension_note": "Observed released mapping and response dimensions are recorded separately from publication counts."
+}

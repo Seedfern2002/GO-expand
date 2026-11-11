@@ -36,6 +36,7 @@ GEARS 是重点应用之一。虚拟细胞与扰动预测的研究热度使其�
 14. [GEARS 原始／增广对比快照](results/gears_norman_seed1/README.md)：pipeline 改造前的代码版本对应结果、精确增广记录、训练配置和来源校验和。当前 split seed 1 下，MSE 降低 28.53%，top-20 DE MSE 降低 10.70%。
 15. [v3 knowledge pipeline](docs/knowledge_pipeline.md)：数据库／论文证据批量导入、声明归并、独立校验、任务投影及冻结；泄露审计位于 pipeline 外部。
 16. [独立 task-only pipeline](standalone/task_go/README.md)：可复制出项目运行，只导入任务信息和原始知识；私有文件系统隔离项目文档、历史运行和旧会话。
+17. [DrugCell 初始化](docs/drugcell_setup.md)：以作者裁剪后的 GO 为共同起点，准备完整药物响应数据、固定五折划分、增广转换接口及 CPU 检查。
 
 ## 运行
 

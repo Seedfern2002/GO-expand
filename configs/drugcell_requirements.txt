@@ -1,0 +1,6 @@
+# Compatibility checked against the released DrugCell source.
+# The current setup reuses .venv-gears without changing its packages.
+torch==2.5.1
+numpy==1.26.4
+networkx==3.3
+scipy==1.14.1

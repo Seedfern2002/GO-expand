@@ -237,6 +237,45 @@
         "ontology_path"
       ],
       "additionalProperties": false
+    },
+    "reading_plan": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "initial_papers": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "batch_size": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_full_text_papers": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "topic_questions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "stop_criteria": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "initial_papers",
+        "batch_size",
+        "max_full_text_papers",
+        "topic_questions",
+        "stop_criteria"
+      ]
     }
   },
   "required": [

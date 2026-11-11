@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DrugCell · GO structure comparison</title>
+<style>
+:root{color-scheme:light;--ink:#24394b;--muted:#687789;--line:#dce3e9;--paper:#fbfaf7;--accent:#128f83}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{max-width:1800px;margin:auto;padding:32px 28px 48px}h1{font-size:30px;letter-spacing:-.7px;line-height:1.2;margin:8px 0 10px}h2{font-size:18px;margin:0}h3{font-size:14px;margin:18px 0 8px}p{margin:5px 0}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent);font-weight:700}.muted{color:var(--muted)}.small{font-size:12px}.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12px;overflow-wrap:anywhere}
+.header{display:flex;justify-content:space-between;gap:30px;align-items:center}.header a{color:var(--accent);text-decoration:none;border-bottom:1px solid #b9d9d4}.links{display:flex;gap:18px;white-space:nowrap}.legend{display:flex;flex-wrap:wrap;gap:8px 20px;margin:20px 0}.legend span{display:inline-flex;align-items:center;gap:7px;font-size:12px}.dot{width:9px;height:9px;border-radius:100%;display:inline-block}.ring{width:9px;height:9px;border:1.5px solid #cc6670;border-radius:100%;display:inline-block}
+.toolbar{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap}.field{display:flex;flex-direction:column;gap:5px}.field label{color:var(--muted);font-size:11px;letter-spacing:.2px}.search-field{flex:1;min-width:240px}.search-row{display:flex;gap:8px}input,select,button{font:inherit;color:inherit}input,select{border:1px solid #cdd6df;background:#fff;border-radius:7px;padding:8px 10px;min-height:38px}input{width:100%}button{cursor:pointer;border:1px solid #cdd6df;border-radius:7px;background:#fff;padding:8px 12px;white-space:nowrap;min-height:38px}button:hover{background:#f2f6f8;border-color:#a8b9c6}button.primary{background:var(--accent);border-color:var(--accent);color:#fff}button:disabled{opacity:.45;cursor:default}a{color:var(--accent)}:focus-visible{outline:3px solid #a2d5cd;outline-offset:2px}
+#searchResults{position:absolute;top:92px;left:14px;width:min(640px,90vw);z-index:20;background:white;border:1px solid var(--line);border-radius:9px;box-shadow:0 12px 30px #21394c20;max-height:320px;overflow:auto;display:none}.search-result{display:block;width:100%;border:0;border-radius:0;text-align:left;padding:10px 14px;white-space:normal}.search-result + .search-result{border-top:1px solid #eef1f4}.search-result strong{font-size:12px}.search-result span{display:block;font-size:12px;color:var(--muted)}
+.selection-line{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 3px;min-height:50px;font-size:12px}.selection-line b{color:var(--accent)}.graphs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.panel{background:white;border:1px solid var(--line);border-radius:12px;overflow:hidden}.panel-head{padding:17px 16px 12px;border-bottom:1px solid #edf0f3;min-height:123px}.panel-head h2{font-size:17px}.stats{display:flex;gap:22px;margin:10px 0 0}.stats strong{font-size:20px;font-weight:650;line-height:1.15;display:block}.stats span{display:block;font-size:11px;color:var(--muted)}.source-counts{font-size:11px;color:var(--muted);margin-top:8px;min-height:17px}.canvas-wrap{position:relative;height:470px;overflow:hidden}.graph{display:block;width:100%;height:100%;cursor:grab;touch-action:none}.graph:active{cursor:grabbing}.panel-foot{padding:8px 12px;border-top:1px solid #edf0f3;display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:11px;color:var(--muted)}.panel-foot button{font-size:11px;padding:4px 7px;min-height:26px}.empty{position:absolute;top:40%;left:12%;right:12%;text-align:center;color:var(--muted);pointer-events:none;display:none}.tip{position:fixed;z-index:50;max-width:360px;padding:10px 12px;border-radius:8px;background:#1f3349ef;color:#fff;font-size:12px;pointer-events:none;display:none;box-shadow:0 5px 20px #0002}.tip b{display:block;margin-bottom:3px}.tip .mono{font-size:11px;opacity:.8}
+.bottom-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:16px;margin-top:18px}.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;overflow:hidden}.metric-table{border-collapse:collapse;width:100%;font-size:12px}.metric-table th,.metric-table td{text-align:right;padding:9px 7px;border-bottom:1px solid #edf0f3;vertical-align:top}.metric-table th:first-child,.metric-table td:first-child{text-align:left}.metric-table th{font-size:11px;color:var(--muted);font-weight:500}.metric-table tr:last-child td{border-bottom:0}.chip{display:inline-block;padding:3px 8px;background:#edf6f4;color:#187b71;border-radius:20px;font-size:11px;margin:4px 4px 0 0}.chip.removed{background:#fff0ef;color:#b85d65}.inspector-title{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.inspector-title h2{margin-top:3px;overflow-wrap:anywhere}.detail-columns{display:grid;grid-template-columns:1fr 1fr;gap:18px}.node-list{max-height:180px;overflow:auto}.node-link{display:block;color:#355b7c;background:#f5f8fa;border:0;border-radius:5px;text-align:left;width:100%;font-size:11px;white-space:normal;min-height:0;padding:6px 8px;margin:4px 0}.gene-list{max-height:120px;overflow:auto;display:flex;align-content:flex-start;flex-wrap:wrap;gap:4px}.gene-link{font-family:ui-monospace,monospace;font-size:11px;padding:3px 6px;min-height:0;border-color:#dce8e5;color:#247f73}.notes{margin-top:20px;color:var(--muted);font-size:12px;max-width:1250px}.notes p{margin:8px 0}.bar-table{width:100%;margin-top:15px}.bar-row{display:grid;grid-template-columns:145px 1fr 55px;align-items:center;gap:12px;margin:10px 0;font-size:12px}.bar-track{height:10px;background:#edf0f3;border-radius:4px;overflow:hidden}.bar-fill{height:100%;background:var(--accent);border-radius:4px}.guide{background:#f4f8f9;padding:12px 14px;border-radius:8px;margin:14px 0 0;color:#536a7c;font-size:12px}.count{font-variant-numeric:tabular-nums}
+@media(min-width:1550px){.canvas-wrap{height:550px}}@media(max-width:1050px){main{padding:22px 16px}.graphs{grid-template-columns:1fr}.canvas-wrap{height:420px}.bottom-grid{grid-template-columns:1fr}.header{align-items:flex-start}.links{flex-direction:column;gap:5px}.panel-head{min-height:0}.stats{gap:30px}.source-counts{margin-top:5px}.panel-head h2{font-size:18px}}@media(max-width:600px){h1{font-size:24px}.header{display:block}.links{flex-direction:row;margin-top:15px}.detail-columns{grid-template-columns:1fr}.bar-row{grid-template-columns:100px 1fr 45px}}
+</style>
+</head>
+<body>
+<main>
+ <header class="header">
+  <div><div class="eyebrow">DrugCell · frozen knowledge structure</div><h1>GO before and after augmentation</h1><p class="muted">Three aligned views of the same 3,008-gene task. Search a gene or module to compare its connections.</p></div>
+  <div class="links small"><a href="overview.png">Overview PNG</a><a href="overview.svg">SVG</a><a href="overview.pdf">PDF</a><a href="nodes.tsv">Node table</a></div>
+ </header>
+ <div class="legend" id="legend"></div>
+ <section class="toolbar" aria-label="Graph controls">
+  <div class="field search-field"><label for="search">Gene, GO ID, module name or source identifier</label><div class="search-row"><input id="search" placeholder="Try TP53, DNA repair, GO:0006281 or R-HSA-…" autocomplete="off"><button id="searchButton" class="primary">Find</button></div></div>
+  <div class="field"><label for="viewMode">Graph view</label><select id="viewMode"><option value="all">Whole graph</option><option value="neighborhood">Selected neighborhood</option><option value="ancestors">Selected + ancestors</option><option value="descendants">Selected + descendants</option><option value="gene">Selected gene connections</option></select></div>
+  <div class="field"><label for="colorMode">Node color</label><select id="colorMode"><option value="source">Knowledge origin</option><option value="change">Retention / pruning</option></select></div>
+  <button id="fit">Fit view</button><button id="reset">Reset</button>
+  <div id="searchResults" role="listbox"></div>
+ </section>
+ <div class="selection-line"><span id="selection">Whole graph · click a node to inspect it</span><span class="muted">Wheel: zoom · drag: pan · views move together</span></div>
+ <section class="graphs" id="graphs" aria-label="Aligned graph comparison"></section>
+ <section class="bottom-grid">
+  <div class="card" id="inspector"><h2>Inspect a module or gene</h2><p class="muted" style="margin-top:10px">Click a node in any panel, or search above. The comparison shows direct and propagated gene memberships, parent/child connections and pruning status.</p><div class="guide">Gene search highlights its functional coverage across all stages and displays its direct gene–module edges. Nodes use shared coordinates from the augmented input hierarchy.</div></div>
+  <div class="card"><h2>Structure at a glance</h2><div id="comparison"></div><h3>External modules attached directly to the root</h3><div id="rootBars"></div><p class="small muted" style="margin-top:14px">These edges are explicitly recorded as model aggregation. Inspect a module to see its source and exported connections.</p></div>
+ </section>
+ <footer class="notes">
+  <p><b>Graph scope.</b> The left panel is DrugCell's released, already-pruned GO. The middle panel adds the latest adaptive knowledge product; the right panel applies the size, separation and depth pruning rules to that graph. Each dot is a term or functional module. All 3,008 input genes remain covered.</p>
+  <p><b>Layout and edges.</b> Vertical coordinates use longest root-to-node depth in the augmented input, with a compact grid inside each depth band. Surviving nodes keep their coordinates after pruning. Hierarchy edges run from parent to child. A gene view adds direct membership edges. Released hierarchy rows encode a common edge type; the input file does not distinguish is_a and part_of. Node area increases with the square root of propagated gene count.</p>
+  <p><b>Evidence.</b> Source labels and evidence classes come from the frozen knowledge product. Node color identifies the concept origin; an existing GO term may also receive literature support. The upstream evidence records retain biological conditions and relationship details.</p>
+  <p id="provenance"></p>
+ </footer>
+</main>
+<div id="tooltip" class="tip"></div>
+<script id="graph-data" type="application/json">__GRAPH_DATA__</script>
+<script>
+'use strict';
+const DATA=JSON.parse(document.getElementById('graph-data').textContent);
+const $=id=>document.getElementById(id),fmt=n=>Number(n).toLocaleString('en-US');
+const esc=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const STATE={selection:null,mode:'all',color:'source',scale:1,tx:0,ty:0,hover:null};
+const allNodes=new Map(),geneIndex=new Map(DATA.genes.map((g,i)=>[g.toUpperCase(),i]));
+const panels=DATA.stages.map((stage,index)=>{
+ const wrapper=document.createElement('article');wrapper.className='panel';wrapper.id='panel-'+stage.id;
+ wrapper.innerHTML=`<div class="panel-head"><h2>${esc(stage.title)}</h2><div class="stats"><div><strong>${fmt(stage.nodes.length)}</strong><span>terms / modules</span></div><div><strong>${fmt(stage.edges.length)}</strong><span>hierarchy edges</span></div><div><strong>${fmt(stage.stats.annotated_genes)}</strong><span>genes</span></div></div><div class="source-counts">${Object.entries(stage.source_counts).map(([s,c])=>`${esc(s)} ${fmt(c)}`).join(' · ')}</div></div><div class="canvas-wrap"><canvas class="graph" aria-label="${esc(stage.title)} graph" tabindex="0"></canvas><div class="empty"></div></div><div class="panel-foot"><span class="view-count"></span><button class="download">Save view PNG</button></div>`;
+ $('graphs').appendChild(wrapper);
+ const byId=new Map(stage.nodes.map((n,i)=>[n.id,i]));
+ const parents=stage.nodes.map(()=>[]),children=stage.nodes.map(()=>[]);
+ stage.edges.forEach(([a,b])=>{parents[b].push(a);children[a].push(b)});
+ stage.nodes.forEach(n=>{if(!allNodes.has(n.id))allNodes.set(n.id,n)});
+ const panel={stage,wrapper,canvas:wrapper.querySelector('canvas'),byId,parents,children,width:0,height:0,visible:new Set(),points:[]};
+ wrapper.querySelector('.download').onclick=()=>{const a=document.createElement('a');a.download=stage.id+'-'+STATE.mode+'.png';a.href=panel.canvas.toDataURL('image/png');a.click()};
+ return panel;
+});
+const searchable=[...allNodes.values()].map(n=>({node:n,text:[n.id,n.original_id,n.label,n.source].join(' ').toLowerCase()}));
+function legend(){
+ const items=STATE.color==='source'?Object.entries(DATA.colors):[['Original, retained','#5279a6'],['Added, retained','#128f83'],['Removed during pruning','#cc6670']];
+ $('legend').innerHTML=items.map(([name,color])=>`<span><i class="dot" style="background:${color}"></i>${esc(name)}</span>`).join('')+(STATE.color==='source'?'<span><i class="ring"></i>Removed during pruning</span>':'')+'<span><i class="dot" style="background:#263e52;border-radius:0;transform:rotate(45deg)"></i>GO root</span>';
+}
+function traverse(panel,start,up){
+ const found=new Set([start]),pending=[start],links=up?panel.parents:panel.children;
+ for(let q=0;q<pending.length;q++)for(const next of links[pending[q]])if(!found.has(next)){found.add(next);pending.push(next)}
+ return found;
+}
+function visibleNodes(panel){
+ const {selection,mode}=STATE,nodes=panel.stage.nodes;
+ if(mode==='all'||!selection)return new Set(nodes.map((_,i)=>i));
+ if(selection.kind==='gene')return new Set(nodes.flatMap((n,i)=>n.coverage.includes(selection.index)?[i]:[]));
+ const index=panel.byId.get(selection.id);if(index===undefined)return new Set();
+ if(mode==='ancestors')return traverse(panel,index,true);
+ if(mode==='descendants')return traverse(panel,index,false);
+ return new Set([index,...panel.parents[index],...panel.children[index]]);
+}
+function highlighted(panel,index){
+ const sel=STATE.selection;if(!sel)return true;
+ if(sel.kind==='gene')return panel.stage.nodes[index].coverage.includes(sel.index);
+ const center=panel.byId.get(sel.id);return center!==undefined&&(center===index||panel.parents[center].includes(index)||panel.children[center].includes(index));
+}
+function color(node){return STATE.color==='source'?DATA.colors[node.source]:(node.removed?'#cc6670':node.baseline?'#5279a6':'#128f83')}
+function screen(panel,x,y){const m=25;return[m+(x*STATE.scale+STATE.tx)*(panel.width-2*m),m+(y*STATE.scale+STATE.ty)*(panel.height-2*m)]}
+function world(panel,x,y){return[((x-25)/(panel.width-50)-STATE.tx)/STATE.scale,((y-25)/(panel.height-50)-STATE.ty)/STATE.scale]}
+function radius(node){return Math.min(7,1.05+Math.pow(node.coverage.length,.25)*.30)*Math.min(1.9,Math.sqrt(STATE.scale))}
+function paint(panel){
+ const {canvas,stage}=panel,ctx=canvas.getContext('2d'),dpr=window.devicePixelRatio||1;
+ ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,panel.width,panel.height);ctx.fillStyle='#fff';ctx.fillRect(0,0,panel.width,panel.height);
+ panel.visible=visibleNodes(panel);panel.points=[];
+ ctx.font='10px system-ui';ctx.textBaseline='middle';
+ for(let depth=0;depth<=DATA.max_depth;depth++){
+  const y=screen(panel,0,.085+depth*.8/DATA.max_depth)[1];if(y<16||y>panel.height-10)continue;
+  ctx.strokeStyle='#edf1f5';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(22,y);ctx.lineTo(panel.width-10,y);ctx.stroke();ctx.fillStyle='#a0acb7';ctx.fillText(String(depth),7,y);
+ }
+ const divider=screen(panel,.575,0)[0];ctx.setLineDash([3,4]);ctx.strokeStyle='#dbe2e8';ctx.beginPath();ctx.moveTo(divider,16);ctx.lineTo(divider,panel.height-18);ctx.stroke();ctx.setLineDash([]);
+ if(STATE.scale<1.4){ctx.fillStyle='#8a98a5';ctx.textAlign='center';ctx.fillText('GO terms',screen(panel,.29,0)[0],14);ctx.fillText('External modules',screen(panel,.79,0)[0],14);ctx.textAlign='left'}
+ for(const [a,b,semantics] of stage.edges){
+  if(!panel.visible.has(a)||!panel.visible.has(b))continue;
+  const na=stage.nodes[a],nb=stage.nodes[b],pa=screen(panel,na.x,na.y),pb=screen(panel,nb.x,nb.y);
+  const selected=STATE.selection?.kind==='term'&&(na.id===STATE.selection.id||nb.id===STATE.selection.id);
+  const geneHighlighted=STATE.selection?.kind==='gene'&&highlighted(panel,a)&&highlighted(panel,b);
+  ctx.strokeStyle=selected?'#355e7f':geneHighlighted?'#6caaa0':semantics==='explicit_model_aggregation'?'#bacbc9':'#9aabbc';
+  ctx.globalAlpha=selected?.8:geneHighlighted?.5:STATE.selection&&STATE.mode==='all'?.035:semantics==='explicit_model_aggregation'?.10:.23;
+  ctx.lineWidth=selected?1.5:.5;ctx.beginPath();ctx.moveTo(...pa);ctx.lineTo(...pb);ctx.stroke();
+ }
+ ctx.globalAlpha=1;
+ const ordered=[...panel.visible].sort((a,b)=>stage.nodes[b].coverage.length-stage.nodes[a].coverage.length);
+ for(const index of ordered){
+  const node=stage.nodes[index],[x,y]=screen(panel,node.x,node.y),r=radius(node);
+  if(x< -12||x>panel.width+12||y< -12||y>panel.height+12)continue;
+  const selected=STATE.selection?.kind==='term'&&node.id===STATE.selection.id;
+  ctx.globalAlpha=STATE.selection&&STATE.mode==='all'&&!highlighted(panel,index)?.13:.87;
+  ctx.fillStyle=node.id===DATA.root?'#263e52':color(node);ctx.beginPath();
+  if(node.id===DATA.root){ctx.moveTo(x,y-5);ctx.lineTo(x+5,y);ctx.lineTo(x,y+5);ctx.lineTo(x-5,y);ctx.closePath()}else ctx.arc(x,y,r,0,Math.PI*2);
+  ctx.fill();
+  if(node.removed&&STATE.color==='source'&&STATE.scale>1.8){ctx.strokeStyle='#cc6670';ctx.lineWidth=.8;ctx.stroke()}
+  if(selected){ctx.globalAlpha=1;ctx.strokeStyle='#e2a63b';ctx.lineWidth=2.2;ctx.beginPath();ctx.arc(x,y,r+3,0,Math.PI*2);ctx.stroke()}
+  panel.points.push({index,x,y,r});
+ }
+ ctx.globalAlpha=1;
+ const gene=STATE.selection?.kind==='gene'&&STATE.mode!=='all'?STATE.selection:null;
+ if(gene){
+  const [gx,gy]=screen(panel,.50,.97);
+  ctx.strokeStyle='#55a994';ctx.globalAlpha=.55;ctx.lineWidth=.7;ctx.setLineDash([3,3]);
+  for(const index of panel.visible){const node=stage.nodes[index];if(!node.direct.includes(gene.index))continue;ctx.beginPath();ctx.moveTo(...screen(panel,node.x,node.y));ctx.lineTo(gx,gy);ctx.stroke()}
+  ctx.setLineDash([]);ctx.globalAlpha=1;ctx.fillStyle='#1b8a6c';ctx.beginPath();ctx.arc(gx,gy,5,0,Math.PI*2);ctx.fill();ctx.textAlign='center';ctx.fillText(gene.id,gx,gy+15);ctx.textAlign='left';
+ }
+ if(panel.visible.size<=65){
+  ctx.font='10px system-ui';ctx.fillStyle='#38556b';
+  for(const {index,x,y,r} of panel.points){const n=stage.nodes[index];const label=n.label.length>42?n.label.slice(0,40)+'…':n.label;ctx.fillText(label,x+r+4,y)}
+ }
+ panel.wrapper.querySelector('.view-count').textContent=`${fmt(panel.visible.size)} terms in view · ${fmt(stage.root_children)} root children`;
+ const empty=panel.wrapper.querySelector('.empty');empty.style.display=panel.visible.size?'none':'block';empty.textContent='Selected module is absent from this stage.';
+}
+let frame=null;function render(){if(frame===null)frame=requestAnimationFrame(()=>{frame=null;panels.forEach(paint)})}
+function resize(){for(const panel of panels){const box=panel.canvas.getBoundingClientRect();panel.width=box.width;panel.height=box.height;const d=window.devicePixelRatio||1;panel.canvas.width=Math.round(box.width*d);panel.canvas.height=Math.round(box.height*d)}render()}
+new ResizeObserver(resize).observe($('graphs'));
+function fit(){
+ const points=panels.flatMap(p=>[...visibleNodes(p)].map(i=>p.stage.nodes[i]));
+ if(!points.length)return;
+ const xmin=Math.min(...points.map(n=>n.x)),xmax=Math.max(...points.map(n=>n.x));
+ const ymin=Math.min(...points.map(n=>n.y)),ymax=Math.max(...points.map(n=>n.y),STATE.selection?.kind==='gene'?.99:0);
+ STATE.scale=Math.min(8,.88/Math.max(xmax-xmin,ymax-ymin,.12));
+ STATE.tx=.5-(xmin+xmax)/2*STATE.scale;STATE.ty=.5-(ymin+ymax)/2*STATE.scale;render();
+}
+function choose(selection,auto=true){
+ STATE.selection=selection;
+ if(auto){STATE.mode=selection.kind==='gene'?'gene':'neighborhood';$('viewMode').value=STATE.mode}
+ $('search').value=selection.kind==='gene'?selection.id:(allNodes.get(selection.id)?.label||selection.id);
+ $('searchResults').style.display='none';$('tooltip').style.display='none';
+ $('selection').innerHTML=selection.kind==='gene'?`Gene <b>${esc(selection.id)}</b> · direct gene edges and propagated functional coverage`:`Module <b>${esc(allNodes.get(selection.id)?.label||selection.id)}</b> · ${esc(selection.id)}`;
+ updateInspector();if(auto)fit();else render();
+}
+function search(){
+ const query=$('search').value.trim(),lower=query.toLowerCase(),gene=geneIndex.get(query.toUpperCase());
+ if(!query){$('searchResults').style.display='none';return []}
+ const matches=searchable.filter(item=>item.text.includes(lower)).sort((a,b)=>{
+  const rank=n=>[n.id,n.original_id,n.label].some(v=>v.toLowerCase()===lower)?0:n.label.toLowerCase().startsWith(lower)?1:2;
+  return rank(a.node)-rank(b.node)||a.node.label.localeCompare(b.node.label)
+ }).slice(0,18).map(item=>({kind:'term',id:item.node.id,node:item.node}));
+ if(gene!==undefined)matches.unshift({kind:'gene',id:DATA.genes[gene],index:gene});
+ const result=$('searchResults');result.replaceChildren();result.style.display='block';
+ for(const match of matches){const button=document.createElement('button');button.className='search-result';button.setAttribute('role','option');button.innerHTML=match.kind==='gene'?`<strong>${esc(match.id)} · input gene</strong><span>Compare direct memberships and inherited coverage</span>`:`<strong>${esc(match.node.label)}</strong><span>${esc(match.node.original_id)} · ${esc(match.node.source)}</span>`;button.onclick=()=>choose(match);result.appendChild(button)}
+ if(!matches.length)result.innerHTML='<div style="padding:12px;color:#687789">No matching gene or module in these graphs.</div>';
+ return matches;
+}
+$('search').addEventListener('input',search);$('search').addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();const results=search();if(results.length)choose(results[0])}if(event.key==='Escape')$('searchResults').style.display='none'});
+$('searchButton').onclick=()=>{const results=search();if(results.length)choose(results[0])};
+document.addEventListener('click',event=>{if(!event.target.closest('.search-field')&&!event.target.closest('#searchResults'))$('searchResults').style.display='none'});
+$('viewMode').onchange=()=>{STATE.mode=$('viewMode').value;if(STATE.mode==='gene'&&STATE.selection?.kind!=='gene'){$('selection').textContent='Search a gene symbol to open its connections.'}fit()};
+$('colorMode').onchange=()=>{STATE.color=$('colorMode').value;legend();render()};$('fit').onclick=fit;
+$('reset').onclick=()=>{Object.assign(STATE,{selection:null,mode:'all',scale:1,tx:0,ty:0});$('viewMode').value='all';$('search').value='';$('selection').textContent='Whole graph · click a node to inspect it';updateInspector();render()};
+function hit(panel,event){const box=panel.canvas.getBoundingClientRect(),x=event.clientX-box.left,y=event.clientY-box.top;return panel.points.map(p=>({...p,d:Math.hypot(p.x-x,p.y-y)})).filter(p=>p.d<Math.max(6,p.r+3)).sort((a,b)=>a.d-b.d)[0]}
+for(const panel of panels){
+ let drag=null;
+ panel.canvas.addEventListener('pointerdown',event=>{drag={x:event.clientX,y:event.clientY,tx:STATE.tx,ty:STATE.ty};panel.canvas.setPointerCapture(event.pointerId);$('tooltip').style.display='none'});
+ panel.canvas.addEventListener('pointermove',event=>{
+  if(drag){STATE.tx=drag.tx+(event.clientX-drag.x)/(panel.width-50);STATE.ty=drag.ty+(event.clientY-drag.y)/(panel.height-50);render();return}
+  const found=hit(panel,event),tip=$('tooltip');if(!found){tip.style.display='none';return}
+  const node=panel.stage.nodes[found.index];tip.innerHTML=`<b>${esc(node.label)}</b><div class="mono">${esc(node.original_id)}</div>${esc(node.source)} · ${fmt(node.coverage.length)} propagated genes<br>${node.removed?'Removed during pruning':'Retained after pruning'}`;
+  tip.style.display='block';tip.style.left=Math.min(event.clientX+14,window.innerWidth-370)+'px';tip.style.top=Math.min(event.clientY+14,window.innerHeight-tip.offsetHeight-12)+'px';
+ });
+ panel.canvas.addEventListener('pointerup',event=>{const was=drag;drag=null;if(was&&Math.hypot(event.clientX-was.x,event.clientY-was.y)<4){const found=hit(panel,event);if(found)choose({kind:'term',id:panel.stage.nodes[found.index].id},false)}});
+ panel.canvas.addEventListener('pointercancel',()=>{drag=null});panel.canvas.addEventListener('pointerleave',()=>{$('tooltip').style.display='none'});
+ panel.canvas.addEventListener('wheel',event=>{event.preventDefault();const rect=panel.canvas.getBoundingClientRect(),x=event.clientX-rect.left,y=event.clientY-rect.top,[wx,wy]=world(panel,x,y),scale=Math.max(.65,Math.min(35,STATE.scale*Math.exp(-event.deltaY*.0012)));STATE.tx=(x-25)/(panel.width-50)-wx*scale;STATE.ty=(y-25)/(panel.height-50)-wy*scale;STATE.scale=scale;render()},{passive:false});
+ panel.canvas.addEventListener('dblclick',()=>{if(STATE.selection?.kind==='term'){STATE.mode='neighborhood';$('viewMode').value=STATE.mode;fit()}});
+}
+function nodeButton(node){const button=document.createElement('button');button.className='node-link';button.textContent=node.label+' · '+node.id;button.onclick=()=>choose({kind:'term',id:node.id});return button}
+function geneButtons(parent,indices){for(const index of indices){const button=document.createElement('button');button.className='gene-link';button.textContent=DATA.genes[index];button.onclick=()=>choose({kind:'gene',id:DATA.genes[index],index});parent.appendChild(button)}}
+function updateInspector(){
+ const container=$('inspector'),sel=STATE.selection;
+ if(!sel){container.innerHTML='<h2>Inspect a module or gene</h2><p class="muted" style="margin-top:10px">Search a gene or module, or click a node. Compare memberships and parent/child connections across the three stages.</p>';return}
+ if(sel.kind==='gene'){
+  container.innerHTML=`<div class="eyebrow">Input gene</div><h2>${esc(sel.id)}</h2><p class="muted small">Binary mutation input · same gene coordinate in all three models</p><table class="metric-table"><thead><tr><th>Stage</th><th>Direct terms</th><th>Propagated terms</th></tr></thead><tbody>${panels.map(p=>`<tr><td>${esc(p.stage.title)}</td><td>${fmt(p.stage.nodes.filter(n=>n.direct.includes(sel.index)).length)}</td><td>${fmt(p.stage.nodes.filter(n=>n.coverage.includes(sel.index)).length)}</td></tr>`).join('')}</tbody></table><h3>Direct modules in augmented + pruned GO</h3><div class="node-list" id="geneModules"></div>`;
+  panels[2].stage.nodes.filter(n=>n.direct.includes(sel.index)).forEach(n=>$('geneModules').appendChild(nodeButton(n)));return;
+ }
+ const node=allNodes.get(sel.id);if(!node)return;
+ container.innerHTML=`<div class="inspector-title"><div><div class="eyebrow">${esc(node.source)}</div><h2>${esc(node.label)}</h2><div class="mono muted">${esc(node.original_id)}</div></div><span class="chip ${node.removed?'removed':''}">${node.removed?'Removed by pruning':'Retained'}</span></div>${node.id!==node.original_id?'<p class="mono">Model ID: '+esc(node.id)+'</p>':''}<table class="metric-table"><thead><tr><th>Stage</th><th>Direct genes</th><th>Propagated genes</th><th>Δ coverage vs baseline</th></tr></thead><tbody>${panels.map(p=>{const i=p.byId.get(sel.id),n=i===undefined?null:p.stage.nodes[i];return `<tr><td>${esc(p.stage.title)}</td>${n?`<td>${fmt(n.direct.length)}</td><td>${fmt(n.coverage.length)}</td><td>+${fmt(n.added_coverage)} / −${fmt(n.removed_coverage)}</td>`:'<td colspan="3" class="muted">Absent</td>'}</tr>`}).join('')}</tbody></table><p class="small muted" style="margin-top:12px">${node.removal_reason?'Pruning: '+esc(node.removal_reason.replaceAll('_',' ')):'Retained in the final graph.'}</p><div class="detail-columns"><div><h3>Parents</h3><div class="node-list" id="parents"></div></div><div><h3>Children</h3><div class="node-list" id="children"></div></div></div><h3 id="geneHeading">Direct genes</h3><div class="gene-list" id="directGenes"></div><h3>Evidence metadata</h3><p class="small muted" id="evidence"></p>`;
+ const panel=panels.find(p=>p.stage.id==='pruned'&&p.byId.has(sel.id))||panels[1],index=panel.byId.get(sel.id),n=panel.stage.nodes[index];
+ for(const [id,list] of [['parents',panel.parents[index]],['children',panel.children[index]]]){if(!list.length)$(id).innerHTML='<span class="muted small">None</span>';for(const i of list)$(id).appendChild(nodeButton(panel.stage.nodes[i]))}
+ $('geneHeading').textContent=`Direct genes · ${panel.stage.title} (${fmt(n.direct.length)})`;geneButtons($('directGenes'),n.direct);
+ const evidence=node.evidence,items=[];
+ if(evidence.sources?.length)items.push('Sources: '+evidence.sources.join(', '));
+ if(evidence.evidence_classes?.length)items.push('Evidence classes: '+evidence.evidence_classes.join(', '));
+ if(evidence.relations?.length)items.push('Recorded relationships: '+evidence.relations.join(', '));
+ if(evidence.studies?.length)items.push('Identified studies: '+evidence.studies.slice(0,12).join(', ')+(evidence.studies.length>12?' …':''));
+ $('evidence').textContent=items.length?items.join(' · '):'Released GO concept. The original hierarchy supplies its memberships.';
+}
+const metricRows=[['Terms',s=>s.stats.terms],['Hierarchy edges',s=>s.stats.hierarchy_edges],['Direct gene links',s=>s.stats.direct_memberships],['Propagated gene links',s=>s.stats.propagated_memberships],['Root children',s=>s.root_children]];
+$('comparison').innerHTML='<table class="metric-table"><thead><tr><th></th><th>Released</th><th>Augmented</th><th>+ pruned</th></tr></thead><tbody>'+metricRows.map(([label,value])=>`<tr><td>${label}</td>${DATA.stages.map(s=>`<td class="count">${fmt(value(s))}</td>`).join('')}</tr>`).join('')+'</tbody></table>';
+const maxRoot=Math.max(...DATA.stages.map(s=>s.external_root_children),1);
+$('rootBars').innerHTML=DATA.stages.map(s=>`<div class="bar-row"><span>${esc(s.title)}</span><div class="bar-track"><div class="bar-fill" style="width:${s.external_root_children/maxRoot*100}%"></div></div><span class="count">${fmt(s.external_root_children)}</span></div>`).join('');
+$('provenance').textContent='Experiment: '+DATA.experiment+' · Source hashes: manifest.json · Generated '+DATA.created_at_utc;
+window.GO_VIEWER={DATA,STATE,panels,choose,fit,search,render};
+legend();resize();
+</script>
+</body>
+</html>

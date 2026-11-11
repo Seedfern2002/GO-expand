@@ -1,0 +1,308 @@
+{
+  "inspected_utc": "2026-11-09T02:53:23.804518+00:00",
+  "pre_optimization_commit": "2890c56",
+  "scope": "Prompt and research-skill documentation. Existing runtime, schemas, budgets, downstream training and frozen knowledge products remain unchanged.",
+  "design_basis": "Adaptations are engineering choices grounded in the inspected public implementations; biological or downstream performance gains have not been measured for these prompt revisions.",
+  "patterns": [
+    {
+      "reference": "Virtual Lab",
+      "repository": "zou-group/virtual-lab",
+      "implementation_evidence": [
+        "src/virtual_lab/agent.py",
+        "src/virtual_lab/prompts.py"
+      ],
+      "observed_pattern": "Compact expertise/goal/role identity with separate task agenda and evidence-directed scientific critique.",
+      "adaptation": "Role prompts state a scientific objective, decision criteria and handoff; reviewers bind findings to source evidence and affected records."
+    },
+    {
+      "reference": "Paper2Agent",
+      "repository": "jmiao24/Paper2Agent",
+      "implementation_evidence": [
+        "skills/paper2agent/SKILL.md",
+        "skills/paper2agent/paper2mcp/SKILL.md",
+        "skills/paper2agent/paper2mcp/references/agents/tutorial-scanner.md"
+      ],
+      "observed_pattern": "Small routing skills with stage-specific procedures, source locations and explicit artifacts loaded when relevant.",
+      "adaptation": "Three focused research skills hold operational procedures; acquisition and review prompts name the appropriate skill paths."
+    },
+    {
+      "reference": "Biomni",
+      "repository": "snap-stanford/Biomni",
+      "implementation_evidence": [
+        "biomni/know_how/loader.py",
+        "biomni/agent/a1.py",
+        "biomni/know_how/sgRNA_design_guide.md"
+      ],
+      "observed_pattern": "A metadata-indexed know-how library and task-aware selection of tools, datasets, software and document content.",
+      "adaptation": "Short capability descriptions, reusable biological workflows, complete bulk processing and focused source inspection. The current implementation selects files through role instructions and existing file-reading tools."
+    },
+    {
+      "reference": "CellVoyager",
+      "repository": "zou-group/CellVoyager",
+      "implementation_evidence": [
+        "cellvoyager/hypothesis.py",
+        "cellvoyager/prompts/critic.txt",
+        "cellvoyager/prompts/incorporate_critque.txt",
+        "cellvoyager/prompts/next_step.txt"
+      ],
+      "observed_pattern": "Purpose-specific planning, critique, revision and interpretation prompts with concrete reference context.",
+      "adaptation": "Acquisition refines queries from observed evidence and remaining coverage; review returns record-specific findings and acquisition revisions. Downstream prediction scores remain outside knowledge selection."
+    }
+  ],
+  "source_files": [
+    {
+      "repository": "jmiao24/Paper2Agent",
+      "commit": "8c2d059165ef8cdcb70dbea76655b9c2b55b38e6",
+      "path": "skills/paper2agent/SKILL.md",
+      "url": "https://raw.githubusercontent.com/jmiao24/Paper2Agent/8c2d059165ef8cdcb70dbea76655b9c2b55b38e6/skills/paper2agent/SKILL.md",
+      "sha256": "69a5525de0cc115ebbef1cdd602a4cfda1836399adc44a154907d07c95f4244d",
+      "bytes": 1551
+    },
+    {
+      "repository": "jmiao24/Paper2Agent",
+      "commit": "8c2d059165ef8cdcb70dbea76655b9c2b55b38e6",
+      "path": "skills/paper2agent/paper2skill/SKILL.md",
+      "url": "https://raw.githubusercontent.com/jmiao24/Paper2Agent/8c2d059165ef8cdcb70dbea76655b9c2b55b38e6/skills/paper2agent/paper2skill/SKILL.md",
+      "sha256": "e05b34ab5a6d59f4c18da1323c845af296b8fd73dc3613d193e72287b593c043",
+      "bytes": 6745
+    },
+    {
+      "repository": "jmiao24/Paper2Agent",
+      "commit": "8c2d059165ef8cdcb70dbea76655b9c2b55b38e6",
+      "path": "skills/paper2agent/paper2mcp/SKILL.md",
+      "url": "https://raw.githubusercontent.com/jmiao24/Paper2Agent/8c2d059165ef8cdcb70dbea76655b9c2b55b38e6/skills/paper2agent/paper2mcp/SKILL.md",
+      "sha256": "58ef21d750f3a332ce5f9cd73b02894679009b6eccb31ca6afa57f563acf5932",
+      "bytes": 6082
+    },
+    {
+      "repository": "jmiao24/Paper2Agent",
+      "commit": "8c2d059165ef8cdcb70dbea76655b9c2b55b38e6",
+      "path": "skills/paper2agent/paper2mcp/references/agents/tutorial-scanner.md",
+      "url": "https://raw.githubusercontent.com/jmiao24/Paper2Agent/8c2d059165ef8cdcb70dbea76655b9c2b55b38e6/skills/paper2agent/paper2mcp/references/agents/tutorial-scanner.md",
+      "sha256": "4d985278f0a7c2ebf9575b62598b7710fb678d6ca4bfa0b9b59a7fe5596aa5a7",
+      "bytes": 2990
+    },
+    {
+      "repository": "jmiao24/Paper2Agent",
+      "commit": "8c2d059165ef8cdcb70dbea76655b9c2b55b38e6",
+      "path": "skills/paper2agent/paper2mcp/references/agents/test-verifier-improver.md",
+      "url": "https://raw.githubusercontent.com/jmiao24/Paper2Agent/8c2d059165ef8cdcb70dbea76655b9c2b55b38e6/skills/paper2agent/paper2mcp/references/agents/test-verifier-improver.md",
+      "sha256": "ea4fff5d656663ab052fff34a7ae01c4cef0afadb944057b1b61ee3eeef1b351",
+      "bytes": 4120
+    },
+    {
+      "repository": "jmiao24/Paper2Agent",
+      "commit": "8c2d059165ef8cdcb70dbea76655b9c2b55b38e6",
+      "path": "skills/paper2agent/paper2mcp/references/orchestration.md",
+      "url": "https://raw.githubusercontent.com/jmiao24/Paper2Agent/8c2d059165ef8cdcb70dbea76655b9c2b55b38e6/skills/paper2agent/paper2mcp/references/orchestration.md",
+      "sha256": "834e9e5832b55eba6abcf31f130b5b68fccb33f67153ea280b84693bf825a79a",
+      "bytes": 7505
+    },
+    {
+      "repository": "jmiao24/Paper2Agent",
+      "commit": "8c2d059165ef8cdcb70dbea76655b9c2b55b38e6",
+      "path": "skills/paper2agent/paper2mcp/references/tool-selection-and-wrapping.md",
+      "url": "https://raw.githubusercontent.com/jmiao24/Paper2Agent/8c2d059165ef8cdcb70dbea76655b9c2b55b38e6/skills/paper2agent/paper2mcp/references/tool-selection-and-wrapping.md",
+      "sha256": "a2c32e55d93d5cb483d11250642af9d4202217d5533d33c24ca01ffe0cd18b98",
+      "bytes": 10329
+    },
+    {
+      "repository": "zou-group/virtual-lab",
+      "commit": "8a3a4fd9ccc0cd297bd523751e03bc9527c91832",
+      "path": "src/virtual_lab/agent.py",
+      "url": "https://raw.githubusercontent.com/zou-group/virtual-lab/8a3a4fd9ccc0cd297bd523751e03bc9527c91832/src/virtual_lab/agent.py",
+      "sha256": "14d9b64e1677814eb66bdf6e55f5da27e7012461ccf7421de9ff125805d682b2",
+      "bytes": 1953
+    },
+    {
+      "repository": "zou-group/virtual-lab",
+      "commit": "8a3a4fd9ccc0cd297bd523751e03bc9527c91832",
+      "path": "src/virtual_lab/prompts.py",
+      "url": "https://raw.githubusercontent.com/zou-group/virtual-lab/8a3a4fd9ccc0cd297bd523751e03bc9527c91832/src/virtual_lab/prompts.py",
+      "sha256": "7342e951c2b5b302c71402ab1c12b46908d6c9cff3425690dfd9eb24acd7e5fb",
+      "bytes": 14955
+    },
+    {
+      "repository": "snap-stanford/Biomni",
+      "commit": "400c1f366b96a35ca253e13c9b06c5076af41d65",
+      "path": "biomni/know_how/loader.py",
+      "url": "https://github.com/snap-stanford/Biomni/blob/400c1f366b96a35ca253e13c9b06c5076af41d65/biomni/know_how/loader.py",
+      "sha256": "32a224d2756af41370a56516e40a574047a5e2c3e4a2deb8d9e2a41262bebc0c",
+      "bytes": 11950
+    },
+    {
+      "repository": "snap-stanford/Biomni",
+      "commit": "400c1f366b96a35ca253e13c9b06c5076af41d65",
+      "path": "biomni/know_how/single_cell_annotation.md",
+      "url": "https://github.com/snap-stanford/Biomni/blob/400c1f366b96a35ca253e13c9b06c5076af41d65/biomni/know_how/single_cell_annotation.md",
+      "sha256": "28bcba41294ef46522644e23bcf4cedb9c232cf257ddab76c72e8b577d7fdca4",
+      "bytes": 7419
+    },
+    {
+      "repository": "snap-stanford/Biomni",
+      "commit": "400c1f366b96a35ca253e13c9b06c5076af41d65",
+      "path": "biomni/know_how/sgRNA_design_guide.md",
+      "url": "https://github.com/snap-stanford/Biomni/blob/400c1f366b96a35ca253e13c9b06c5076af41d65/biomni/know_how/sgRNA_design_guide.md",
+      "sha256": "adad89c9d251edb686cdc40bd322cf63823fff6653858755efae3d469017064c",
+      "bytes": 14698
+    },
+    {
+      "repository": "snap-stanford/Biomni",
+      "commit": "400c1f366b96a35ca253e13c9b06c5076af41d65",
+      "path": "biomni/tool/tool_registry.py",
+      "url": "https://github.com/snap-stanford/Biomni/blob/400c1f366b96a35ca253e13c9b06c5076af41d65/biomni/tool/tool_registry.py",
+      "sha256": "b112264b172b9f526a12fda649a6e09cbcdb40b8b0fd7385a8116a418a893d9b",
+      "bytes": 2749
+    },
+    {
+      "repository": "snap-stanford/Biomni",
+      "commit": "400c1f366b96a35ca253e13c9b06c5076af41d65",
+      "path": "biomni/agent/a1.py",
+      "url": "https://github.com/snap-stanford/Biomni/blob/400c1f366b96a35ca253e13c9b06c5076af41d65/biomni/agent/a1.py",
+      "sha256": "ffb67055ebc0ec645128026d797a29223232567c1d75f87f75947bf720da92bf",
+      "bytes": 131378
+    },
+    {
+      "repository": "snap-stanford/Biomni",
+      "commit": "400c1f366b96a35ca253e13c9b06c5076af41d65",
+      "path": "biomni/agent/env_collection.py",
+      "url": "https://github.com/snap-stanford/Biomni/blob/400c1f366b96a35ca253e13c9b06c5076af41d65/biomni/agent/env_collection.py",
+      "sha256": "2c02fca7b8c0f18f752aebab547e5138877792aa96a67b2f6355f089156f7d73",
+      "bytes": 13813
+    },
+    {
+      "repository": "zou-group/CellVoyager",
+      "commit": "5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b",
+      "path": "cellvoyager/agent.py",
+      "url": "https://github.com/zou-group/CellVoyager/blob/5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b/cellvoyager/agent.py",
+      "sha256": "fbf63e46789bc1aef2a67221c2e662f699b747942f27551bcf1c6417c714a523",
+      "bytes": 19454
+    },
+    {
+      "repository": "zou-group/CellVoyager",
+      "commit": "5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b",
+      "path": "cellvoyager/deepresearch.py",
+      "url": "https://github.com/zou-group/CellVoyager/blob/5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b/cellvoyager/deepresearch.py",
+      "sha256": "2019ce978443c5ede6d717f273537bb9e4c32f6c1ced12b95cdf79c8dc9d9934",
+      "bytes": 3033
+    },
+    {
+      "repository": "zou-group/CellVoyager",
+      "commit": "5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b",
+      "path": "cellvoyager/hypothesis.py",
+      "url": "https://github.com/zou-group/CellVoyager/blob/5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b/cellvoyager/hypothesis.py",
+      "sha256": "780d845ea289c4224062f4263a0fcb0a67af02465667dd5e0b72f4eb97dec59b",
+      "bytes": 13641
+    },
+    {
+      "repository": "zou-group/CellVoyager",
+      "commit": "5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b",
+      "path": "cellvoyager/prompts/critic.txt",
+      "url": "https://github.com/zou-group/CellVoyager/blob/5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b/cellvoyager/prompts/critic.txt",
+      "sha256": "e8a9c770374a99b55f0cfcdb4ca3fa7cda54711728185cce4794b8804b22f6f2",
+      "bytes": 1534
+    },
+    {
+      "repository": "zou-group/CellVoyager",
+      "commit": "5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b",
+      "path": "cellvoyager/prompts/interp_results.txt",
+      "url": "https://github.com/zou-group/CellVoyager/blob/5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b/cellvoyager/prompts/interp_results.txt",
+      "sha256": "bd672235de788b8622f589d7599800644e56f3282ada48234df66b5c504d27be",
+      "bytes": 1026
+    },
+    {
+      "repository": "zou-group/CellVoyager",
+      "commit": "5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b",
+      "path": "cellvoyager/prompts/first_draft.txt",
+      "url": "https://github.com/zou-group/CellVoyager/blob/5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b/cellvoyager/prompts/first_draft.txt",
+      "sha256": "02153f4fe5e3ec14335a07a19ba18e10b35e5adf2f1fbb92dd0271dd910cb103",
+      "bytes": 1666
+    },
+    {
+      "repository": "zou-group/CellVoyager",
+      "commit": "5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b",
+      "path": "cellvoyager/prompts/coding_system_prompt.txt",
+      "url": "https://github.com/zou-group/CellVoyager/blob/5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b/cellvoyager/prompts/coding_system_prompt.txt",
+      "sha256": "74288c2b59d5a15dbb534cbd3c1f97771a3c50b6acd715be528382e6a85ddcb8",
+      "bytes": 809
+    },
+    {
+      "repository": "zou-group/CellVoyager",
+      "commit": "5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b",
+      "path": "cellvoyager/prompts/coding_guidelines.txt",
+      "url": "https://github.com/zou-group/CellVoyager/blob/5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b/cellvoyager/prompts/coding_guidelines.txt",
+      "sha256": "fe2b81fde0fedaff8019fefbafd01bf04cc74aa697e99a89f8b6b66436b8134b",
+      "bytes": 1991
+    },
+    {
+      "repository": "zou-group/CellVoyager",
+      "commit": "5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b",
+      "path": "cellvoyager/prompts/next_step.txt",
+      "url": "https://github.com/zou-group/CellVoyager/blob/5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b/cellvoyager/prompts/next_step.txt",
+      "sha256": "031a6cd2ea2cdf03bf58edd670ca5a1206f7dc65b181cc93ed61ce790b459768",
+      "bytes": 1818
+    },
+    {
+      "repository": "zou-group/CellVoyager",
+      "commit": "5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b",
+      "path": "cellvoyager/prompts/incorporate_critque.txt",
+      "url": "https://github.com/zou-group/CellVoyager/blob/5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b/cellvoyager/prompts/incorporate_critque.txt",
+      "sha256": "79440cfbd94d6adcb30d6a072fb2c6b660f2096a740da1c40a65523025d71ec9",
+      "bytes": 822
+    },
+    {
+      "repository": "zou-group/CellVoyager",
+      "commit": "5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b",
+      "path": "cellvoyager/prompts/summarization.txt",
+      "url": "https://github.com/zou-group/CellVoyager/blob/5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b/cellvoyager/prompts/summarization.txt",
+      "sha256": "414781340fb1dcee799e8f250dd1bf12b745cd0634f3948d0cf76589311a1c7d",
+      "bytes": 787
+    },
+    {
+      "repository": "zou-group/CellVoyager",
+      "commit": "5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b",
+      "path": "cellvoyager/execution/legacy.py",
+      "url": "https://github.com/zou-group/CellVoyager/blob/5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b/cellvoyager/execution/legacy.py",
+      "sha256": "b439a25461b6b9529bd2d0dfea2a14036ace18d033184cdcfd5dd16769abad8e",
+      "bytes": 33811
+    },
+    {
+      "repository": "zou-group/CellVoyager",
+      "commit": "5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b",
+      "path": "cellvoyager/execution/claude.py",
+      "url": "https://github.com/zou-group/CellVoyager/blob/5a61f6b36bc7e2dd2210024cbb94fb0dd1cbbc0b/cellvoyager/execution/claude.py",
+      "sha256": "a05cb168374859e78d4f78cd17716636c85ff1ca07248fbf0205af39d5e02c45",
+      "bytes": 62366
+    }
+  ],
+  "authorship": "Project prompts and skills use original wording; references identify the implementations that informed their organization.",
+  "validation": {
+    "repository_unittest": {
+      "tests": 66,
+      "status": "passed"
+    },
+    "standalone_unittest": {
+      "tests": 14,
+      "status": "passed"
+    },
+    "skill_format_validation": {
+      "skills": 3,
+      "status": "passed"
+    },
+    "private_workspace_packaging": {
+      "skills": 3,
+      "content_hashes_match": true
+    },
+    "independent_skill_exercise": {
+      "scope": "Three incoming biological assertions reviewed against supplied raw database records, ontology definitions and a primary-paper passage.",
+      "observed_decisions": {
+        "R1": "request acquisition revision for conflicting complex identity",
+        "R2": "accept source-defined immunoproteasome-core membership",
+        "R3": "accept context-qualified positive regulation of NK-cell degranulation"
+      },
+      "exercise_output_sha256": "fbd512754a44a746947a165ef7adcce33c4485be994b81619f8dae6a17017f44"
+    },
+    "runtime_or_schema_changes": false,
+    "downstream_performance_evaluation": "not run for this prompt revision"
+  }
+}

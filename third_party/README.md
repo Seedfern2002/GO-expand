@@ -16,3 +16,16 @@ git -C third_party/GEARS checkout f374e43e197b295016d80395d7a54ddb81cc6769
 ```
 
 图构建入口、依赖与随机属性对照准备见 [GEARS 接入说明](../docs/gears_setup.md)。
+
+## DrugCell
+
+Official repository: <https://github.com/idekerlab/DrugCell>.
+
+The independent checkout is stored in `third_party/DrugCell/`, pinned to commit `c507e1d821fac0201e42f831a1d772e7ef42b00e` (MIT license). Source files remain unchanged. The checkout is excluded from this project's Git history; source and data hashes are recorded in [drugcell_source.json](../configs/drugcell_source.json).
+
+```bash
+git clone https://github.com/idekerlab/DrugCell.git third_party/DrugCell
+git -C third_party/DrugCell checkout c507e1d821fac0201e42f831a1d772e7ef42b00e
+```
+
+The baseline uses the released **pruned GO**. Data preparation, additive augmentation export and CPU verification are described in [DrugCell setup](../docs/drugcell_setup.md).

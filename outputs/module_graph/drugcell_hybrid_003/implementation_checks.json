@@ -1,0 +1,199 @@
+{
+  "checked_at_utc": "2026-11-11T05:25:04.708899+00:00",
+  "graph_product_verified": true,
+  "graph_validated": true,
+  "matched_inputs": {
+    "inputs/baseline_graph.json": true,
+    "inputs/genes.json": true,
+    "inputs/modules.json": true,
+    "inputs/placement_evidence.json": true,
+    "model": true,
+    "pinned_source_snapshots": true,
+    "processing_module_set": true,
+    "reasoning_effort": true,
+    "task.json": true
+  },
+  "scientific_input_fingerprints": {
+    "task.json": "f65e2b462b265d0697b216b21ae68423139c64d7e5289516ad2117948b967080",
+    "inputs/manifest.json": "ffb8b7f29f48f983e9deec4f5f38da764162117c266345deb35495f7d1096b9d",
+    "knowledge_graph/freeze_manifest.json": "aad7042691ae213a78b67c11df7cecf34a0dfca2771f99ca7eceeddf613e16f4"
+  },
+  "tests": [
+    {
+      "suite": "standalone/task_go/tests/test_*.py",
+      "tests": 58,
+      "passed": true
+    },
+    {
+      "suite": "tests/test_drugcell*.py",
+      "tests": 58,
+      "passed": true
+    },
+    {
+      "suite": "tests/test_module_recipe_comparison.py",
+      "tests": 2,
+      "passed": true
+    }
+  ],
+  "git_diff_check_passed": true,
+  "live_backend": {
+    "agent_invocations": 2,
+    "shell_commands": 15,
+    "failed_shell_commands": 0
+  },
+  "source_files": [
+    {
+      "path": "pipeline/FORMAT.md",
+      "sha256": "1b3f633957c68a80dd0b3cfeef98eacbc0005d2caa7baea50f2aaff5eba80dbd"
+    },
+    {
+      "path": "pipeline/README.md",
+      "sha256": "8e78cdb43683ddc557036afe5bed4c83de4e7ba5ccb6851954795644010d0eec"
+    },
+    {
+      "path": "pipeline/check_round.py",
+      "sha256": "efec7c5f1aa0e4550d16c645ec2f157ee8843fb6a788342f87e6df332fff2de0"
+    },
+    {
+      "path": "pipeline/engine/__init__.py",
+      "sha256": "a46aadf6ac84a13a388f3e08b153e7d295dfeae0470cb3565128965daedf0183"
+    },
+    {
+      "path": "pipeline/engine/knowledge.py",
+      "sha256": "e0fb8eacb4e3196abc6fc8d58e04db8d84648f0cb22b50a2f9a36cb70862bc82"
+    },
+    {
+      "path": "pipeline/engine/knowledge_context.py",
+      "sha256": "bba1d5ada6394b225a1dbe28868580c1f6699707d70e751e65bd4a558e15ece4"
+    },
+    {
+      "path": "pipeline/engine/module_graph.py",
+      "sha256": "9163a5762653c466c7b34c46609cca29a39f0e253c7dffa5cc9740a30c2b5f64"
+    },
+    {
+      "path": "pipeline/engine/module_recipes.py",
+      "sha256": "00e9a39fa325b46098585c9aaa873bd7319ebbada5672c27a81c96ec014b1c57"
+    },
+    {
+      "path": "pipeline/engine/ontology.py",
+      "sha256": "c6d6c9f4349c22f23564dece3f6a01e4b784d803b49fdc435f1b2d7ce77d5485"
+    },
+    {
+      "path": "pipeline/engine/reading.py",
+      "sha256": "9d3092dcb45380a2071f87634e5e8b318d416c4ea7c732c1dfb4ae06258db101"
+    },
+    {
+      "path": "pipeline/engine/rounds.py",
+      "sha256": "0f13019cf9e4f98a94faacf21445a5e4c0740b1031d5fc2f1ced9b10f0a7df31"
+    },
+    {
+      "path": "pipeline/fetch.py",
+      "sha256": "d245579140d6e8c10ea7be7e53a9226a6215c6b2f9b3145c547fcfb10ec82448"
+    },
+    {
+      "path": "pipeline/graph_ops.py",
+      "sha256": "50d59b409b017da2ad0c3602ffeb05f38e7cd95b99c23e9c503d936d539ca2d3"
+    },
+    {
+      "path": "pipeline/import_batch.py",
+      "sha256": "5404c01e95d72d90676adc7dc7e79b1c6e78ae3d5af1e680743a93a3fb82e952"
+    },
+    {
+      "path": "pipeline/knowledge_ops.py",
+      "sha256": "5567d4349ac63d6b8d96ce08ad3ec7c97b219cf4e81e988a0514599775eb9bfa"
+    },
+    {
+      "path": "pipeline/launch.py",
+      "sha256": "269c1d48dcad22dbd375fdae079fad9bf1551eae7d23be07246213637ff6c8da"
+    },
+    {
+      "path": "pipeline/launch_modules.py",
+      "sha256": "fb7d81b25303a967fa82fceb6747651cfc29f51232d7b1c40330b0eec4d7e165"
+    },
+    {
+      "path": "pipeline/place_module_recipes.py",
+      "sha256": "e900d687770530d6741c75fd9ad03d392473d76e5b3056a3effb3ac2ebdf60e0"
+    },
+    {
+      "path": "pipeline/place_modules.py",
+      "sha256": "edb5f1a51d5879ffe7e15acd30724ec6e8980bfe12c1a7936d09835fb325bc31"
+    },
+    {
+      "path": "pipeline/prompts/common.md",
+      "sha256": "ff89e6dda202e6ec1e7ef6c1d30d543749add5064942475135fbfc6c5ce542c5"
+    },
+    {
+      "path": "pipeline/prompts/modules/editor.md",
+      "sha256": "fe42cfe8a92f98b382258b2728df43017dc2e04a3bdbc8927e69d07bfc8dc000"
+    },
+    {
+      "path": "pipeline/prompts/modules/recipe_editor.md",
+      "sha256": "314b43ce9c2136d07507e77b4fcdd904de0521ec6227efc28619a5c8bd6933ad"
+    },
+    {
+      "path": "pipeline/prompts/modules/recipe_reviewer.md",
+      "sha256": "191bb27ff18b8c1d1e48bcf4c9d6040c9339bbb951cc3dcf366a19bc6953ad19"
+    },
+    {
+      "path": "pipeline/prompts/modules/reviewer.md",
+      "sha256": "ba3c842a274e78f2e9203ada8ef3e66fd5c17736d500467feacb6ca99e2a4dce"
+    },
+    {
+      "path": "pipeline/prompts/planner.md",
+      "sha256": "c060ffc51e29a653c5ece6dffc6b8dea1bffda57764c1e3685c1e1a458d95028"
+    },
+    {
+      "path": "pipeline/prompts/retrieval_round.md",
+      "sha256": "8b6849ad9a125d63fecab24afca1427d81fc717b065b2b6f61167aaa07b433ae"
+    },
+    {
+      "path": "pipeline/prompts/retriever.md",
+      "sha256": "381ea8acba3e10cb5dda59dc978ddd3568ffa1eb77320c907b0285062bf79015"
+    },
+    {
+      "path": "pipeline/prompts/reviewer.md",
+      "sha256": "ac9bab363dc86ce88e299e1a3747ed6907c793e3585afedf648d786ed94b1300"
+    },
+    {
+      "path": "pipeline/run.py",
+      "sha256": "55339cccfce38875c1fe85bf4adf8b85444941ce080165c8ac55141ebcc9a6c2"
+    },
+    {
+      "path": "pipeline/schemas/candidates.schema.json",
+      "sha256": "315785d5c09078df027945fcb7d0155c257dea2b311856f9ac72ccfe9640e6a7"
+    },
+    {
+      "path": "pipeline/schemas/plan.schema.json",
+      "sha256": "49687bc3856e94121fa4e43206430fda862b0281e232e4c9d607bcdb65ee9d5f"
+    },
+    {
+      "path": "pipeline/schemas/review.schema.json",
+      "sha256": "d066e7c75c72df57fa60c35fe063ee52cbecc82a18f53bf8d648fa7ff0a1d77b"
+    },
+    {
+      "path": "pipeline/skills/add-go-knowledge/SKILL.md",
+      "sha256": "cf27d7bc44f8e63913de22ae61fc7a6696148eeb971bb4ab8be395aa4b75425f"
+    },
+    {
+      "path": "pipeline/skills/add-go-knowledge/scripts/knowledge.py",
+      "sha256": "01c9bb47b726500e854c02abbaba6fffa6ae8a329e618890a6534b4754adf626"
+    },
+    {
+      "path": "pipeline/skills/integrate-biological-sources/SKILL.md",
+      "sha256": "1b49c4519cf7529ba1de8f6e98f698b6d7bc0a99f7d6d5e59f9c0b92bef8d984"
+    },
+    {
+      "path": "pipeline/skills/place-functional-modules/SKILL.md",
+      "sha256": "ca240eb1473ce3032123a76cfaef130e3debcb5796053d1e34d68726160f10e3"
+    },
+    {
+      "path": "pipeline/skills/read-biological-literature/SKILL.md",
+      "sha256": "b72823bb5b73fc8cff748a60d543cb945928d598e3a69555c5ad04f17cbc1aa2"
+    },
+    {
+      "path": "pipeline/skills/review-biological-evidence/SKILL.md",
+      "sha256": "1077727adad001bba9aa178aecff76d008ba114c8d4fd5e1a53ecd941902fcf0"
+    }
+  ],
+  "measurement_scope": "Graph integration and review of the same 24 source modules; combined batching, recipe compilation, context deduplication and execution configuration changes."
+}

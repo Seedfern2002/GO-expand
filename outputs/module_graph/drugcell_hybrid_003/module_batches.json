@@ -1,0 +1,31 @@
+[
+  {
+    "id": "hybrid_batch_001",
+    "modules": [
+      "EXTERNAL:R-HSA-73894",
+      "EXTERNAL:R-HSA-5358508",
+      "EXTERNAL:R-HSA-5693532",
+      "EXTERNAL:R-HSA-5696398",
+      "EXTERNAL:R-HSA-6783310",
+      "EXTERNAL:R-HSA-73884",
+      "EXTERNAL:R-HSA-73893",
+      "EXTERNAL:R-HSA-73942",
+      "EXTERNAL:R-HSA-1640170",
+      "EXTERNAL:R-HSA-1500620",
+      "EXTERNAL:R-HSA-69278",
+      "EXTERNAL:R-HSA-69620",
+      "EXTERNAL:R-HSA-73886",
+      "EXTERNAL:R-HSA-912446",
+      "EXTERNAL:R-HSA-453274",
+      "EXTERNAL:R-HSA-453276",
+      "EXTERNAL:ComplexPortal:CPX-9003",
+      "EXTERNAL:ComplexPortal:CPX-8806",
+      "EXTERNAL:ComplexPortal:CPX-8841",
+      "EXTERNAL:ComplexPortal:CPX-8842",
+      "EXTERNAL:ComplexPortal:CPX-9002",
+      "EXTERNAL:ComplexPortal:CPX-9022",
+      "EXTERNAL:ComplexPortal:CPX-9001",
+      "EXTERNAL:ComplexPortal:CPX-5633"
+    ]
+  }
+]

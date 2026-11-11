@@ -23,11 +23,13 @@ class RetrievalRoundTests(unittest.TestCase):
         (self.root / "stages/planner").mkdir(parents=True)
         write_json(self.root / "inputs/genes.json", {"genes": ["GENE1"]})
         self.task = {"task_id": "reading", "scope": {"gene_universe_path": "inputs/genes.json", "gene_field": "genes"},
-                     "compilation": {"allowed_relations": ["annotated_to"], "allowed_evidence_classes": ["literature_extracted"],
+                     "compilation": {"baseline_annotations_path": "inputs/annotations.json", "allowed_relations": ["annotated_to"], "allowed_evidence_classes": ["literature_extracted"],
                                      "ontology_path": None},
                      "retrieval_budget": {"target_papers_inspected": 2, "target_full_text_papers_inspected": 1,
                        "max_search_queries": 100, "max_sources_opened": 100, "max_papers": 10,
                        "max_candidate_records": 20, "max_download_bytes": 100000}}
+        write_json(self.root / "task.json", self.task)
+        write_json(self.root / "inputs/annotations.json", {"GENE1": []})
         write_json(self.root / "stages/planner/result.json", {"augmentations": [{"id": "functions"}]})
         self.abstract = "A complete abstract passage describing a gene function in human cells."
         self.body = "The functional experiments measured the reported phenotype using two controls."
@@ -102,13 +104,29 @@ class RetrievalRoundTests(unittest.TestCase):
         self.assertEqual(merge_candidates(previous, result)["batches"], [{"id": "new"}])
 
     def test_controller_reinvokes_acquisition_and_accumulates_both_rounds(self):
+        self.controller_rounds()
+
+    def test_adaptive_controller_uses_fresh_batches_and_finishes_with_abstracts(self):
+        self.task["retrieval_budget"].update(reading_mode="planner_adaptive", max_full_text_papers=3)
+        plan = {"augmentations": [{"id": "functions"}], "reading_plan": {
+            "initial_papers": 2, "batch_size": 1, "max_full_text_papers": 2,
+            "topic_questions": ["Which functions are supported?"], "stop_criteria": ["Topic coverage resolved"]}}
+        write_json(self.root / "stages/planner/result.json", plan)
+        write_json(self.root / "task.json", self.task)
+        self.controller_rounds(adaptive=True)
+
+    def controller_rounds(self, adaptive=False):
         seen = []
 
         def agent(stage, task, settings, root, directory, round_input):
             directory.mkdir(parents=True)
             number = round_input["number"]
             seen.append(number)
-            row = self.observation(str(number), "full_text" if number == 2 else "abstract")
+            if adaptive:
+                self.assertEqual(round_input["new_papers_target"], 1)
+                self.assertEqual(round_input["full_text_inspections_target"], 0)
+                self.assertTrue((root / round_input["knowledge_context_index"]).is_file())
+            row = self.observation(str(number), "full_text" if number == 2 and not adaptive else "abstract")
             (directory / "papers.jsonl").write_text(json.dumps(row) + "\n")
             (directory / "events.jsonl").write_text(json.dumps({"type": "item.completed", "item": {
                 "type": "command_execution", "aggregated_output": self.abstract + "\n" + self.body}}) + "\n")
@@ -134,19 +152,25 @@ class RetrievalRoundTests(unittest.TestCase):
                      "coverage_report_path": str((directory / "coverage.json").relative_to(root)),
                      "validation_report_path": str((directory / "validation.json").relative_to(root)),
                      "provenance_path": str((directory / "provenance.json").relative_to(root))}
-            return {"task_id": task["task_id"], "batches": [batch], "coverage": [{"plan_item_id": "functions",
+            result = {"task_id": task["task_id"], "batches": [batch], "coverage": [{"plan_item_id": "functions",
                     "status": "covered", "notes": "Round complete"}], "open_questions": [],
                     "paper_inspections_path": str((directory / "papers.jsonl").relative_to(root)),
                     "usage_path": str((directory / "usage.json").relative_to(root)), "supersedes_batch_ids": []}
+            if adaptive:
+                result["reading_decision"] = {"decision": "stop" if number == 2 else "continue",
+                    "reason": "All planned topic questions resolved" if number == 2 else "Continue the remaining topic",
+                    "stop_code": "coverage_sufficient" if number == 2 else "continue",
+                    "next_batch_size": 0 if number == 2 else 1, "unresolved_questions": []}
+            return result
 
         with patch.object(runtime, "run_stage", side_effect=agent):
             result = runtime.run_retrieval_rounds(self.task, {"retrieval_rounds": 5}, self.root,
                                                   lambda *args, **kwargs: None)
         self.assertEqual(seen, [1, 2])
-        self.assertEqual(result, "targets_met")
+        self.assertEqual(result, "coverage_sufficient" if adaptive else "targets_met")
         progress = json.loads((self.root / "rounds/progress.json").read_text())
         self.assertEqual(progress["progress"]["inspected_primary"], 2)
-        self.assertEqual(progress["progress"]["full_text_inspected_primary"], 1)
+        self.assertEqual(progress["progress"]["full_text_inspected_primary"], 0 if adaptive else 1)
         self.assertEqual(progress["progress"]["active_records"], 2)
         self.assertEqual(progress["progress"]["active_batches"], 2)
 

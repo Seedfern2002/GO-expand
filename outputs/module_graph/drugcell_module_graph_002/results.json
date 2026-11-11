@@ -1,0 +1,102 @@
+{
+  "actions": {
+    "add": 13,
+    "defer": 8,
+    "reuse": 3
+  },
+  "added_nodes_retained_after_pruning": [
+    "EXTERNAL:R-HSA-5693532"
+  ],
+  "downstream_training_started": false,
+  "export_seconds": 2.6387030030600727,
+  "model_export": {
+    "annotated_genes": 3008,
+    "direct_memberships": 59867,
+    "genes": 3008,
+    "hierarchy_edges": 3184,
+    "hierarchy_levels": 7,
+    "propagated_memberships": 156528,
+    "root": "GO:0008150",
+    "terms": 2099
+  },
+  "module_workspace": "/data4/yxcheng/GO_enrichment/task-go-runs/drug_response_module_graph_002/workspace",
+  "new_edge_relations": {
+    "model_aggregation": 3,
+    "participates_in": 9,
+    "related_to": 6,
+    "source_pathway_parent": 5
+  },
+  "pruned": {
+    "annotated_genes": 3008,
+    "direct_memberships": 59567,
+    "genes": 3008,
+    "hierarchy_edges": 3092,
+    "hierarchy_levels": 6,
+    "propagated_memberships": 153123,
+    "root": "GO:0008150",
+    "terms": 2021
+  },
+  "pruning_seconds": 1.7256855289451778,
+  "source_task_genes": 3008,
+  "status": "completed",
+  "timing": {
+    "batches": [
+      {
+        "actions": {
+          "add": 5,
+          "reuse": 3
+        },
+        "batch_id": "module_batch_001",
+        "editor_seconds": 186.75863326294348,
+        "modules": 8,
+        "reviewer_seconds": 129.13161047874019,
+        "total_wall_seconds": 316.3228138568811
+      },
+      {
+        "actions": {
+          "defer": 8
+        },
+        "batch_id": "module_batch_002",
+        "editor_seconds": 214.49483818141744,
+        "modules": 8,
+        "reviewer_seconds": 177.35963621968403,
+        "total_wall_seconds": 392.2928884490393
+      },
+      {
+        "actions": {
+          "add": 8
+        },
+        "batch_id": "module_batch_003",
+        "editor_seconds": 245.01757204486057,
+        "modules": 8,
+        "reviewer_seconds": 420.0200767023489,
+        "total_wall_seconds": 665.4616811065935
+      }
+    ],
+    "estimate_scope": "Linear estimate at observed sequential editor/reviewer throughput; source complexity and batch size affect runtime.",
+    "full_catalog_modules": 3000,
+    "graph": {
+      "added_nodes": 13,
+      "added_nodes_attached_to_root": 0,
+      "added_nodes_by_depth": {
+        "2": 2,
+        "3": 5,
+        "5": 6
+      },
+      "direct_memberships": 59962,
+      "genes": 3008,
+      "maximum_model_depth": 6,
+      "model_edges": 3184,
+      "nodes": 2099,
+      "propagated_model_memberships": 156528,
+      "revision": 3,
+      "source_aliases": 16,
+      "typed_edges": 3190
+    },
+    "linear_full_catalog_hours": 47.711020257378955,
+    "modules_processed": 24,
+    "status": "completed",
+    "throughput_seconds_per_module": 57.25322430885475,
+    "total_wall_seconds": 1374.0773834125139
+  }
+}

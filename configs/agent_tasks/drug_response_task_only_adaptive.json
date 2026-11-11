@@ -1,0 +1,44 @@
+{
+  "task_id": "human_cancer_drug_response_knowledge_adaptive",
+  "task_description": "Construct task-specific GO augmentation for predicting cancer-cell response to small-molecule treatment from somatic mutation profiles and compound chemical features. Produce one shared knowledge overlay across the complete supplied gene universe and all cell-line and compound contexts.",
+  "organism": {"name": "Homo sapiens", "taxon_id": "NCBITaxon:9606"},
+  "biological_context": {
+    "cell_type": "Human cancer cell lines from multiple tissue lineages",
+    "perturbation": "Small-molecule treatment",
+    "condition": "In vitro drug response measured by area under the viability dose-response curve"
+  },
+  "candidate_categories": ["pathway", "protein_complex", "regulatory_program"],
+  "knowledge_requirements": [
+    "Plan functional knowledge for the complete task and fixed gene universe. Use a shared representation across cancer lineages and compounds, retaining the biological context of each evidence statement.",
+    "Interpret the supplied annotations as the functional knowledge already available through the supplied hierarchy. Identify evidence-supported additional memberships and functional modules relevant to drug response.",
+    "Consider signaling, DNA-damage response and repair, cell-cycle control, apoptosis, metabolic adaptation, drug transport and metabolism, and protein assemblies where supported by task-relevant external evidence. The planner selects sources and acquisition priorities.",
+    "Process selected biological database sources to completion within declared resource budgets, preserving identifiers, source versions, mapping rules, evidence types, conditions and provenance.",
+    "Plan literature reading volume from the biological questions, current knowledge coverage and available resource ceilings. Specify an initial reading volume, a coherent batch size, a full-text ceiling, topic questions and evidence-based stopping criteria.",
+    "Read abstracts first. Request body sections or supplementary material to resolve missing entities, relationships or conditions, conflicting evidence, complex composition, large-scale screening results or functional-atlas tables. Prioritize human cancer-cell drug-response mechanisms and preserve lineage, genotype, compound, exposure and assay context.",
+    "Use successive topic batches with fresh sessions, saved discovery cursors, paper identity crosswalks, source-bound reading decisions, evidence records, resource usage and unresolved questions.",
+    "Query existing gene attributes, typed connections and concept definitions before proposing additions. Reuse equivalent concepts and preserve supporting evidence, biological scope, polarity and conditions. Define new concepts and explain distinctions from matching existing concepts.",
+    "Publish candidate increments using the add-go-knowledge skill and shared batch importer. Review individual literature claims and concept resolutions against saved source passages before freezing the shared task knowledge product.",
+    "Support a hierarchical functional representation: associate new GO biological-process concepts with their authoritative is_a ancestry. Preserve external pathway and complex identifiers together with evidence-backed relationships to existing functional modules, so the downstream adapter can place each new module explicitly.",
+    "Keep typed regulatory mechanisms, polarity and condition-specific findings in the evidence product alongside membership annotations. Freeze one evidence-backed knowledge product for subsequent evaluation.",
+    "Keep large tables, complete gene lists and paper lists in files. Use compact summaries, selective evidence excerpts, reusable acquisition programs and versioned caches."
+  ],
+  "retrieval_budget": {
+    "max_search_queries": 1000,
+    "max_sources_opened": 2500,
+    "max_candidate_records": 50000,
+    "record_budget_scope": "max_candidate_records applies exclusively to literature_extracted candidate statements. Process selected database sources to completion and retain all eligible gene-universe mappings. Database record counts follow source content and declared evidence filters; review sample sizes govern audit inspection only.",
+    "max_papers": 1500,
+    "paper_accounting": "Deduplicate papers by DOI, PMID and PMCID cross-references. Count a paper as inspected after reading its accessible scientific text and recording a screening decision. Track discovered, fetched, inspected, full-text-inspected and evidence-contributing papers separately. Record exactly which full-text sections were inspected.",
+    "source_accounting": "Count each opened primary-paper identity once across formats and retries, and each distinct database or reference artifact separately. Record discovery and metadata API requests in the acquisition ledger.",
+    "max_download_bytes": 4294967296,
+    "max_concurrent_source_requests": 3,
+    "reading_mode": "planner_adaptive",
+    "max_full_text_papers": 600,
+    "max_papers_per_round": 30
+  },
+  "projection_policy": {
+    "membership_relations": ["annotated_to", "member_of_pathway", "member_of_complex", "predicted_member_of_complex"],
+    "singleton_policy": "retain",
+    "context_policy": "preserve"
+  }
+}
