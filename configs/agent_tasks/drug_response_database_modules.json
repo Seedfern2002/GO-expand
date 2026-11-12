@@ -1,0 +1,34 @@
+{
+  "task_id": "human_cancer_drug_response_database_modules",
+  "task_description": "Construct task-specific GO augmentation for predicting cancer-cell response to small-molecule treatment from somatic mutation profiles and compound chemical features. Produce one shared knowledge overlay across the complete supplied gene universe and all cell-line and compound contexts.",
+  "organism": {"name": "Homo sapiens", "taxon_id": "NCBITaxon:9606"},
+  "biological_context": {
+    "cell_type": "Human cancer cell lines from multiple tissue lineages",
+    "perturbation": "Small-molecule treatment",
+    "condition": "In vitro drug response measured by area under the viability dose-response curve"
+  },
+  "candidate_categories": ["pathway", "protein_complex", "regulatory_program"],
+  "knowledge_requirements": [
+    "Use the supplied complete active GO biological-process hierarchy as the graph basis. Keep terms with zero current task-gene coverage available for locating and integrating modules. The graph is frozen before downstream size and depth pruning.",
+    "Integrate database-derived functional modules for the complete scientific task and supplied gene universe, using one shared graph across all cells and compounds.",
+    "Use the complete supplied Reactome and Complex Portal module catalog, source snapshots, identifier crosswalks and relationship evidence as the candidate space. Judge task relevance, biological identity and placement from these scientific inputs.",
+    "Preserve curated pathway hierarchy, source-specific complex composition, evidence type, source version, exact source locators and biological conditions. Keep complete memberships in files.",
+    "Inspect current graph definitions and ancestor/descendant neighborhoods. Reuse equivalent concepts and explicitly preserve narrower source identities and supported distinctions.",
+    "Propose coherent module groups with shared source-hierarchy expansion and anchor rules, recording module-specific identity, connection and deferral exceptions.",
+    "Give every processing batch independent biological review before its accepted edits enter the shared graph. Freeze the final knowledge product for downstream use."
+  ],
+  "retrieval_budget": {
+    "reading_mode": "database_only",
+    "max_papers": 0,
+    "max_full_text_papers": 0,
+    "max_candidate_records": 0,
+    "max_search_queries": 0,
+    "max_download_bytes": 0,
+    "record_budget_scope": "Process the complete supplied database module catalog. Literature acquisition and literature-derived candidates have a zero budget; database membership volume follows eligible source content."
+  },
+  "projection_policy": {
+    "membership_relations": ["member_of_pathway", "member_of_complex"],
+    "singleton_policy": "retain",
+    "context_policy": "preserve"
+  }
+}

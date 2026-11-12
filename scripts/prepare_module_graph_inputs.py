@@ -5,6 +5,7 @@ Task-agent histories, experiment configuration and evaluation results stay out.
 """
 import argparse
 from collections import defaultdict
+import heapq
 import hashlib
 import json
 from pathlib import Path
@@ -24,11 +25,35 @@ def write(path, value):
     path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
 
 
-def prepare(workspace, baseline, gene_map, task_card, output, batch_size=8):
+def partition_catalog(modules, facts, batch_size):
+    """Partition the complete catalog, keeping native parents ahead of children."""
+    if batch_size < 1:
+        raise ValueError("Batch size must be positive")
+    children = {m: set() for m in modules}; incoming = {m: 0 for m in modules}
+    for fact in facts.values():
+        a, b = fact.get("parent"), fact.get("child")
+        if fact.get("relation") == "source_pathway_parent" and a in modules and b in modules and b not in children[a]:
+            children[a].add(b); incoming[b] += 1
+    priority = lambda m: (0 if modules[m]["source"] == "Reactome" else 1, m)
+    pending = [priority(m) for m in modules if not incoming[m]]; heapq.heapify(pending)
+    order = []
+    while pending:
+        _, m = heapq.heappop(pending); order.append(m)
+        for child in sorted(children[m]):
+            incoming[child] -= 1
+            if incoming[child] == 0:
+                heapq.heappush(pending, priority(child))
+    if len(order) != len(modules):
+        raise ValueError("Source hierarchy contains a cycle")
+    return [{"id": f"module_batch_{i // batch_size + 1:03d}", "modules": order[i:i + batch_size]}
+            for i in range(0, len(order), batch_size)]
+
+
+def prepare(workspace, baseline, gene_map, task_card, output, batch_size=8, scope="pilot", graph_source=None):
     workspace, output = Path(workspace), Path(output)
     output.mkdir(parents=True, exist_ok=False)
     genes = ontology.read_gene_map(gene_map)
-    base = ontology.read_ontology(baseline, genes)
+    base = ontology.read_ontology(baseline, genes, allow_empty_terms=graph_source is not None)
     obo_path = workspace / "inputs/go.obo"
     obo = Ontology.read(obo_path)
     nodes = {}
@@ -41,6 +66,12 @@ def prepare(workspace, baseline, gene_map, task_card, output, batch_size=8):
     graph = {"revision": 0, "root": base["root"], "genes": genes, "nodes": nodes, "aliases": {}, "applied_batches": [],
              "edges": [{"parent": a, "child": b, "relation": "released_hierarchy", "model_edge": True,
                         "evidence_ids": [], "rationale": "Original supplied functional hierarchy"} for a, b in sorted(base["edges"])]}
+    if graph_source is not None:
+        graph = json.loads(Path(graph_source).read_text())
+        if (graph["genes"] != genes or graph["root"] != base["root"] or set(graph["nodes"]) != base["terms"]
+                or {(e["parent"],e["child"]) for e in graph["edges"] if e["model_edge"]} != base["edges"]
+                or {(n,g) for n,v in graph["nodes"].items() for g in v["direct_genes"]} != base["memberships"]):
+            raise ValueError("Full graph differs from its ontology and gene mapping")
     validate_graph(graph)
     members = defaultdict(set)
     with (workspace / "knowledge/gene_attributes.jsonl").open() as stream:
@@ -139,7 +170,7 @@ def prepare(workspace, baseline, gene_map, task_card, output, batch_size=8):
         module["source_relatives"] = sorted(set(module["source_relatives"]))
     # The timing pilot processes coherent source clusters; the catalog and shared
     # graph retain the complete task gene universe and all source concepts.
-    wanted = ["EXTERNAL:R-HSA-73894", "EXTERNAL:R-HSA-1640170"]  # DNA Repair, Cell Cycle in the pinned source.
+    wanted = ["EXTERNAL:R-HSA-73894", "EXTERNAL:R-HSA-1640170"] if scope == "pilot" else []
     batches = []
     selected = set()
     for i, seed in enumerate(wanted, 1):
@@ -159,7 +190,10 @@ def prepare(workspace, baseline, gene_map, task_card, output, batch_size=8):
     complexes = [key for key, module in modules.items() if module["source"] == "ComplexPortal"
                  and module["evidence_ids"] and any(go in base["terms"] for go in module["go_annotations"])]
     complexes.sort(key=lambda key: (-len(modules[key]["genes"]), modules[key]["label"]))
-    batches.append({"id": "module_batch_003", "modules": complexes[:batch_size]})
+    if scope == "pilot":
+        batches.append({"id": "module_batch_003", "modules": complexes[:batch_size]})
+    else:
+        batches = partition_catalog(modules, facts, batch_size)
     task = json.loads(Path(task_card).read_text())
     if task.keys() - TASK_FIELDS:
         raise ValueError("Supply a scientific task card")
@@ -175,7 +209,7 @@ def prepare(workspace, baseline, gene_map, task_card, output, batch_size=8):
     write(output / "preparation_receipt.json", {"source_memberships_sha256": ontology.sha256(workspace / "knowledge/gene_attributes.jsonl"),
           "source_statements_sha256": ontology.sha256(workspace / "knowledge/statements.jsonl"),
           "baseline_sha256": ontology.sha256(baseline), "catalog_modules": len(modules),
-          "pilot_modules": sum(len(b["modules"]) for b in batches), "batches": batches,
+          "processing_scope": scope, "pilot_modules": sum(len(b["modules"]) for b in batches), "batches": batches,
           "source_files": {key: {"path": value, "sha256": ontology.sha256(value)} for key, value in sources.items()}})
     print(json.dumps({"output": str(output), "catalog_modules": len(modules), "pilot_modules": sum(len(b["modules"]) for b in batches),
                       "batches": [{"id": b["id"], "labels": [modules[key]["label"] for key in b["modules"]]} for b in batches]}, indent=2))
@@ -186,5 +220,6 @@ if __name__ == "__main__":
     for name in ("workspace", "baseline", "gene-map", "task", "output"):
         parser.add_argument("--" + name, type=Path, required=True)
     parser.add_argument("--batch-size", type=int, default=8)
+    parser.add_argument("--scope", choices=["pilot", "all"], default="pilot")
     args = parser.parse_args()
-    prepare(args.workspace, args.baseline, args.gene_map, args.task, args.output, args.batch_size)
+    prepare(args.workspace, args.baseline, args.gene_map, args.task, args.output, args.batch_size, args.scope)

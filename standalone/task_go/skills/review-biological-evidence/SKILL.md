@@ -7,6 +7,8 @@ description: Review database-derived and literature-derived GO augmentation clai
 
 Determine which acquired assertions are supported at their stated biological scope. Bind each finding to records and source locations so the acquisition role can make a precise revision when needed.
 
+Apply the concept identity and evidence conventions in [shared knowledge semantics](../../references/knowledge_semantics.md). This skill reviews acquired assertions and transformation policies. Proposed module graph placements receive their batch-level review through the separate review-functional-modules skill.
+
 ## Inspect evidence at the appropriate unit
 
 For database batches, review the source release and transformation policy, inspect deterministic validation of all rows, and draw reproducible stratified samples covering relevant identifiers, evidence classes, relationship types and flagged exceptions. Verify complete source processing, source-defined membership, mapping rules and policy-based exclusions.

@@ -59,7 +59,7 @@ def valid_model_term(term):
     )
 
 
-def analyze(edges, memberships, genes):
+def analyze(edges, memberships, genes, allow_empty_terms=False):
     """Validate the upstream hierarchy and calculate direct/propagated maps."""
     edges, memberships, genes = set(edges), set(memberships), list(genes)
     terms = {term for edge in edges for term in edge}
@@ -93,7 +93,7 @@ def analyze(edges, memberships, genes):
     for term in reversed(order):
         for child in children[term]:
             propagated[term].update(propagated[child])
-        if not propagated[term]:
+        if not propagated[term] and not allow_empty_terms:
             raise ValueError(f"Hierarchy term has no descendant genes: {term}")
         height[term] = 1 + max((height[child] for child in children[term]), default=0)
     gene_annotations = {gene: [] for gene in genes}
@@ -118,7 +118,7 @@ def analyze(edges, memberships, genes):
     }
 
 
-def read_ontology(path, genes):
+def read_ontology(path, genes, allow_empty_terms=False):
     rows, edges, memberships = set(), set(), set()
     for number, line in enumerate(Path(path).read_text().splitlines(), 1):
         if not line.strip():
@@ -130,7 +130,7 @@ def read_ontology(path, genes):
             raise ValueError(f"Duplicate ontology row at line {number}")
         rows.add(fields)
         (edges if fields[2] == "default" else memberships).add(fields[:2])
-    return analyze(edges, memberships, genes)
+    return analyze(edges, memberships, genes, allow_empty_terms=allow_empty_terms)
 
 
 def sources(**paths):

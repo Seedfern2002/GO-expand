@@ -91,7 +91,7 @@ def prune(ontology_path, gene_map, output, min_genes=10, min_difference=30, max_
     if output.exists():
         raise FileExistsError("Use a new pruning product directory")
     genes = ontology.read_gene_map(gene_map)
-    source = ontology.read_ontology(ontology_path, genes)
+    source = ontology.read_ontology(ontology_path, genes, allow_empty_terms=True)
     final, audit = prune_graph(source, genes, min_genes, min_difference, max_edges)
     output.mkdir(parents=True)
     with (output / "drugcell_ont.txt").open("w") as stream:

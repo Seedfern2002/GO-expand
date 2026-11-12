@@ -55,8 +55,11 @@ def validate_graph(graph):
         if not set(node["direct_genes"]) <= universe:
             raise ValueError("Membership outside the fixed gene universe")
     topology(graph)
-    if set().union(*(set(n["direct_genes"]) for n in graph["nodes"].values())) != universe:
+    if (graph.get("gene_coverage_policy", "complete") == "complete"
+            and set().union(*(set(n["direct_genes"]) for n in graph["nodes"].values())) != universe):
         raise ValueError("The shared graph must preserve all input genes")
+    if graph.get("gene_coverage_policy", "complete") not in {"complete", "allow_unannotated"}:
+        raise ValueError("Unknown gene coverage policy")
 
 
 def coverage(graph):
@@ -77,6 +80,7 @@ def summary(graph):
     propagated = coverage(graph)
     added = [key for key, n in graph["nodes"].items() if n["origin"] != "baseline"]
     return {"revision": graph["revision"], "genes": len(graph["genes"]),
+            "annotated_genes": len(propagated[graph["root"]]),
             "nodes": len(graph["nodes"]), "model_edges": sum(e["model_edge"] for e in graph["edges"]),
             "typed_edges": len(graph["edges"]), "added_nodes": len(added),
             "added_nodes_by_depth": dict(sorted(Counter(str(depth[n]) for n in added).items())),

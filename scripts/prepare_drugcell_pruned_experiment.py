@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 from copy import deepcopy
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -32,7 +33,36 @@ def validate_knowledge_inputs(workspace, gene_map, baseline_ontology):
         raise ValueError("New knowledge uses different baseline functional annotations")
 
 
-def prepare(source, output, knowledge_workspace=None, code_source_directory=None):
+def check_gene_alignment(source_directory, graph_genes, pruned_ontology, output):
+    source_directory = Path(source_directory)
+    feature_genes = ontology.read_gene_map(source_directory / "gene2ind.txt")
+    indices = {gene: index for index,gene in enumerate(feature_genes)}
+    missing = sorted(set(graph_genes) - indices.keys())
+    if missing:
+        raise ValueError("Augmented genes require measured mutation features: " + ", ".join(missing[:10]))
+    rows = 0
+    with (source_directory / "cell2mutation.txt").open() as stream:
+        for line in stream:
+            if len(line.rstrip().split(",")) != len(feature_genes):
+                raise ValueError("Mutation feature width differs from its gene identifier map")
+            rows += 1
+    cells = ontology.read_gene_map(source_directory / "cell2ind.txt")
+    if rows != len(cells):
+        raise ValueError("Mutation feature rows differ from the cell identifier map")
+    graph = ontology.read_ontology(pruned_ontology, graph_genes)
+    columns = [indices[g] for g in graph_genes]
+    result = {"available_feature_genes": len(feature_genes), "task_input_genes": len(graph_genes),
+        "pruned_annotated_genes": graph["stats"]["annotated_genes"], "mutation_rows": rows,
+        "gene_order_matches_features": columns == list(range(len(feature_genes))),
+        "feature_columns_for_task_gene_order": columns, "missing_feature_genes": missing,
+        "gene_order_sha256": hashlib.sha256(json.dumps(graph_genes).encode()).hexdigest()}
+    if not result["gene_order_matches_features"]:
+        raise ValueError("Training requires an explicitly prepared feature-column projection for the changed gene order")
+    ontology.write_json(output, result)
+    return result
+
+
+def prepare(source, output, knowledge_workspace=None, code_source_directory=None, module_graph_product=None):
     source, output = Path(source).resolve(), Path(output).resolve()
     comparison.verify_experiment(source)
     previous = comparison.read_json(source / "config.json")
@@ -54,6 +84,14 @@ def prepare(source, output, knowledge_workspace=None, code_source_directory=None
                                else "drugcell_augmented_then_pruned_v1")
     if knowledge_workspace:
         config["knowledge"]["augmentation_workspace"] = str(knowledge_workspace)
+    if module_graph_product is not None:
+        if knowledge_workspace is None:
+            raise ValueError("A module graph needs its corresponding frozen membership workspace")
+        from export_drugcell_module_graph import verify_product
+        product = Path(module_graph_product).resolve()
+        verify_product(product)
+        config["knowledge"].update(module_graph_product=str(product),
+            module_graph_freeze_sha256=ontology.sha256(product / "freeze_manifest.json"))
     config["comparison_description"] = (
         "Released DrugCell baseline (completed matched folds reused) versus the frozen augmented GO after "
         "published size/separation/depth pruning. Data, grouped folds, model seed and training settings are shared.")
@@ -127,6 +165,9 @@ def prepare(source, output, knowledge_workspace=None, code_source_directory=None
     genes = ontology.read_gene_map(output / "source_inputs/gene2ind.txt")
     original = ontology.read_ontology(source / "baseline/drugcell_ont.txt", genes)
     final = ontology.read_ontology(output / "augmentation/drugcell_ont.txt", genes)
+    upstream_manifest = comparison.read_json(config["source_manifest"])
+    upstream_data = Path(config["project_root"]) / upstream_manifest["local_path"] / "data"
+    check_gene_alignment(upstream_data, genes, output / "augmentation/drugcell_ont.txt", output / "gene_alignment.json")
     retained_old = original["terms"] & final["terms"]
     changes = {"retained_released_terms": len(retained_old),
                "removed_released_terms": len(original["terms"] - final["terms"]),
@@ -158,7 +199,7 @@ def prepare(source, output, knowledge_workspace=None, code_source_directory=None
         for path in sorted(directory.rglob("*")):
             if path.is_file() and str(path.relative_to(output)) not in existing:
                 manifest["files"].append({"path": str(path.relative_to(output)), "sha256": ontology.sha256(path)})
-    for path in [output / "source_inputs/knowledge_freeze_manifest.json", output / "pruning_summary.json",
+    for path in [output / "source_inputs/knowledge_freeze_manifest.json", output / "pruning_summary.json", output / "gene_alignment.json",
                  output / "code/prune_drugcell_ontology.py", output / "code/prepare_drugcell_pruned_experiment.py"]:
         manifest["files"].append({"path": str(path.relative_to(output)), "sha256": ontology.sha256(path)})
     if knowledge_workspace:
@@ -183,9 +224,10 @@ def main():
                         help="Use a new frozen knowledge product with the source experiment's matched baseline")
     parser.add_argument("--code-source-directory", type=Path,
                         help="Freeze evaluators from a predeclared code snapshot")
+    parser.add_argument("--module-graph-product", type=Path)
     args = parser.parse_args()
     print(json.dumps(prepare(args.source_experiment, args.output, args.knowledge_workspace,
-                             args.code_source_directory), indent=2))
+                             args.code_source_directory, args.module_graph_product), indent=2))
 
 
 if __name__ == "__main__":

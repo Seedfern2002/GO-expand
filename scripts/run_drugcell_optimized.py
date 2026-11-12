@@ -265,6 +265,10 @@ def fit_model(model, train, validation, load_test, cell_features, drug_features,
 
 def verify_ontology_origin(ontology, baseline, config, root, record):
     """Validate either an additive ontology or a declared, hashed pruning product."""
+    prefix_basis=baseline
+    if config["knowledge"].get("full_go_source"):
+        from drugcell_input_projection import full_go_basis
+        prefix_basis=full_go_basis(config,root,baseline,record)
     if ontology.read_bytes().startswith(baseline.read_bytes()):
         return
     derivation = config["knowledge"].get("ontology_derivation", {})
@@ -279,7 +283,7 @@ def verify_ontology_origin(ontology, baseline, config, root, record):
                     derivation["parent_ontology_sha256"])
     if manifest["sources"]["ontology"]["sha256"] != sha256(parent):
         raise ValueError("Pruning manifest has a different parent ontology")
-    if not parent.read_bytes().startswith(baseline.read_bytes()):
+    if not parent.read_bytes().startswith(prefix_basis.read_bytes()):
         raise ValueError("Parent augmentation does not preserve the released baseline")
 
 
@@ -330,8 +334,9 @@ def verify_inputs(config_path, config, ontology, fold, root):
     selected = next(item for item in split_manifest["folds"] if item["fold"] == fold)
     splits = {name: record("split/" + name, prepared / item["path"], item["sha256"])
               for name, item in selected["partitions"].items()}
-    baseline = record("baseline_ontology", resolve(root, config["knowledge"]["baseline_ontology"]),
-                      source_manifest["files"]["data/drugcell_ont.txt"])
+    expected_baseline=(config["knowledge"]["baseline_ontology_sha256"] if config["knowledge"].get("full_go_source")
+                       else source_manifest["files"]["data/drugcell_ont.txt"])
+    baseline = record("baseline_ontology", resolve(root, config["knowledge"]["baseline_ontology"]), expected_baseline)
     record("ontology", ontology)
     verify_ontology_origin(ontology, baseline, config, root, record)
     record("runner", Path(__file__).resolve())
@@ -404,6 +409,9 @@ def run(config_path, fold, ontology, output, device="cuda", threads=8, max_epoch
         drug_features_np = np.loadtxt(data / "drug2fingerprint.txt", delimiter=",", dtype=np.float32)
         if cell_features_np.shape != (len(cells), len(genes)) or drug_features_np.shape != (len(drugs), 2048):
             raise ValueError("Feature dimensions differ from the fixed entity maps")
+        if config["knowledge"].get("input_projections"):
+            from drugcell_input_projection import project_inputs
+            genes,cell_features_np=project_inputs(config,ontology,genes,cell_features_np,root,inputs)
         settings = dict(config["released_training_settings"])
         if max_epochs is not None:
             settings["max_epochs"] = max_epochs

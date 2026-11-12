@@ -1,26 +1,33 @@
 ---
 name: place-functional-modules
-description: Inspect a current functional graph and source evidence, then propose and review batched module identities and typed connections.
+description: Propose task-relevant functional-module identities and typed graph placements in coherent batches, using shared integration rules and explicit exceptions.
 ---
 
 # Place functional modules
 
-Use a module as the editing unit and a coherent small batch as the reasoning unit. Work on the complete task's shared graph and fixed gene universe.
+Produce a reviewable integration proposal for the supplied batch within one shared task graph. The role prompt supplies the active interface and output schema. Apply the [shared knowledge semantics](../../references/knowledge_semantics.md); the module controller embeds these conventions in the prompt.
 
-## Inspect the graph and scientific evidence
+## Inspect and locate
 
-The controller supplies the current graph revision, a packet of module definitions and candidate neighborhoods, source-native hierarchy facts, source GO annotations and membership summaries. Full members and source snapshots remain in inputs/. Candidate locations combine text, overlap and explicit source annotations; review their biological meaning.
+Read every supplied module's definition, source-curated relationships, GO annotations and member summary. Judge task relevance and biological scope from the task and pinned evidence. Query existing definitions and both parent and child neighborhoods when resolving identity or placement. Start from the supplied source annotations and explore additional locations as needed:
 
-Query pipeline/graph_ops.py for additional module or concept context. Its output includes existing parents, children, definitions, gene coverage and source relationships. Decisions within a batch can introduce connections among its modules. Subsequent batches receive the committed graph, including accepted additions and source aliases.
+```bash
+python3 pipeline/graph_ops.py --concepts GO:IDENTIFIER GO:OTHER
+python3 pipeline/graph_ops.py --labels "biological phrase" "another phrase" --limit 12
+python3 pipeline/graph_ops.py --label "phrase" --offset 12 --limit 12
+```
 
-## Propose a transaction
+`--neighbor-offset` paginates parent/child neighborhoods. The graph, source catalog and complete evidence are at the paths in the batch context. Keep large memberships in those files.
 
-Choose add, reuse or defer for each module. Preserve source identity and evidence. Reuse requires biological equivalence at the stated scope. An added module receives explicit incoming edges and may connect to existing descendants. Source-native hierarchy relations retain their own relationship label. GO is_a and part_of edges require matching pinned ontology facts. A complex's process participation can be recorded as participates_in. Computational grouping uses model_aggregation with its rationale. Associative and regulatory links remain typed, separate from the model hierarchy.
+## Form the proposal
 
-Each edge records its endpoints, relation, model_edge, evidence_ids and rationale. The model hierarchy has one declared root and one edge per parent-child pair. Keep source membership mappings in files. The graph importer joins memberships and recomputes coverage; evidence-only associations retain their own semantics.
+Choose source-identified addition, equivalent-concept reuse or evidence-based deferral. Confirm a reuse target's current presence and definition. Inspect multiple plausible locations when scope is ambiguous. Preserve source meaning in the edge type and rationale, including distinctions between whole processes, component processes, regulatory processes and protein assemblies.
 
-## Review and commit
+Group modules when their full biological scope supports a shared rule. Approve native hierarchy expansion over the declared group, select entry anchors, and record reuse, deferral and connection exceptions explicitly. Review the applicability of each shared rule across all selected modules. The compiler joins complete memberships and expands the approved scope.
 
-An independent reviewer assesses every module and its incident edits against scientific evidence and current graph context. The controller validates revision binding, provenance references, duplicate edges, model cycles and full gene coverage. It commits the accepted transaction atomically, records deferred decisions and rebuilds the context for the next batch.
+Use the active interface reference supplied by the controller:
 
-The frozen product contains typed graph edges, source aliases, membership mappings, decisions, evidence lineage and timing. Consumer adapters select the declared model edges while retaining the scientific relationship metadata.
+- [Group recipes](references/group-recipes.md) for `group_recipe` mode.
+- [Per-module transactions](references/transactions.md) for `transaction` mode.
+
+Return the schema object for the entire batch. The controller compiles and validates the proposal, then hands the complete expansion to the independent reviewer. Accepted edits enter the graph through the controller's commit.

@@ -6,6 +6,7 @@ from datetime import datetime, timezone
 import fcntl
 import json
 import os
+import signal
 from pathlib import Path
 import subprocess
 import time
@@ -13,6 +14,7 @@ import traceback
 
 from engine.knowledge import sha256
 from engine.module_graph import GraphContext, apply_patch, filter_review, fingerprint, summary, validate_graph
+from engine.module_prompts import build_module_prompt, instruction_receipts
 from run import validate_schema
 
 
@@ -70,10 +72,9 @@ def agent(role, root, directory, runtime, context, schema):
     assert_external_boundary(root)
     directory.mkdir(parents=True, exist_ok=False)
     write(directory / "schema.json", schema)
-    prompt = ((root / f"pipeline/prompts/modules/{role}.md").read_text() + "\n\n"
-              + "Scientific task:\n" + (root / "task.json").read_text()
-              + "\n\nCurrent batch context:\n" + json.dumps(context, separators=(",", ":")))
+    prompt, instructions = build_module_prompt(root, role, context)
     (directory / "prompt.md").write_text(prompt)
+    write(directory / "instruction_manifest.json", instructions)
     command = ["/opt/codex", "exec", "--ignore-user-config", "--skip-git-repo-check", "--ephemeral",
                "--cd", str(root), "--json", "--output-schema", str(directory / "schema.json"),
                "--output-last-message", str(directory / "result.json"), "--model", runtime["model"],
@@ -85,18 +86,36 @@ def agent(role, root, directory, runtime, context, schema):
     command.append("-")
     started = time.monotonic()
     execution = {"role": role, "status": "running", "started_at_utc": datetime.now(timezone.utc).isoformat(),
-                 "prompt_sha256": sha256(directory / "prompt.md"), "command": command}
+                 "prompt_sha256": sha256(directory / "prompt.md"), "command": command,
+                 "skill": instructions["skill"], "interface": instructions["interface"],
+                 "instruction_manifest_sha256": sha256(directory / "instruction_manifest.json")}
     write(directory / "execution.json", execution)
     with (directory / "prompt.md").open() as stdin, (directory / "events.jsonl").open("w") as stdout, (directory / "stderr.log").open("w") as stderr:
-        child = subprocess.Popen(command, stdin=stdin, stdout=stdout, stderr=stderr, cwd=root)
-        code = child.wait(timeout=runtime["stage_timeout_seconds"])
+        child = subprocess.Popen(command, stdin=stdin, stdout=stdout, stderr=stderr, cwd=root, start_new_session=True)
+        try:
+            code = child.wait(timeout=runtime["stage_timeout_seconds"])
+        except subprocess.TimeoutExpired:
+            os.killpg(child.pid, signal.SIGTERM)
+            try:
+                child.wait(timeout=15)
+            except subprocess.TimeoutExpired:
+                os.killpg(child.pid, signal.SIGKILL); child.wait()
+            execution.update(status="timed_out", wall_seconds=time.monotonic() - started,
+                             finished_at_utc=datetime.now(timezone.utc).isoformat())
+            write(directory / "execution.json", execution)
+            raise TimeoutError(role + " exceeded its declared stage time budget")
     execution.update(exit_code=code, wall_seconds=time.monotonic() - started,
                      finished_at_utc=datetime.now(timezone.utc).isoformat())
     if code:
         execution["status"] = "failed"; write(directory / "execution.json", execution)
         raise RuntimeError(role + " exited " + str(code))
-    result = json.loads((directory / "result.json").read_text())
-    validate_schema(result, schema)
+    try:
+        result = json.loads((directory / "result.json").read_text())
+        validate_schema(result, schema)
+    except Exception as error:
+        execution.update(status="invalid_result", error=str(error))
+        write(directory / "execution.json", execution)
+        raise
     execution.update(status="completed", result_sha256=sha256(directory / "result.json"))
     write(directory / "execution.json", execution)
     return result, execution
@@ -136,7 +155,7 @@ def worker(root):
     def status(state, phase, **details):
         value = {"status": state, "phase": phase, "updated_at_utc": datetime.now(timezone.utc).isoformat(), **details}
         write(root / "status.json", value); print(json.dumps(value), flush=True)
-    graph = None; timings = []
+    graph = None; timings = []; lock = None
     try:
         lock = (root / "controller.lock").open("a")
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -209,6 +228,7 @@ def worker(root):
         output.mkdir(exist_ok=False)
         write(output / "graph.json", graph)
         write(output / "summary.json", summary(graph))
+        write(output / "instructions.json", instruction_receipts(root))
         write(output / "validation.json", {"passed": True, "checks": ["revision_bound_transactions", "fixed_gene_universe", "connected_model_DAG", "unique_model_edges", "declared_source_evidence", "independent_module_review", "unchanged_scientific_inputs"]})
         write(output / "freeze_manifest.json", {"files": [{"path": p.name, "sha256": sha256(p)} for p in sorted(output.iterdir())],
               "inputs": json.loads((root / "inputs/manifest.json").read_text()),
@@ -223,6 +243,9 @@ def worker(root):
         if graph is not None:
             report(root, graph, timings, "failed")
         return 1
+    finally:
+        if lock is not None:
+            lock.close()
 
 
 if __name__ == "__main__":

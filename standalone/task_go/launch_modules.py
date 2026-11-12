@@ -9,12 +9,14 @@ import subprocess
 
 from engine.knowledge import sha256
 from engine.module_graph import validate_graph
+from engine.module_prompts import instruction_manifest
 from launch import prepare, sandbox_command
 from place_modules import write
 
 
 def prepare_modules(task, genes, annotations, ontology, graph, modules, evidence, batches,
-                    sources, output, model, reasoning_effort="medium", timeout=3600, workflow="module_placement"):
+                    sources, output, model, reasoning_effort="medium", timeout=3600, workflow="module_placement",
+                    publish_memberships=False, batch_attempts=3):
     if workflow not in {"module_placement", "module_recipes"}:
         raise ValueError("Unknown module workflow")
     source_files = json.loads(Path(sources).read_text())
@@ -24,7 +26,7 @@ def prepare_modules(task, genes, annotations, ontology, graph, modules, evidence
               "placement_evidence.json": json.loads(Path(evidence).read_text()),
               "module_batches.json": json.loads(Path(batches).read_text())}
     graph_value = values["baseline_graph.json"]
-    if graph_value.keys() - {"revision", "root", "genes", "nodes", "edges", "aliases", "applied_batches"}:
+    if graph_value.keys() - {"revision", "root", "genes", "nodes", "edges", "aliases", "applied_batches", "gene_coverage_policy"}:
         raise ValueError("The graph contains fields outside the scientific input contract")
     for node in graph_value["nodes"].values():
         if node.keys() - {"id", "label", "definition", "kind", "origin", "direct_genes"}:
@@ -86,12 +88,15 @@ def prepare_modules(task, genes, annotations, ontology, graph, modules, evidence
                          for p in sorted((root / "inputs").rglob("*")) if p.is_file() and p.name != "manifest.json"]
     write(root / "inputs/manifest.json", manifest)
     runtime = json.loads((root / "runtime.json").read_text())
-    runtime.update(workflow=workflow, module_batch_sizes=[len(b["modules"]) for b in values["module_batches.json"]])
+    roles = ["recipe_editor", "recipe_reviewer"] if workflow == "module_recipes" else ["editor", "reviewer"]
+    runtime.update(workflow=workflow, module_batch_sizes=[len(b["modules"]) for b in values["module_batches.json"]],
+                   module_agent_roles=roles, publish_memberships=publish_memberships, batch_attempts=batch_attempts)
     write(root / "runtime.json", runtime)
     receipt = json.loads((Path(output) / "receipt.json").read_text())
     receipt.update(workflow=workflow, inputs_sha256=sha256(root / "inputs/manifest.json"),
                    source_modules=len(values["modules.json"]), processing_modules=len(supplied),
                    processing_batches=len(values["module_batches.json"]),
+                   module_instructions=[instruction_manifest(root, role) for role in roles],
                    module_prompts=[{"path": str(p.relative_to(root)), "sha256": sha256(p)}
                                    for p in sorted((root / "pipeline/prompts/modules").glob("*.md"))])
     write(Path(output) / "receipt.json", receipt)
@@ -107,11 +112,18 @@ def main():
     parser.add_argument("--stage-timeout-seconds", type=int, default=3600)
     parser.add_argument("--workflow", choices=["module_placement", "module_recipes"], default="module_placement")
     parser.add_argument("--prepare-only", action="store_true")
+    parser.add_argument("--publish-memberships", action="store_true")
+    parser.add_argument("--batch-attempts", type=int, default=3)
+    parser.add_argument("--resume", action="store_true")
     args = parser.parse_args()
     output = args.run_dir.resolve()
-    root = prepare_modules(args.task, args.genes, args.annotations, args.ontology, args.graph,
-                           args.modules, args.evidence, args.batches, args.sources, output,
-                           args.model, args.reasoning_effort, args.stage_timeout_seconds, args.workflow)
+    if args.batch_attempts < 1:
+        parser.error("Batch attempts must be positive")
+    root = output / "workspace" if args.resume else prepare_modules(
+        args.task, args.genes, args.annotations, args.ontology, args.graph,
+        args.modules, args.evidence, args.batches, args.sources, output,
+        args.model, args.reasoning_effort, args.stage_timeout_seconds, args.workflow,
+        args.publish_memberships, args.batch_attempts)
     if args.prepare_only:
         print(json.dumps({"workspace": str(root), "status": "prepared"})); return
     auth_root = Path(os.environ.get("CODEX_HOME", Path.home() / ".codex"))

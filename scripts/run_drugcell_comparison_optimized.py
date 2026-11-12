@@ -227,6 +227,8 @@ def initialize(config_path, output, workspace=None):
                       "drugcell_ontology.py", "wait_and_run_gears.py"]
         if config["knowledge"].get("module_graph_product"):
             code_names.append("export_drugcell_module_graph.py")
+        if config["knowledge"].get("full_go_source"):
+            code_names.append("drugcell_input_projection.py")
         for name in code_names:
             source_name = {"run_drugcell.py": "run_drugcell_optimized.py",
                            "run_drugcell_comparison.py": "run_drugcell_comparison_optimized.py"}.get(name, name)

@@ -45,6 +45,11 @@ class ModuleBoundaryTests(unittest.TestCase):
         self.assertEqual(json.loads((root / "runtime.json").read_text())["workflow"], "module_recipes")
         self.assertEqual(json.loads((root / "inputs/modules.json").read_text()), self.module)
         self.assertTrue((root / "pipeline/prompts/modules/recipe_editor.md").is_file())
+        receipt = json.loads((root.parent / "receipt.json").read_text())
+        self.assertEqual([x["skill"] for x in receipt["module_instructions"]],
+                         ["place-functional-modules", "review-functional-modules"])
+        for instruction in receipt["module_instructions"]:
+            self.assertTrue(all((root / resource["path"]).is_file() for resource in instruction["resources"]))
 
     def test_source_rows_are_bound_and_host_paths_stay_outside_agent_inputs(self):
         root = self.prepare()

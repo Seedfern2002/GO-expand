@@ -31,13 +31,17 @@ def write(path, value):
 
 def prepare(bundle, config_path, samples=5000):
     import numpy as np
-    import run_drugcell as reference
     config = json.loads(Path(config_path).read_text())
+    if config["knowledge"].get("full_go_source"):
+        import run_drugcell_optimized as reference
+    else:
+        import run_drugcell as reference
     root = Path(config.get("project_root", ROOT))
     ontology = Path(config["knowledge"]["baseline_ontology"])
     source, splits, records, _ = reference.verify_inputs(Path(config_path), config, ontology, 0, root)
     sys.path.insert(0, str(source / "code"))
     import util
+    genes=util.load_mapping(source / "data/gene2ind.txt")
     cells = util.load_mapping(source / "data/cell2ind.txt")
     drugs = util.load_mapping(source / "data/drug2ind.txt")
     pairs, labels = reference.read_pairs(splits["train"], cells, drugs, samples)
@@ -50,6 +54,18 @@ def prepare(bundle, config_path, samples=5000):
     for name in ["drugcell_packed.py", "drugcell_masked_layers.py", "run_drugcell.py",
                  "benchmark_drugcell_optimized.py", "wait_and_run_gears.py"]:
         shutil.copyfile(ROOT / "scripts" / name, bundle / "code" / name)
+    model_inputs={}
+    if config["knowledge"].get("input_projections"):
+        from drugcell_input_projection import project_inputs
+        shutil.copyfile(ROOT / "scripts/drugcell_input_projection.py",bundle / "code/drugcell_input_projection.py")
+        for arm in ("baseline","augmented"):
+            selected,matrix=project_inputs(config,Path(config["knowledge"][arm+"_ontology"]),genes,mutations,root,records)
+            path=bundle/f"gene2ind_{arm}.txt"
+            with path.open("w") as stream:
+                for gene,index in sorted(selected.items(),key=lambda x:x[1]):stream.write(f"{index}\t{gene}\n")
+            batch=bundle/f"training_batch_{arm}.npz"
+            np.savez_compressed(batch,features=np.concatenate((matrix[pairs[:,0]],fingerprints[pairs[:,1]]),axis=1),labels=labels)
+            model_inputs[arm]={"gene_map":path.name,"training_batch":batch.name,"model_genes":len(selected)}
     for name in ("drugcell_NN.py", "util.py"):
         shutil.copyfile(source / "code" / name, bundle / "code" / name)
     shutil.copyfile(source / "data/gene2ind.txt", bundle / "gene2ind.txt")
@@ -59,6 +75,7 @@ def prepare(bundle, config_path, samples=5000):
     write(bundle / "manifest.json", {"samples": len(labels), "seed": config["model_seed"],
           "training": config["released_training_settings"], "input_records": records,
           "scope": "Fixed training batch for implementation equivalence and runtime; knowledge stays frozen",
+          "model_inputs":model_inputs,
           "files": {str(p.relative_to(bundle)): digest(p) for p in sorted(bundle.rglob("*")) if p.is_file()}})
     print(json.dumps({"bundle": str(bundle.resolve()), "samples": len(labels)}))
 
@@ -106,7 +123,8 @@ def benchmark(bundle, output, device, batch_size, steps, warmup, threads, arm):
     from drugcell_packed import PackedDrugCell
     from drugcell_masked_layers import install_masked_gene_forward
     from run_drugcell import initialize_model, apply_masks, make_masks
-    genes = util.load_mapping(bundle / "gene2ind.txt")
+    selected_inputs=manifest.get("model_inputs",{}).get(arm,{"gene_map":"gene2ind.txt","training_batch":"training_batch.npz"})
+    genes = util.load_mapping(bundle / selected_inputs["gene_map"])
     with contextlib.redirect_stdout(io.StringIO()):
         graph, root, sizes, direct = util.load_ontology(bundle / (arm + ".txt"), genes)
         original = drugcell_NN.drugcell_nn(sizes, direct, graph.copy(), len(genes), 2048, root, 6, [100, 50, 6], 6)
@@ -116,7 +134,7 @@ def benchmark(bundle, output, device, batch_size, steps, warmup, threads, arm):
     original.to(device)
     packed.to(device)
     masks = make_masks(original, torch)
-    data = np.load(bundle / "training_batch.npz")
+    data = np.load(bundle / selected_inputs["training_batch"])
     x = torch.as_tensor(data["features"][:batch_size], device=device)
     y = torch.as_tensor(data["labels"][:batch_size], device=device).reshape(-1, 1)
     settings = manifest["training"]

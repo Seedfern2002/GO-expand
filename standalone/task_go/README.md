@@ -64,3 +64,11 @@ The launcher uses the outer task-only bubblewrap environment as the execution bo
 `graph_ops.py --concepts GO:ID GO:OTHER` retrieves multiple definitions and neighborhoods in one query. `--labels "phrase" "other phrase"` supports multiple literal label searches; `--offset` paginates matches and `--neighbor-offset` paginates parent/child neighborhoods. Source-annotated concepts in the initial packet are entry points for further graph exploration.
 
 The workspace saves recipes, compiled transactions, expansion receipts, complete review coverage and execution accounting. Frozen graph manifests include recipe and expansion hashes. `efficiency.json` records invocation counts, tool calls, context bytes and stage timings. These counters describe the graph integration stage; source acquisition remains a separate measurement.
+
+## Role-specific module skills
+
+The Editor uses `skills/place-functional-modules/SKILL.md`; the independent Reviewer uses `skills/review-functional-modules/SKILL.md`. Both use `references/knowledge_semantics.md`. The controller embeds the assigned skill and exactly one active interface reference in each invocation, covering group recipes or per-module transactions. The role prompt supplies the role and output responsibility; the skill supplies the reusable method.
+
+Acquisition uses `add-go-knowledge` for candidate publication, alongside the database-integration and literature-reading skills. Acquired assertions are assessed through `review-biological-evidence`. Module graph placements receive their own batch-level review through `review-functional-modules`.
+
+Each batch runs Editor, code expansion and structural validation, independent Reviewer, then accepted commit. The next batch uses that committed graph. Per-stage `instruction_manifest.json` binds skill and reference versions to the executed prompt. The launch receipt records role-resource mappings, and `knowledge_graph/instructions.json` preserves all verified invocation receipts in the frozen product.

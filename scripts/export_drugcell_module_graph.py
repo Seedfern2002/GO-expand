@@ -44,7 +44,8 @@ def export(product, baseline_path, gene_map, output):
     product, output = Path(product), Path(output)
     graph = verify_product(product)
     genes = ontology.read_gene_map(gene_map)
-    baseline = ontology.read_ontology(baseline_path, genes)
+    allow_empty = graph.get("gene_coverage_policy") == "allow_unannotated"
+    baseline = ontology.read_ontology(baseline_path, genes, allow_empty_terms=allow_empty)
     if graph["genes"] != genes or graph["root"] != baseline["root"]:
         raise ValueError("Graph and DrugCell must share gene order and functional root")
     aliases = {key: key if ontology.valid_model_term(key) else "OVERLAY:" + hashlib.sha256(key.encode()).hexdigest()
@@ -57,11 +58,11 @@ def export(product, baseline_path, gene_map, output):
     memberships = {(aliases[key], gene) for key, node in graph["nodes"].items() for gene in node["direct_genes"]}
     if not baseline["edges"] <= set(model_edges) or not baseline["memberships"] <= memberships:
         raise ValueError("Agent graph must preserve original model structure and memberships")
-    combined = ontology.analyze(model_edges, memberships, genes)
+    combined = ontology.analyze(model_edges, memberships, genes, allow_empty_terms=allow_empty)
     additional = memberships - baseline["memberships"]
     reduced = {pair for pair in additional if not any(
         pair[1] in combined["propagated"][child] for child in combined["children"][pair[0]])}
-    final = ontology.analyze(model_edges, baseline["memberships"] | reduced, genes)
+    final = ontology.analyze(model_edges, baseline["memberships"] | reduced, genes, allow_empty_terms=allow_empty)
     if final["propagated"] != combined["propagated"]:
         raise AssertionError("Membership compression changed model coverage")
     output.mkdir(parents=True, exist_ok=False)

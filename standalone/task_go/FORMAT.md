@@ -74,3 +74,17 @@ The `module_recipes` workflow accepts the same scientific input files as module 
 Groups partition every supplied module exactly once. The compiler creates one decision per module, expands approved native source facts and shared anchors, resolves source aliases, joins full memberships and validates the complete patch. It records skipped source edges already represented by a resolved identity or existing model connection. Extra edges retain explicit endpoints, types, evidence and rationale.
 
 The reviewer returns the same batch and revision identifiers plus one verdict per group. Each verdict contains `group_id`, `verdict`, `reason` and `exceptions`; exceptions contain a `module_id`, `verdict` and `reason` for a member of that group. The controller expands this to complete per-module review coverage, holds dependencies and commits the accepted patch. Recipe and expansion hashes are part of `knowledge_graph/freeze_manifest.json`.
+
+## Module instruction receipts
+
+Each module-agent stage has an `instruction_manifest.json` with `role`, `interface`, `skill`, `resources` and `prompt_sha256`. Each resource records `kind`, workspace-relative `path` and `sha256`. Resources are the role prompt, assigned skill, shared scientific conventions and active interface reference. The stage execution receipt binds the instruction manifest through `instruction_manifest_sha256`.
+
+The graph freeze includes `instructions.json`, whose `invocations` array contains each invocation's directory and verified instruction receipt. The controller checks resource versions and executed-prompt hashes before adding this artifact to the freeze manifest. Historical frozen products retain their declared artifact sets.
+
+## Complete graph coverage and recovery
+
+The graph may declare `gene_coverage_policy="allow_unannotated"` for a complete ontology with measured genes that currently lack annotations. `genes` remains the fixed task universe, while `summary.annotated_genes` records actual model-edge coverage. All active ontology terms remain available during augmentation, including terms with zero current descendant coverage. The default `complete` policy retains its full-coverage requirement.
+
+Each committed recipe batch has `timing.json` beside its accepted patch and validation receipt. Resume verifies that committed batches form the declared processing prefix and that replay reproduces the current graph. Failed attempts are archived under `failed_batches/` and counted in execution accounting; they use the runtime's bounded `batch_attempts` budget.
+
+`launch_modules.py --publish-memberships` publishes a `knowledge/` product after the graph freeze. It contains all task-gene rows, including explicit empty attribute lists, and computational coverage derived from the reviewed graph. Its manifest binds the graph freeze and scientific input hashes. Downstream pruning and model-specific gene projection occur after this scientific freeze.

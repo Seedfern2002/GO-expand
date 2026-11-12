@@ -29,7 +29,8 @@ def events(workspace):
     return {**dict(totals), "usage": dict(tokens), "stages": stages}
 
 
-def compare(workspace, reference, output):
+def compare(workspace, reference, output, reference_label="Earlier per-module transactions",
+            current_label="Group recipe + code expansion", comparison_scope=None):
     workspace, reference, output = Path(workspace), Path(reference), Path(output)
     current = json.loads((workspace / "timing.json").read_text())
     previous = json.loads((reference / "timing.json").read_text())
@@ -63,11 +64,12 @@ def compare(workspace, reference, output):
             "graph": current["graph"], "events": after_events, "context_bytes": current_context_bytes},
         "speedup": old_seconds / new_seconds, "wall_time_reduction_fraction": 1 - new_seconds / old_seconds,
         "context_byte_reduction_fraction": 1 - current_context_bytes / previous_context_bytes,
-        "comparison_scope": "Observed combined change in group recipes, batch size, compact context and execution configuration; single runs of the same 24 source modules. Independent biological ground-truth accuracy is outside this timing measurement."}
+        "reference_label": reference_label, "current_label": current_label,
+        "comparison_scope": comparison_scope or "Observed combined change in group recipes, batch size, compact context and execution configuration; single runs of the same 24 source modules. Independent biological ground-truth accuracy is outside this timing measurement."}
     ontology.write_json(output / "efficiency_comparison.json", result)
     lines = [(output / "REPORT.md").read_text(), "", "## Matched-input efficiency comparison", "",
         "The task card, original graph, complete gene universe, source catalog, pinned evidence, processing module set and model/reasoning settings match the earlier pilot.", "",
-        "| Measurement | Earlier per-module transactions | Group recipe + code expansion |",
+        f"| Measurement | {reference_label} | {current_label} |",
         "|---|---:|---:|",
         f"| Placement wall time (minutes) | {old_seconds / 60:.2f} | {new_seconds / 60:.2f} |",
         f"| Agent invocations | {before_events['agent_invocations']} | {after_events['agent_invocations']} |",
@@ -87,7 +89,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("workspace", "reference-workspace", "baseline", "gene-map", "output"):
         parser.add_argument("--" + name, type=Path, required=True)
+    parser.add_argument("--reference-label", default="Earlier per-module transactions")
+    parser.add_argument("--current-label", default="Group recipe + code expansion")
+    parser.add_argument("--comparison-scope")
     args = parser.parse_args()
     finish(args.workspace, args.baseline, args.gene_map, args.output)
-    result = compare(args.workspace, args.reference_workspace, args.output)
+    result = compare(args.workspace, args.reference_workspace, args.output,
+                     args.reference_label, args.current_label, args.comparison_scope)
     print(json.dumps({"speedup": result["speedup"], "seconds": result["hybrid"]["seconds"]}), flush=True)

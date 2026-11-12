@@ -7,6 +7,8 @@ description: Query existing gene attributes and concept identities, then publish
 
 Turn supported database or literature observations into a reviewable knowledge increment for the current task. Follow this sequence: query existing knowledge, resolve concepts, propose candidate records, then import the emitted records for review. This skill defines the addition procedure; pipeline/FORMAT.md defines record fields and importer arguments. The task and Planner determine acquisition scope and reading budgets.
 
+This acquisition skill publishes candidate assertions and concept-resolution evidence. Apply the concept identity and evidence conventions in [shared knowledge semantics](../../references/knowledge_semantics.md). When a module graph stage is supplied, pass module definitions, complete source memberships and pinned relationships to its Editor. The place-functional-modules skill governs that stage's graph proposal; its independent Reviewer uses review-functional-modules.
+
 ## Look up existing knowledge
 
 Use `retrieval_round.knowledge_context_index` when supplied by the controller. For a workspace without a supplied index, first create a fresh one with `python3 pipeline/knowledge_ops.py build --index acquisition/knowledge_context.sqlite`. In a prepared task workspace:
